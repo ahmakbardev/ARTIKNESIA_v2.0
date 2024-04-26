@@ -22,7 +22,7 @@ jobs:
           port: ${{ secrets.SERVER_PORT }}
           script: |
             cd /home/u376682195/domains/sideospary.com/new_artiknesia
-            git clone https://github.com/ahmakbardev/ARTIKNESIA.git
+            git clone https://github.com/ahmakbardev/NEW_ARTIKNESIA.git
             chmod +x ~/bin/composer
             echo "export PATH=$HOME/bin:$PATH" >> ~/.bash_profile
             source ~/.bash_profile
