@@ -31,6 +31,8 @@ jobs:
             cd /home/u376682195/domains/sideospary.com/new_artiknesia/NEW_ARTIKNESIA/
             cp .env.example .env
             git pull origin develop
+            composer update
             composer install
+            composer update
             php artisan key:generate
             ln -s /home/u376682195/domains/sideospary.com/new_artiknesia/NEW_ARTIKNESIA/public /home/u376682195/domains/sideospary.com/public_html/
