@@ -28,9 +28,9 @@ jobs:
             source ~/.bash_profile
             which composer
             composer --version
-            cd /home/u376682195/domains/sideospary.com/new_artiknesia/ARTIKNESIA/
+            cd /home/u376682195/domains/sideospary.com/new_artiknesia/NEW_ARTIKNESIA/
             cp .env.example .env
             git pull origin develop
             composer install
             php artisan key:generate
-            ln -s /home/u376682195/domains/sideospary.com/new_artiknesia/ARTIKNESIA/public /home/u376682195/domains/sideospary.com/public_html/
+            ln -s /home/u376682195/domains/sideospary.com/new_artiknesia/NEW_ARTIKNESIA/public /home/u376682195/domains/sideospary.com/public_html/
