@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .btn-color-outline {
+        @apply ring-inset ring-1 ring-primary text-primary;
+    }
+    .btn-color-outline-white {
+        @apply ring-inset ring-1 ring-white text-white;
+    }
+
+    .btn-color-fill {
+        @apply bg-primary text-white;
+    }
+    .btn-color-fill-white {
+        @apply bg-white text-primary;
+    }
+}
