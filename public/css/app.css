@@ -745,6 +745,9 @@ video {
 .w-16 {
   width: 4rem;
 }
+.w-3\/4 {
+  width: 75%;
+}
 .w-3\/5 {
   width: 60%;
 }
@@ -787,9 +790,6 @@ video {
 }
 .w-px {
   width: 1px;
-}
-.w-3\/4 {
-  width: 75%;
 }
 .max-w-7xl {
   max-width: 80rem;
@@ -892,9 +892,6 @@ video {
 }
 .overflow-hidden {
   overflow: hidden;
-}
-.overflow-x-hidden {
-  overflow-x: hidden;
 }
 .overflow-y-hidden {
   overflow-y: hidden;
@@ -1042,9 +1039,6 @@ video {
 }
 .p-6 {
   padding: 1.5rem;
-}
-.p-8 {
-  padding: 2rem;
 }
 .px-0 {
   padding-left: 0px;
@@ -1267,9 +1261,6 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
-.delay-100 {
-  transition-delay: 100ms;
-}
 .delay-75 {
   transition-delay: 75ms;
 }
@@ -1346,8 +1337,21 @@ video {
     border-radius: 5px;
 }
 
-.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
     width: unset !important;
+}
+
+@media screen and (max-width: 480px) {
+    .swiper-pagination-bullet-active {
+        width: 30px !important;
+    }
+
+    .swiper-pagination-bullet {
+        margin-right: 5px;
+    }
 }
 
 .hover\:btn-color-outline:hover {
@@ -1465,30 +1469,6 @@ video {
   outline-color: #ef4444;
 }
 
-.group:hover .group-hover\:-left-5 {
-  left: -1.25rem;
-}
-
-.group:hover .group-hover\:-right-5 {
-  right: -1.25rem;
-}
-
-.group\/btn:hover .group-hover\/btn\:-left-5 {
-  left: -1.25rem;
-}
-
-.group\/btn:hover .group-hover\/btn\:-right-5 {
-  right: -1.25rem;
-}
-
-.group\/btn:hover .group-hover\/btn\:-left-0 {
-  left: -0px;
-}
-
-.group\/btn:hover .group-hover\/btn\:-right-0 {
-  right: -0px;
-}
-
 .group\/btn:hover .group-hover\/btn\:left-0 {
   left: 0px;
 }
@@ -1510,14 +1490,6 @@ video {
 .group\/profile:hover .group-hover\/profile\:translate-y-0 {
   --tw-translate-y: 0px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.group:hover .group-hover\:opacity-100 {
-  opacity: 1;
-}
-
-.group\/nb:hover .group-hover\/nb\:opacity-100 {
-  opacity: 1;
 }
 
 .group\/btncont:hover .group-hover\/btncont\:opacity-100 {
@@ -1570,13 +1542,13 @@ video {
 
   @media not all and (min-width: 640px) {
 
-    .\32xs\:max-sm\:w-full {
-      width: 100%;
-    }
-
     .\32xs\:max-sm\:w-fit {
       width: -moz-fit-content;
       width: fit-content;
+    }
+
+    .\32xs\:max-sm\:w-full {
+      width: 100%;
     }
   }
 }
@@ -1700,10 +1672,6 @@ video {
 
   .md\:gap-5 {
     gap: 1.25rem;
-  }
-
-  .md\:p-8 {
-    padding: 2rem;
   }
 
   .md\:px-5 {

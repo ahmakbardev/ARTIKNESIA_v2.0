@@ -83,6 +83,19 @@
     border-radius: 5px;
 }
 
-.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
     width: unset !important;
+}
+
+@media screen and (max-width: 480px) {
+    .swiper-pagination-bullet-active {
+        width: 30px !important;
+    }
+
+    .swiper-pagination-bullet {
+        margin-right: 5px;
+    }
 }
