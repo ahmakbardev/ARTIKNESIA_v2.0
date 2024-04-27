@@ -1839,6 +1839,14 @@ video {
     padding-left: 9rem;
     padding-right: 9rem;
   }
+
+  .group\/btn:hover .xl\:group-hover\/btn\:-left-5 {
+    left: -1.25rem;
+  }
+
+  .group\/btn:hover .xl\:group-hover\/btn\:-right-5 {
+    right: -1.25rem;
+  }
 }
 
 @media (min-width: 1536px) {

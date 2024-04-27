@@ -5,9 +5,12 @@
         <!-- Konten modal -->
         <div
             class="custom-art relative px-2 md:px-5 lg:px-0 max-lg:flex max-lg:flex-col lg:grid lg:grid-cols-2 h-full gap-4">
-            <div class="flex max-md:justify-center 2xs:max-sm:w-full overflow-hidden 2xl:justify-center gap-3 max-sm:h-64">
-                <img class="object-contain 2xs:max-sm:w-fit" src="{{ asset('images/custom-karya/banner-1.png') }}" alt="">
-                <img class="object-contain 2xs:max-sm:w-fit" src="{{ asset('images/custom-karya/banner-2.png') }}" alt="">
+            <div
+                class="flex max-md:justify-center 2xs:max-sm:w-full overflow-hidden 2xl:justify-center gap-3 max-sm:h-64">
+                <img class="object-contain 2xs:max-sm:w-fit" src="{{ asset('images/custom-karya/banner-1.png') }}"
+                    alt="">
+                <img class="object-contain 2xs:max-sm:w-fit" src="{{ asset('images/custom-karya/banner-2.png') }}"
+                    alt="">
             </div>
             <div class="flex flex-col justify-center items-start">
                 <h1 class="font-bold text-base md:text-lg text-primary">Mau custom art? bisa dong !</h1>
@@ -41,6 +44,7 @@
                 'translate-y-0', 'opacity-100');
             document.getElementById('customModal').querySelector('.modal-content').style.transform =
                 'translateY(0)';
+            document.body.classList.add('overflow-y-hidden')
         }, 50); // Tunggu 0.5 detik sebelum muncul secara smooth
     }, 3000);
 
@@ -49,6 +53,8 @@
         document.getElementById('customModal').classList.remove('opacity-100');
         document.getElementById('customModal').querySelector('.modal-content').classList.remove('translate-y-0',
             'opacity-100');
+        document.body.classList.remove('overflow-y-hidden')
+
         setTimeout(function() {
             document.getElementById('customModal').querySelector('.modal-content').classList.add(
                 'translate-y-16', 'opacity-0');

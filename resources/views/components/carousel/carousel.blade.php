@@ -22,7 +22,7 @@
         <!-- Jika Anda ingin menambahkan navigasi prev/next -->
         <div class="opacity-0 group-hover/btncont:opacity-100 hidden md:block transition-all ease-in-out z-10">
             <div
-                class="prev absolute left-2 lg:group-hover/btn:-left-5 transition-all ease-in-out delay-75 top-1/2 transform -translate-y-1/2 border border-primary bg-white hover:bg-primary hover:text-white text-primary rounded-full w-10 h-10 flex items-center justify-center cursor-pointer z-10">
+                class="prev absolute left-2 xl:group-hover/btn:-left-5 transition-all ease-in-out delay-75 top-1/2 transform -translate-y-1/2 border border-primary bg-white hover:bg-primary hover:text-white text-primary rounded-full w-10 h-10 flex items-center justify-center cursor-pointer z-10">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
@@ -30,7 +30,7 @@
                 </svg>
             </div>
             <div
-                class="next absolute right-2 lg:group-hover/btn:-right-5 transition-all ease-in-out delay-75 top-1/2 transform -translate-y-1/2 border border-primary bg-white hover:bg-primary hover:text-white text-primary rounded-full w-10 h-10 flex items-center justify-center cursor-pointer z-10">
+                class="next absolute right-2 xl:group-hover/btn:-right-5 transition-all ease-in-out delay-75 top-1/2 transform -translate-y-1/2 border border-primary bg-white hover:bg-primary hover:text-white text-primary rounded-full w-10 h-10 flex items-center justify-center cursor-pointer z-10">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
