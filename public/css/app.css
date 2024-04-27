@@ -788,6 +788,9 @@ video {
 .w-px {
   width: 1px;
 }
+.w-3\/4 {
+  width: 75%;
+}
 .max-w-7xl {
   max-width: 80rem;
 }
@@ -889,6 +892,9 @@ video {
 }
 .overflow-hidden {
   overflow: hidden;
+}
+.overflow-x-hidden {
+  overflow-x: hidden;
 }
 .overflow-y-hidden {
   overflow-y: hidden;
@@ -1473,6 +1479,22 @@ video {
 
 .group\/btn:hover .group-hover\/btn\:-right-5 {
   right: -1.25rem;
+}
+
+.group\/btn:hover .group-hover\/btn\:-left-0 {
+  left: -0px;
+}
+
+.group\/btn:hover .group-hover\/btn\:-right-0 {
+  right: -0px;
+}
+
+.group\/btn:hover .group-hover\/btn\:left-0 {
+  left: 0px;
+}
+
+.group\/btn:hover .group-hover\/btn\:right-0 {
+  right: 0px;
 }
 
 .group\/beli:hover .group-hover\/beli\:translate-y-0 {

@@ -42,7 +42,7 @@
             document.getElementById('customModal').querySelector('.modal-content').style.transform =
                 'translateY(0)';
         }, 50); // Tunggu 0.5 detik sebelum muncul secara smooth
-    }, 500);
+    }, 3000);
 
     // Tambahkan event listener untuk tombol close
     document.getElementById('closeModalBtn').addEventListener('click', function() {
