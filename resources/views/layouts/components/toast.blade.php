@@ -1,13 +1,13 @@
 <div id="customModal"
     class="fixed inset-0 z-50 flex items-center justify-center overflow-y-hidden bg-black bg-opacity-50 transition-opacity duration-300 hidden opacity-0">
     <div
-        class="modal-content bg-white rounded-lg w-5/6 h-5/6 p-8 transform translate-y-16 opacity-0 transition-transform duration-300 ease-in-out">
+        class="modal-content bg-white rounded-lg w-5/6 h-5/6 px-3 py-5 md:px-8 md:py-8 transform translate-y-16 opacity-0 transition-transform duration-300 ease-in-out">
         <!-- Konten modal -->
         <div
             class="custom-art relative px-2 md:px-5 lg:px-0 max-lg:flex max-lg:flex-col lg:grid lg:grid-cols-2 h-full gap-4">
-            <div class="flex max-md:justify-center 2xl:justify-center gap-3 max-sm:h-64">
-                <img class="object-contain" src="{{ asset('images/custom-karya/banner-1.png') }}" alt="">
-                <img class="object-contain" src="{{ asset('images/custom-karya/banner-2.png') }}" alt="">
+            <div class="flex max-md:justify-center 2xs:max-sm:w-full overflow-hidden 2xl:justify-center gap-3 max-sm:h-64">
+                <img class="object-contain 2xs:max-sm:w-fit" src="{{ asset('images/custom-karya/banner-1.png') }}" alt="">
+                <img class="object-contain 2xs:max-sm:w-fit" src="{{ asset('images/custom-karya/banner-2.png') }}" alt="">
             </div>
             <div class="flex flex-col justify-center items-start">
                 <h1 class="font-bold text-base md:text-lg text-primary">Mau custom art? bisa dong !</h1>
@@ -42,7 +42,7 @@
             document.getElementById('customModal').querySelector('.modal-content').style.transform =
                 'translateY(0)';
         }, 50); // Tunggu 0.5 detik sebelum muncul secara smooth
-    }, 3000);
+    }, 500);
 
     // Tambahkan event listener untuk tombol close
     document.getElementById('closeModalBtn').addEventListener('click', function() {

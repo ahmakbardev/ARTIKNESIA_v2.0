@@ -20,7 +20,7 @@
             <div class="swiper-pagination w-fit"></div>
         </div>
         <!-- Jika Anda ingin menambahkan navigasi prev/next -->
-        <div class="opacity-0 group-hover/btncont:opacity-100 transition-all ease-in-out z-10">
+        <div class="opacity-0 group-hover/btncont:opacity-100 hidden md:block transition-all ease-in-out z-10">
             <div
                 class="prev absolute left-2 group-hover/btn:-left-5 transition-all ease-in-out delay-75 top-1/2 transform -translate-y-1/2 border border-primary bg-white hover:bg-primary hover:text-white text-primary rounded-full w-10 h-10 flex items-center justify-center cursor-pointer z-10">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
