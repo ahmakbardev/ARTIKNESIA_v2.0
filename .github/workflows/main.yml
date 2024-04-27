@@ -1,4 +1,4 @@
-name: Deploy Laravel to Hpanel
+name: First Update Staging Laravel to Hpanel
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: Deploy to Hpanel
+    name: First Update Staging to Hpanel
 
     steps:
       - name: Checkout code
@@ -21,18 +21,18 @@ jobs:
           key: ${{ secrets.SERVER_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            cd /home/u376682195/domains/sideospary.com/new_artiknesia
-            git clone https://github.com/ahmakbardev/NEW_ARTIKNESIA.git
             chmod +x ~/bin/composer
             echo "export PATH=$HOME/bin:$PATH" >> ~/.bash_profile
             source ~/.bash_profile
             which composer
             composer --version
             cd /home/u376682195/domains/sideospary.com/new_artiknesia/NEW_ARTIKNESIA/
-            cp .env.example .env
+            git config --global  pull.ff true
+            git stash
             git pull origin develop
             composer update
-            composer install
-            composer update
-            php artisan key:generate
-            ln -s /home/u376682195/domains/sideospary.com/new_artiknesia/NEW_ARTIKNESIA/public /home/u376682195/domains/sideospary.com/public_html/
+            php artisan queue:restart
+            php artisan cache:clear
+            php artisan route:clear
+            php artisan config:clear
+            php artisan view:clear

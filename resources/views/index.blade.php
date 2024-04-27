@@ -1,18 +1,16 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div class="header w-full h-32 md:h-72 lg:h-96 bg-gray-300 lg:rounded-md overflow-hidden mb-5">
-        <img class="w-full h-full object-cover object-center" src="{{ asset('images/banner/default.png') }}" alt="">
-    </div>
+    @include('components.carousel.carousel')
     <div class="kategori px-2 md:px-5 lg:px-0 hidden md:flex flex-col">
         <h1 class="text-base lg:text-2xl font-semibold">Kategori Produk</h1>
         <div class="flex gap-5 my-5">
-            <div class="w-64 h-36 border-2 shadow-md rounded-md flex justify-around items-center p-4">
+            <div class="w-64 h-36 border shadow-sm rounded-md flex justify-around items-center p-4">
                 <img src="{{ asset('/images/kategori/fine-art.png') }}" alt=""
                     class="hidden md:flex object-contain h-full rounded-md">
                 <h1 class="text-xl font-bold">Fine Art</h1>
             </div>
-            <div class="w-64 h-36 border-2 shadow-md rounded-md flex justify-around items-center p-4">
+            <div class="w-64 h-36 border shadow-sm rounded-md flex justify-around items-center p-4">
                 <img src="{{ asset('/images/kategori/digital-art.png') }}" alt=""
                     class="hidden md:flex object-contain h-full rounded-md">
                 <h1 class="text-xl font-bold">Digital Art</h1>
@@ -59,8 +57,12 @@
     <div class="produk-artiknesia px-2 md:px-5 lg:px-0 flex flex-col">
         <h1 class="text-base lg:text-2xl font-semibold">ARTIKNESIA Art</h1>
         <div class="grid grid-cols-2 gap-5 py-5 bg-white sticky top-28 z-10">
-            <button class="py-3 text-center btn-color-fill font-semibold rounded-md">Fine Art</button>
-            <button class="py-3 text-center btn-color-outline font-semibold rounded-md">Digital Art</button>
+            <button
+                class="py-3 text-center btn-color-fill font-semibold rounded-md hover:btn-color-outline hover:btn-color-fill-white transition-all ease-in-out">Fine
+                Art</button>
+            <button
+                class="py-3 text-center btn-color-outline font-semibold rounded-md hover:btn-color-fill transition-all ease-in-out">Digital
+                Art</button>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 my-5 z-[2]">
             @for ($i = 0; $i < 10; $i++)
@@ -107,10 +109,8 @@
     </div>
     <div class="custom-art px-2 md:px-5 lg:px-0 py-20 max-lg:flex max-lg:flex-col lg:grid lg:grid-cols-2 gap-4">
         <div class="flex max-md:justify-center 2xl:justify-center gap-3 max-sm:h-64">
-            <img class="max-sm:h-full object-contain" src="{{ asset('images/custom-karya/banner-1.png') }}"
-                alt="">
-            <img class="max-sm:h-full object-contain" src="{{ asset('images/custom-karya/banner-2.png') }}"
-                alt="">
+            <img class="max-sm:h-full object-contain" src="{{ asset('images/custom-karya/banner-1.png') }}" alt="">
+            <img class="max-sm:h-full object-contain" src="{{ asset('images/custom-karya/banner-2.png') }}" alt="">
         </div>
         <div class="flex flex-col justify-center items-start">
             <h1 class="font-bold text-base md:text-lg text-primary">Mau custom art? bisa dong !</h1>
@@ -119,7 +119,7 @@
                 maupun
                 kenang-kenangan. Project Akan
                 di lakukan oleh para seniman Professional ARTIKNESIA.</p>
-            <button class="py-3 px-10 text-center btn-color-fill font-semibold rounded-md">Lihat Semua Karya</button>
+            <button class="py-3 px-10 text-center btn-color-fill font-semibold rounded-md">Buat Sekarang</button>
         </div>
     </div>
     <div class="pameran px-2 md:px-5 lg:px-0">
@@ -133,9 +133,11 @@
                     bersama
                     kami!</p>
                 <div class="grid grid-cols-2 gap-3 w-full">
-                    <button class="py-2 text-center btn-color-fill-white font-semibold text-sm md:text-base rounded-md text-black">Pameran
+                    <button
+                        class="py-2 text-center btn-color-fill-white font-semibold text-sm md:text-base rounded-md text-black">Pameran
                         Virtual</button>
-                    <button class="py-2 text-center btn-color-fill-white font-semibold text-sm md:text-base rounded-md text-black">Pameran
+                    <button
+                        class="py-2 text-center btn-color-fill-white font-semibold text-sm md:text-base rounded-md text-black">Pameran
                         Onsite</button>
 
                 </div>
@@ -153,14 +155,16 @@
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 my-5">
             @for ($i = 0; $i < 4; $i++)
-                <div class="bg-white border shadow-md h-fit md:h-5/6 rounded-xl flex flex-col overflow-hidden font-poppins">
-                    <img class="w-full md:h-3/5 object-cover object-center" src="{{ asset('images/produk/default.png') }}"
-                        alt="">
+                <div
+                    class="bg-white border shadow-md h-fit md:h-5/6 rounded-xl flex flex-col overflow-hidden font-poppins">
+                    <img class="w-full md:h-3/5 object-cover object-center"
+                        src="{{ asset('images/produk/default.png') }}" alt="">
                     <div class="flex flex-col p-2 justify-between h-2/5md:">
-                        <h1 class="text-sm lg:text-lg line-clamp-2 font-semibold leading-6">Karikatur sebagai media satire politik dan sosial</h1>
+                        <h1 class="text-sm lg:text-lg line-clamp-2 font-semibold leading-6">Karikatur sebagai media satire
+                            politik dan sosial</h1>
                         <div class="flex gap-2 md:gap-4 items-center">
-                            <img class="w-8 md:w-12 rounded-full object-contain" src="{{ asset('images/profile/default.png') }}"
-                                alt="">
+                            <img class="w-8 md:w-12 rounded-full object-contain"
+                                src="{{ asset('images/profile/default.png') }}" alt="">
                             <div class="flex flex-col max-md:mt-3">
                                 <p class="text-xs md:text-sm font-semibold truncate">Ahmad Akbar</p>
                                 <p class="text-xs">24 Jan 2024</p>
@@ -179,7 +183,7 @@
                 <button class="py-3 w-full text-center btn-color-fill-white font-semibold rounded-md text-black">Hubungi
                     Sekarang</button>
             </div>
-    
+
         </div>
     </div>
 @endsection
