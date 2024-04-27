@@ -1,4 +1,4 @@
-name: First Update Staging Laravel to Hpanel
+name: Continuous Update Laravel to Hpanel
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: First Update Staging to Hpanel
+    name: Deploy to Hpanel
 
     steps:
       - name: Checkout code
@@ -27,7 +27,6 @@ jobs:
             which composer
             composer --version
             cd /home/u376682195/domains/sideospary.com/new_artiknesia/NEW_ARTIKNESIA/
-            git config --global  pull.ff true
             git stash
             git pull origin develop
             composer update

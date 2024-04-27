@@ -1467,6 +1467,14 @@ video {
   right: -1.25rem;
 }
 
+.group\/btn:hover .group-hover\/btn\:-left-5 {
+  left: -1.25rem;
+}
+
+.group\/btn:hover .group-hover\/btn\:-right-5 {
+  right: -1.25rem;
+}
+
 .group\/beli:hover .group-hover\/beli\:translate-y-0 {
   --tw-translate-y: 0px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1483,6 +1491,14 @@ video {
 }
 
 .group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+
+.group\/nb:hover .group-hover\/nb\:opacity-100 {
+  opacity: 1;
+}
+
+.group\/btncont:hover .group-hover\/btncont\:opacity-100 {
   opacity: 1;
 }
 
