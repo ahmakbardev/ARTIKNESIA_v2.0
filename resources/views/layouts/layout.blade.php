@@ -9,7 +9,7 @@
     <!-- Append version number to CSS file name -->
     <link rel="stylesheet" href="{{ asset('css/app.css?v=1.0') }}">
     <!-- Add cache-control headers for CSS and JavaScript files -->
-    <link rel="preload" href="{{ asset('css/app.css?v=1.0') }}" as="style" crossorigin="anonymous" />
+    <link rel="preload" href="{{ asset('css/app.css?v=1.01') }}" as="style" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="shortcut icon" href="{{ asset('images/logo/logo-square.png') }}" type="image/x-icon">
