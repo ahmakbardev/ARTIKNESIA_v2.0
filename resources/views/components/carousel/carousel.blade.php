@@ -89,5 +89,5 @@
             bullet.style.width = isActive ? '8px' : '8px'; // Ukuran default dot
             bullet.style.transition = 'width 0.5s ease-in-out'; // Transisi smooth
         });
-    });
+    }); 
 </script>

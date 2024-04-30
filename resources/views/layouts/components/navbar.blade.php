@@ -20,7 +20,7 @@
             </div>
             <div class="mt-3">
                 <ul class="flex gap-5">
-                    <li class="text-gray-400 text-xs">Produk</li>
+                    <li class="text-gray-400 text-xs">Product</li>
                     <li class="text-gray-400 text-xs">Custom Karya</li>
                     <li class="text-gray-400 text-xs">Pameran</li>
                     <li class="text-gray-400 text-xs">Artikel</li>
