@@ -1469,30 +1469,6 @@ video {
   outline-color: #ef4444;
 }
 
-.group\/btn:hover .group-hover\/btn\:left-0 {
-  left: 0px;
-}
-
-.group\/btn:hover .group-hover\/btn\:right-0 {
-  right: 0px;
-}
-
-.group\/btn:hover .group-hover\/btn\:left-5 {
-  left: 1.25rem;
-}
-
-.group\/btn:hover .group-hover\/btn\:right-5 {
-  right: 1.25rem;
-}
-
-.group\/btn:hover .group-hover\/btn\:-left-5 {
-  left: -1.25rem;
-}
-
-.group\/btn:hover .group-hover\/btn\:-right-5 {
-  right: -1.25rem;
-}
-
 .group\/beli:hover .group-hover\/beli\:translate-y-0 {
   --tw-translate-y: 0px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1818,14 +1794,6 @@ video {
   .lg\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
-  }
-
-  .group\/btn:hover .lg\:group-hover\/btn\:-left-5 {
-    left: -1.25rem;
-  }
-
-  .group\/btn:hover .lg\:group-hover\/btn\:-right-5 {
-    right: -1.25rem;
   }
 }
 

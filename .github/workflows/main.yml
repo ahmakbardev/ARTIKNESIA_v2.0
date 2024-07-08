@@ -1,4 +1,4 @@
-name: Continuous Update Laravel to Hpanel
+name: Deploy Laravel to Hpanel
 
 on:
   push:
@@ -21,18 +21,19 @@ jobs:
           key: ${{ secrets.SERVER_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
+            cd /home/u982131153/domains/artiknesia.com/
+            git clone https://github.com/ahmakbardev/NEW_ARTIKNESIA.git
+            cd /home/u982131153/domains/artiknesia.com/NEW_ARTIKNESIA
             chmod +x ~/bin/composer
             echo "export PATH=$HOME/bin:$PATH" >> ~/.bash_profile
             source ~/.bash_profile
             which composer
             composer --version
-            cd /home/u376682195/domains/sideospary.com/new_artiknesia/NEW_ARTIKNESIA/
-            git stash
-            git pull origin develop
+            cp .env.example .env
+            composer install
             composer update
-            php artisan queue:restart
-            php artisan cache:clear
+            php artisan key:generate
             php artisan route:clear
-            php artisan config:clear
-            php artisan view:clear
-            php artisan storage:link
+            php artisan config:cache
+            php artisan optimize
+            ln -s /home/u982131153/domains/artiknesia.com/NEW_ARTIKNESIA/public/* /home/u982131153/domains/artiknesia.com/public_html/staging
