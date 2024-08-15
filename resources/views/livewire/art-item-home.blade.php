@@ -19,7 +19,7 @@
             <div
                 class="produk bg-white border shadow-md md:h-80 rounded-xl flex flex-col overflow-hidden group/belimobile group/profile font-poppins">
                 <div class="relative w-full h-3/5 z-[0]">
-                    <a href="#"
+                    <a href="{{ route('art', $item->id) }}"
                        class="absolute text-white bottom-2 left-2 hidden md:flex gap-2 items-end translate-y-16 transition-all ease-in-out group-hover/profile:translate-y-0 backdrop-blur-sm rounded-lg">
                         <img class="size-10 object-cover rounded-full" src="{{ $item->images[0] }}" alt="">
                         <p class="leading-none text-sm font-semibold drop-shadow-lg">{{ $item->seniman->username }}</p>

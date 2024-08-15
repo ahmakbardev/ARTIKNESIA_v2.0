@@ -26,8 +26,8 @@
             </div>
             <div class="w-full lg:w-5/6 h-full lg:h-72 z-10 grid grid-cols-2 md:grid-cols-4 items-center gap-5">
                 @foreach($art_recommendations as $item)
-                    <a href="#"
-                       class="bg-white border shadow-md h-full lg:h-5/6 rounded-xl flex flex-col overflow-hidden font-poppins  group/profile">
+                    <a href="{{ route('art', $item->id) }}"
+                       class="bg-white border shadow-md h-full lg:h-5/6 rounded-xl flex flex-col overflow-hidden font-poppins group/profile">
                         <div class="relative w-full h-3/5 z-[0]">
                             <div
                                 class="absolute text-white bottom-2 left-2 flex gap-2 items-end translate-y-16 transition-all ease-in-out group-hover/profile:translate-y-0">
@@ -143,31 +143,4 @@
 
         </div>
     </div>
-@endsection
-@section('custom-js')
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const cartBtn = document.getElementById('cart-btn');
-            const cartDropdown = document.getElementById('cart-dropdown');
-
-            // Hide the dropdown on page load if you want it hidden initially
-            cartDropdown.style.display = 'none';
-
-            cartBtn.addEventListener('click', function () {
-                if (cartDropdown.style.display === 'none' || cartDropdown.style.display === '') {
-                    cartDropdown.style.display = 'flex';
-                    cartDropdown.style.flexDirection = 'column';
-                } else {
-                    cartDropdown.style.display = 'none';
-                }
-            });
-
-            document.addEventListener('click', function (event) {
-                if (!cartBtn.contains(event.target) && !cartDropdown.contains(event.target)) {
-                    cartDropdown.style.display = 'none';
-                }
-            });
-        });
-    </script>
-
 @endsection

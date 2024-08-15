@@ -10,7 +10,7 @@
             <div class="flex flex-row items-center justify-between">
                 <h1 class="text-lg font-extrabold">Keranjang</h1>
                 @if($art_count > 0)
-                    <a href="#" class="text-sm text-primary">Lihat Semua</a>
+                    <a href="{{route('cart-detail')}}" class="text-sm text-primary">Lihat Semua</a>
                 @endif
             </div>
             @if($art_count > 0)

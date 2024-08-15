@@ -9,7 +9,7 @@ use Livewire\Component;
 class Cart extends Component
 {
     public    $arts;
-    protected $listeners = ['addToCart'];
+    protected $listeners = ['addToCart', 'removeFromCart'];
 
     public function mount(): void
     {

@@ -31,9 +31,33 @@
     @yield('content')
 </main>
 
-@include('layouts.components.toast')
+{{--@include('layouts.components.toast')--}}
 @include('layouts.components.footer')
-@yield('custom-js')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const cartBtn = document.getElementById('cart-btn');
+        const cartDropdown = document.getElementById('cart-dropdown');
+
+        // Hide the dropdown on page load if you want it hidden initially
+        cartDropdown.style.display = 'none';
+
+        cartBtn.addEventListener('click', function () {
+            if (cartDropdown.style.display === 'none' || cartDropdown.style.display === '') {
+                cartDropdown.style.display = 'flex';
+                cartDropdown.style.flexDirection = 'column';
+            } else {
+                cartDropdown.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!cartBtn.contains(event.target) && !cartDropdown.contains(event.target)) {
+                cartDropdown.style.display = 'none';
+            }
+        });
+    });
+</script>
+
 </body>
 
 </html>
