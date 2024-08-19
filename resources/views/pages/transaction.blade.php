@@ -1,5 +1,7 @@
 @extends('layouts.layout')
 @section('content')
+    <h1 class="text-2xl font-bold">Daftar Negosiasi</h1>
+    <livewire:negotiation :negotiations="$negotiations"></livewire:negotiation>
     <h1 class="text-2xl font-bold">Daftar Transaksi</h1>
     <div class="flex flex-col gap-y-4">
         @if(count($orders) > 0)
@@ -27,4 +29,5 @@
             <p>Tidak ada transaksi</p>
         @endif
     </div>
+
 @endsection

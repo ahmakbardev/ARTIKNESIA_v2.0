@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Karya;
 use App\Models\JenisKarya;
 use App\Models\Kota;
+use App\Models\Negotiation;
+use App\Models\NegotiationBatch;
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\Subkategori;
 use App\Services\RajaOngkir;
 use Illuminate\Contracts\View\View;
@@ -17,14 +20,18 @@ class HomeController extends Controller
     public function index(): View
     {
         $art_categories      = JenisKarya::query()->limit(4)->get();
-        $art_recommendations = Karya::query()->with('seniman')->limit(4)->get();
+        $art_recommendations = Karya::query()->whereHas('batches', function ($query) {
+            $query->where('status', 'open');
+        })->with(['seniman'])->limit(4)->get();
         $arts                = Karya::query()->with('seniman')->limit(10)->get();
         return view('pages.index', compact('art_categories', 'arts', 'art_recommendations'));
     }
 
     public function art($art)
     {
-        return view('pages.art-detail', compact('art'));
+        $batch = NegotiationBatch::query()->with('negotiations.customer')->where('product_id', $art)->where('status', 'open')->first();
+
+        return view('pages.art-detail', compact('art', 'batch'));
     }
 
     public function cartDetail()
@@ -43,9 +50,19 @@ class HomeController extends Controller
 
     public function transaction()
     {
-        $orders = Order::query()->where('user_id', Auth::id())->orderBy('updated_at', 'desc')->get();
+        $orders      = Order::query()->where('user_id', Auth::id())->orderBy('updated_at', 'desc')->get();
+        $nego        = Negotiation::query()->with('batch.product')->where('user_id', Auth::id())->orderBy('status')->get();
+        $productIds  = $nego->pluck('batch.product.id');
+        $transaction = OrderItem::query()->whereHas('order', function ($query) {
+            $query->where('status', 'success');
+        })->whereIn('product_id', $productIds)->get();
 
-        return view('pages.transaction', compact('orders'));
+        $negotiations = $nego->each(function ($item) use ($transaction) {
+            $item->payment_status = !!$transaction->firstWhere('product_id', $item->batch->product_id);
+            return $item;
+        });
+
+        return view('pages.transaction', compact('orders', 'negotiations'));
     }
 
     public function transactionDetail(Order $order)

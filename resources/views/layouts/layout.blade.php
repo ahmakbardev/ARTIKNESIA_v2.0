@@ -21,10 +21,10 @@
           crossorigin="anonymous"/>
     <!-- Add cache-control headers for Swiper CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    @livewireStyles
 </head>
-
 <body class=" font-montserrat box-border">
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 @include('layouts.components.navbar')
 
 <main class="lg:pt-5 lg:px-5 xl:px-36 2xl:px-96">
@@ -33,6 +33,8 @@
 
 {{--@include('layouts.components.toast')--}}
 @include('layouts.components.footer')
+@livewireScripts
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const cartBtn = document.getElementById('cart-btn');
