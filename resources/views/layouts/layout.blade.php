@@ -57,7 +57,31 @@
         });
     });
 </script>
+<script>
+    // Get DOM elements
+    const modal = document.getElementById('modal');
+    const openModalBtn = document.getElementById('openModalBtn');
+    const closeModalBtns = document.querySelectorAll('#closeModalBtn, #closeModalBtnFooter');
 
+    // Show modal when clicking the open button
+    openModalBtn.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+    });
+
+    // Close modal when clicking any close button
+    closeModalBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+    });
+
+    // Optional: Close modal when clicking outside the modal content
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+        }
+    });
+</script>
 </body>
 
 </html>
