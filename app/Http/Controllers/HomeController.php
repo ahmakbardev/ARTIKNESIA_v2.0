@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Karya;
 use App\Models\JenisKarya;
+use App\Models\Kota;
+use App\Models\Order;
 use App\Models\Subkategori;
+use App\Services\RajaOngkir;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -30,23 +34,24 @@ class HomeController extends Controller
 
     public function checkout()
     {
-        //
+        $checkoutItem = session()->get('checkoutItem');
+        if ($checkoutItem === null || count($checkoutItem) === 0) {
+            return redirect()->route('cart-detail')->with('error', 'Harap memilih satu item untuk di checkout');
+        }
         return view('pages.checkout');
     }
 
-    public function checkoutProcess()
+    public function transaction()
     {
-        //
+        $orders = Order::query()->where('user_id', Auth::id())->orderBy('updated_at', 'desc')->get();
+
+        return view('pages.transaction', compact('orders'));
     }
 
-    public function payment()
+    public function transactionDetail(Order $order)
     {
-        //
-        return view('pages.payment');
-    }
+        $order->load(['orderItems.product']);
 
-    public function paymentProcess()
-    {
-        //
+        return view('pages.transaction-detail', compact('order'));
     }
 }

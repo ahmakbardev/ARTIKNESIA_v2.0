@@ -30,14 +30,22 @@
         <div class="hidden sm:flex">
             <livewire:cart></livewire:cart>
             <div class="flex w-px bg-owngray"></div>
-            <ul class="flex items-center gap-3 ml-3 flex-none">
-                <li>
-                    <button class="btn-color-outline py-1 px-3 rounded-md text-sm">Masuk</button>
-                </li>
-                <li>
-                    <button class="btn-color-fill py-1 px-3 rounded-md text-sm">Daftar</button>
-                </li>
-            </ul>
+            @auth
+                <ul class="flex items-center gap-3 ml-3 flex-none">
+                    <li>
+                        <a href="{{ route('transaction') }}" class="btn-color-outline py-1 px-3 rounded-md text-sm">Transaksi</a>
+                    </li>
+                </ul>
+            @else
+                <ul class="flex items-center gap-3 ml-3 flex-none">
+                    <li>
+                        <button class="btn-color-outline py-1 px-3 rounded-md text-sm">Masuk</button>
+                    </li>
+                    <li>
+                        <button class="btn-color-fill py-1 px-3 rounded-md text-sm">Daftar</button>
+                    </li>
+                </ul>
+            @endauth
         </div>
         @include('layouts.components.mobile.navbar')
     </nav>

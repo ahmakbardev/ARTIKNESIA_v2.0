@@ -28,13 +28,16 @@ class Cart extends Component
         $cart = session()->get('cart', []);
         if (isset($cart[$id])) {
             $cart[$id]['quantity']++;
+            $cart[$id]['total_price'] = $cart[$id]['quantity'] * $cart[$id]['price'];
         } else {
             $cart[$id] = [
-                "name"      => $art->name,
-                "quantity"  => 1,
-                "price"     => $art->price,
-                "image"     => $art->images[0],
-                "artist_id" => $art->user_id,
+                "name"        => $art->name,
+                "quantity"    => 1,
+                "price"       => $art->price,
+                "total_price" => $art->price,
+                "image"       => $art->images[0],
+                "artist_id"   => $art->user_id,
+                "courier"     => null,
             ];
         }
 
