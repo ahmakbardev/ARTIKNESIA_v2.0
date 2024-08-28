@@ -2,26 +2,25 @@
 
 namespace App\Livewire;
 
+use App\Models\JenisKarya;
 use App\Models\Karya;
 use App\Models\SubKategori;
 use Livewire\Component;
 
 class ArtItemHome extends Component
 {
-    public $artCategories;
-    public $selectedCategory = null;
-    public $arts;
+    public $categories, $subCategories, $selectedCategory, $selectedSubCategory, $arts;
 
     public function mount(): void
     {
-        $this->artCategories = SubKategori::all();
-        $this->loadArtItems();
+        $this->categories = JenisKarya::all();
+        $this->loadArts();
     }
 
-    public function loadArtItems(): void
+    public function loadArts(): void
     {
-        if ($this->selectedCategory) {
-            $this->arts = Karya::query()->where('category_id', $this->selectedCategory)->limit(10)->get();
+        if ($this->selectedSubCategory != null) {
+            $this->arts = Karya::query()->where('category_id', $this->selectedCategory)->get();
         } else {
             $this->arts = Karya::query()->limit(10)->get();
         }
@@ -30,20 +29,22 @@ class ArtItemHome extends Component
     public function selectCategory($categoryId): void
     {
         $this->selectedCategory = $categoryId;
-        $this->loadArtItems();
+        $this->subCategories    = SubKategori::where('jenis_karya_id', $categoryId)->get();
     }
 
-
-    public function render(): \Illuminate\Contracts\View\View
+    public function selectSubCategory($subCategoryId): void
     {
-        return view('livewire.art-item-home', [
-            'arts'          => $this->arts,
-            'artCategories' => $this->artCategories,
-        ]);
+        $this->selectedSubCategory = $subCategoryId;
+        $this->loadArts();
     }
 
     public function addToCart(int $id): void
     {
-        $this->dispatch('addToCart', $id);
+        $this->dispatch('add-to-cart', id: $id);
+    }
+
+    public function render(): \Illuminate\Contracts\View\View
+    {
+        return view('livewire.art-item-home');
     }
 }

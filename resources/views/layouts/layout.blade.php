@@ -84,6 +84,18 @@
         }
     });
 </script>
+<script>
+    window.addEventListener('swal', function (e) {
+        console.log()
+        Swal.fire({
+            title: 'Success!',
+            text: e.detail.message,
+            icon: (e.detail.success) ? 'success' : 'error',
+            showConfirmButton: false,
+            timer: 500
+        });
+    });
+</script>
 </body>
 
 </html>

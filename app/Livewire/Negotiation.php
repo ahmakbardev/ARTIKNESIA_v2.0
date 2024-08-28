@@ -16,7 +16,7 @@ class Negotiation extends Component
 
     public function checkout($negotiation)
     {
-        $checkout = [
+        $checkout[$negotiation['batch']['product_id']] =
             [
                 "name"        => $negotiation['batch']['product']['name'],
                 "quantity"    => 1,
@@ -25,8 +25,8 @@ class Negotiation extends Component
                 "image"       => $negotiation['batch']['product']['images'][0],
                 "artist_id"   => $negotiation['artist_id'],
                 "courier"     => null,
-            ],
-        ];
+
+            ];
 
         session()->put('checkoutItem', $checkout);
 
