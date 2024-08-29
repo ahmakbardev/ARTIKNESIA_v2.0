@@ -52,9 +52,9 @@ class Order extends Model
         return $this->hasMany(OrderItem::class);
     }
 
-    public function shippingOrder(): HasOne
+    public function shippingOrders(): HasMany
     {
-        return $this->hasOne(ShippingOrder::class);
+        return $this->hasMany(ShippingOrder::class);
     }
 
     public function user(): BelongsTo

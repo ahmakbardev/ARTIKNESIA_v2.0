@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->integer('cost');
             $table->string('resi')->nullable();
             $table->foreignId('order_id')->constrained()->onDelete('cascade');
+            $table->foreignId('product_id')->constrained('karyas')->onDelete('cascade');
             $table->timestamps();
         });
     }

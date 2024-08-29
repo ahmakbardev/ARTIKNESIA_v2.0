@@ -63,10 +63,14 @@ class Checkout extends Component
         $rajaOngkir   = new RajaOngkir();
         $checkoutItem = $this->checkoutItem;
         if (isset($checkoutItem[$itemId])) {
-            $item                                  = Karya::query()->find($itemId);
-            $rajaOngkirCost                        = $rajaOngkir->cost(256, $this->selectedCity, $item->weight, $courier);
-            $checkoutItem[$itemId]['courier']      = $courier;
-            $checkoutItem[$itemId]['courier_cost'] = $rajaOngkirCost['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value'];
+            $item = Karya::query()->find($itemId);
+            // 256 == Malang
+            $rajaOngkirCost                           = $rajaOngkir->cost(256, $this->selectedCity, $item->weight, $courier);
+            $checkoutItem[$itemId]['courier']         = $courier;
+            $checkoutItem[$itemId]['courier_cost']    = $rajaOngkirCost['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value'];
+            $checkoutItem[$itemId]['courier_service'] = $rajaOngkirCost['rajaongkir']['results'][0]['costs'][0]['service'];
+            $checkoutItem[$itemId]['origin']          = $rajaOngkirCost['rajaongkir']['origin_details']['city_name'];
+            $checkoutItem[$itemId]['destination']     = $rajaOngkirCost['rajaongkir']['destination_details']['city_name'];
         }
         session()->put('checkoutItem', $checkoutItem);
         $this->checkoutItem = $checkoutItem;
@@ -84,13 +88,14 @@ class Checkout extends Component
             'address.max'        => 'Maksimal 255 karakter.',
         ]);
 
-        $user         = Auth::user();
-        $checkoutItem = collect($this->checkoutItem);
-        $price        = $checkoutItem->pluck('total_price')->sum();
-        $courierCost  = $checkoutItem->pluck('courier_cost')->sum();
-        $arts         = Karya::query()->whereIn('id', $checkoutItem->keys())->get();
-        $items        = [];
-        $itemDetails  = [];
+        $user           = Auth::user();
+        $checkoutItem   = collect($this->checkoutItem);
+        $price          = $checkoutItem->pluck('total_price')->sum();
+        $courierCost    = $checkoutItem->pluck('courier_cost')->sum();
+        $arts           = Karya::query()->whereIn('id', $checkoutItem->keys())->get();
+        $items          = [];
+        $itemDetails    = [];
+        $shippingOrders = [];
         foreach ($checkoutItem as $index => $item) {
             $items[$index] = [
                 'product_id' => $index,
@@ -102,6 +107,16 @@ class Checkout extends Component
                     'destination' => $this->selectedCity,
                 ],
             ];
+
+            $shippingOrders[$index] = [
+                'origin'      => $item['origin'],
+                'destination' => $item['destination'],
+                'courier'     => $item['courier'],
+                'cost'        => $item['courier_cost'],
+                'service'     => $item['courier_service'],
+                'product_id'  => $index,
+            ];
+
             $itemDetails[] = [
                 'id'       => $index,
                 'price'    => $item['price'],
@@ -110,28 +125,31 @@ class Checkout extends Component
             ];
         }
 
-        $order      = Order::query()->create([
+        $order = Order::query()->create([
             'user_id'     => $user->id,
             'total_price' => $price + $courierCost,
         ]);
-        $orderItems = $order->orderItems()->createMany($items);
+
+        $order->orderItems()->createMany($items);
+        $order->shippingOrders()->createMany($shippingOrders);
 
         $transactionDetails = [
             'order_id'     => $order->id . '-' . Str::random(5),
             'gross_amount' => $price + $courierCost,
         ];
+        $city               = Kota::find($this->selectedCity)->nama;
         $customerDetails    = [
             'first_name'       => $this->full_name,
             'email'            => $user->email,
             'billing_address'  => [
                 'first_name' => $this->full_name,
                 'address'    => $this->address,
-                'city'       => Kota::find($this->selectedCity)->nama,
+                'city'       => $city,
             ],
             'shipping_address' => [
                 'first_name' => $this->full_name,
                 'address'    => $this->address,
-                'city'       => Kota::find($this->selectedCity)->nama,
+                'city'       => $city,
             ],
         ];
 

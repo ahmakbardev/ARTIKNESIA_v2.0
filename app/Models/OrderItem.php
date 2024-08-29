@@ -23,7 +23,7 @@ class OrderItem extends Model
         return $this->belongsTo(Karya::class);
     }
 
-    public function order()
+    public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
     }
