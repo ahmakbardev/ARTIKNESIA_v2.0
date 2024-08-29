@@ -14,7 +14,7 @@ class Negotiation extends Component
         $this->negotiations = $negotiations;
     }
 
-    public function checkout($negotiation)
+    public function checkout($negotiation): void
     {
         $checkout[$negotiation['batch']['product_id']] =
             [
@@ -30,7 +30,7 @@ class Negotiation extends Component
 
         session()->put('checkoutItem', $checkout);
 
-        return redirect()->route('checkout');
+        $this->redirectRoute('checkout');
     }
 
     public function render()
