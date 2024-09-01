@@ -65,10 +65,18 @@ class HomeController extends Controller
         return view('pages.transaction', compact('orders', 'negotiations'));
     }
 
-    public function transactionDetail(Order $order)
+    public function transactionDetail($order)
     {
-        $order->load(['orderItems.product']);
+        $orderItems = OrderItem::query()
+            ->join('karyas', 'karyas.id', 'order_items.product_id')
+            ->join('shipping_orders', function ($join) {
+                $join->on('shipping_orders.product_id', 'karyas.id');
+                $join->on('shipping_orders.order_id', 'order_items.order_id');
+            })
+            ->where('order_items.order_id', $order)
+            ->select('karyas.name as product', 'quantity', 'karyas.price', 'courier', 'resi','cost')
+            ->get();
 
-        return view('pages.transaction-detail', compact('order'));
+        return view('pages.transaction-detail', compact('orderItems'));
     }
 }

@@ -4,18 +4,15 @@ namespace App\Livewire;
 
 use App\Models\Karya;
 use App\Models\Negotiation;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Livewire\Component;
 
 class DetailArt extends Component
 {
-    public $art;
-    public $batch;
-    public $price;
+    public $art, $batch, $price, $quantity = 1;
 
-
-    // Accept the $art model in the mount method
     public function mount(Karya $art, $batch): void
     {
         $this->art   = $art;
@@ -24,10 +21,10 @@ class DetailArt extends Component
 
     public function addToCart(int $id): void
     {
-        $this->dispatch('addToCart', $id);
+        $this->dispatch('add-to-cart', id: $id);
     }
 
-    public function negotiation()
+    public function negotiation(): RedirectResponse
     {
         $this->validate([
             'price' => 'required|numeric|min:1', // Adjust validation rules as needed
@@ -41,6 +38,23 @@ class DetailArt extends Component
         ]);
 
         return redirect()->route('art', $this->art->id);
+    }
+
+    public function checkout($id): void
+    {
+        $art           = Karya::find($id);
+        $checkout[$id] = [
+            "name"        => $art->name,
+            "quantity"    => $this->quantity,
+            "price"       => $art->price,
+            "total_price" => $this->quantity * $art->price,
+            "image"       => $art->images[0],
+            "artist_id"   => $art->user_id,
+            "courier"     => null,
+        ];
+
+        session()->put('checkoutItem', $checkout);
+        $this->redirectRoute('checkout');
     }
 
     public function render(): View

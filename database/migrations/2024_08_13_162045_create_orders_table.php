@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->integer('total_price');
             $table->string('snap_url')->nullable();
             $table->json('metadata')->nullable();
+            $table->json('detail')->nullable();
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Karya;
 use Illuminate\Http\RedirectResponse;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class CartDetail extends Component
@@ -16,21 +17,16 @@ class CartDetail extends Component
         $this->loadArts();
     }
 
+    #[On('update-cart')]
     public function loadArts(): void
     {
         $this->arts = session()->get('cart', []);
     }
 
-    public function addToCart($id): void
-    {
-        $this->dispatch('addToCart', $id);
-        $this->arts = session()->get('cart', []);
-    }
-
     public function removeFromCart($id): void
     {
-        $this->dispatch('removeFromCart', $id);
-        $this->arts = session()->get('cart', []);
+        $this->dispatch('remove-from-cart', $id);
+        $this->loadArts();
     }
 
     public function render(): \Illuminate\View\View

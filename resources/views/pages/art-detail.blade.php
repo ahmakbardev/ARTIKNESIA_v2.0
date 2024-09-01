@@ -4,7 +4,7 @@
 
     <div class="mt-10">
         @if($batch)
-            <h2 class="text-2xl font-bold ">Negotiation Batch {{ $batch->batch }}</h2>
+            <h2 class="text-2xl font-bold ">Nego Periode {{ $batch->batch }}</h2>
             <table class="table-auto border-collapse border border-gray-300 w-full">
                 <tbody>
                 @foreach($batch->negotiations as $item)

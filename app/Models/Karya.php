@@ -11,7 +11,8 @@ class Karya extends Model
 {
     use HasFactory;
 
-    protected $table = 'karyas';
+    protected $table   = 'karyas';
+    protected $guarded = ['id'];
 
     protected $casts = [
         'images' => 'array',

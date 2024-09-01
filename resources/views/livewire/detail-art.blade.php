@@ -10,7 +10,7 @@
             <div class="flex flex-row items-center gap-5">
                 <input type="number" class="border border-gray-400 rounded-lg h-8 w-1/2 px-3 text-center" min="1"
                        max="{{ $art->stock }}"
-                       value="1"/>
+                       value="1" wire:model="quantity"/>
                 <span>Stok {{ $art->stock }}</span>
             </div>
             <div class="flex flex-col gap-3">
@@ -23,7 +23,9 @@
                         </button>
                     @endif
                 </div>
-                <button class="bg-primary p-2 rounded-lg text-white w-full">Beli Langsung</button>
+                <button type="button" wire:click="checkout({{ $art->id }})"
+                        class="bg-primary p-2 rounded-lg text-white w-full">Beli Langsung
+                </button>
             </div>
         </div>
     </div>
