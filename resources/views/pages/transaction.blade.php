@@ -20,9 +20,8 @@
                     <p>Total Belanja: Rp {{ number_format($item->total_price, 2,',','.') }}</p>
                     @if($item->status == 'pending')
                         <a href="{{ $item->snap_url }}" class="text-primary">Bayar Sekarang</a>
-                    @else
-                        <a href="{{ route('transaction-detail',$item->id) }}" class="text-primary">Detail</a>
                     @endif
+                    <a href="{{ route('transaction-detail',$item->id) }}" class="text-primary">Detail</a>
                 </div>
             @endforeach
         @else
