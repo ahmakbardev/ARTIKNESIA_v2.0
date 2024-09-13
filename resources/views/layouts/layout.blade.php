@@ -39,6 +39,7 @@
 
     {{-- @include('layouts.components.toast') --}}
     @include('layouts.components.footer')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @livewireScripts
     <script>
         document.addEventListener('DOMContentLoaded', function() {
