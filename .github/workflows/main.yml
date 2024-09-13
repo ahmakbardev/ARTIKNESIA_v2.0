@@ -24,10 +24,17 @@ jobs:
             cd /home/u982131153/domains/artiknesia.com/NEW_ARTIKNESIA
             chmod +x ~/bin/composer
             echo "export PATH=$HOME/bin:$PATH" >> ~/.bash_profile
+            echo "export PATH=$HOME/bin/node/bin:$PATH" >> ~/.bash_profile
             source ~/.bash_profile
             git add .
             git stash
             git pull
+            which node
+            node -v
+            npm -v
+            npm i
+            npm run prod
+            source ~/.bash_profile
             which composer
             composer --version
             composer install
