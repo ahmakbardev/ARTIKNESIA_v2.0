@@ -27,6 +27,7 @@ jobs:
             source ~/.bash_profile
             git add .
             git stash
+            git pull
             which composer
             composer --version
             composer install
