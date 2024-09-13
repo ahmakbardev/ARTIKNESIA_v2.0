@@ -21,15 +21,14 @@ jobs:
           key: ${{ secrets.SERVER_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            cd /home/u982131153/domains/artiknesia.com/
-            git clone https://github.com/ahmakbardev/NEW_ARTIKNESIA.git
             cd /home/u982131153/domains/artiknesia.com/NEW_ARTIKNESIA
             chmod +x ~/bin/composer
             echo "export PATH=$HOME/bin:$PATH" >> ~/.bash_profile
             source ~/.bash_profile
+            git add .
+            git stash
             which composer
             composer --version
-            cp .env.example .env
             composer install
             composer update
             php artisan key:generate

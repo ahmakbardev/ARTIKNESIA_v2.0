@@ -20,7 +20,10 @@ class ArtItemHome extends Component
     public function loadArts(): void
     {
         if ($this->selectedSubCategory != null) {
-            $this->arts = Karya::query()->where('category_id', $this->selectedCategory)->get();
+            $this->arts = Karya::query()
+                ->where('category_id', $this->selectedCategory)
+                ->orderBy('created_at', 'desc')
+                ->get();
         } else {
             $this->arts = Karya::query()->limit(10)->get();
         }
