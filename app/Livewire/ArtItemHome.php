@@ -22,17 +22,22 @@ class ArtItemHome extends Component
         if ($this->selectedSubCategory != null) {
             $this->arts = Karya::query()
                 ->where('category_id', $this->selectedCategory)
+                ->where('status', 'accept')
                 ->orderBy('created_at', 'desc')
-                ->get();
+                ->select('id', 'name', 'price', 'user_id', 'images', 'status', 'category_id', 'stock')
+                ->limit(10)->get();
         } else {
-            $this->arts = Karya::query()->limit(10)->get();
+            $this->arts = Karya::query()->where('status', 'accept')
+                ->orderBy('created_at', 'desc')
+                ->select('id', 'name', 'price', 'user_id', 'images', 'status', 'category_id', 'stock')
+                ->limit(10)->get();
         }
     }
 
     public function selectCategory($categoryId): void
     {
         $this->selectedCategory = $categoryId;
-        $this->subCategories    = SubKategori::where('jenis_karya_id', $categoryId)->get();
+        $this->subCategories = SubKategori::where('jenis_karya_id', $categoryId)->get();
     }
 
     public function selectSubCategory($subCategoryId): void

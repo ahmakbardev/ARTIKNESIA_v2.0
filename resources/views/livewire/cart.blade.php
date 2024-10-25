@@ -20,7 +20,7 @@
                         <div class="col-span-2 text-start flex flex-col justify-between">
                             <div class="flex flex-row justify-between gap-x-0.5">
                                 <h6 class="text-base font-semibold line-clamp-1">{{ $item['name'] }}</h6>
-                                <p class="text-sm font-semibold w-fit">${{ $item['price'] }}</p>
+                                <p class="text-sm font-semibold w-fit">{{ \App\Helpers\Universal::idr($item['price']) }}</p>
                             </div>
                             <div class="flex flex-row justify-between">
                                 <p class="text-sm">{{ $item['quantity'] }} Item</p>

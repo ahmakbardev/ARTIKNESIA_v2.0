@@ -40,7 +40,7 @@
                         </div>
                         <div class="flex flex-col p-2 z-[1] bg-white">
                             <h1 class="text-sm md:text-lg font-semibold line-clamp-1">{{ $item->name }}</h1>
-                            <h1 class="text-base md:text-xl font-bold leading-none">${{ $item->price }}</h1>
+                            <h1 class="text-base md:text-xl font-bold leading-none">{{ \App\Helpers\Universal::idr($item->price) }}</h1>
                             <div class="flex gap-1 items-center">
                                 <p class="text-xs md:text-sm text-slate-500 line-through">Rp. 1.000.000</p>
                                 <p class="py-1 text-xs md:text-xs bg-primary text-white px-2 rounded-full">55%</p>
