@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Karya;
 use App\Models\JenisKarya;
 use App\Models\Kota;
@@ -19,12 +20,13 @@ class HomeController extends Controller
 {
     public function index(): View
     {
-        $art_categories      = JenisKarya::query()->limit(4)->get();
+        $art_categories = JenisKarya::query()->limit(4)->get();
         $art_recommendations = Karya::query()->whereHas('batches', function ($query) {
             $query->where('status', 'open');
         })->with(['seniman'])->limit(4)->get();
-        $arts                = Karya::query()->with('seniman')->limit(10)->get();
-        return view('pages.index', compact('art_categories', 'arts', 'art_recommendations'));
+        $arts = Karya::query()->with('seniman')->limit(10)->get();
+        $articles = Article::query()->with('author:id,name')->orderBy('created_at', 'desc')->limit(10)->get();
+        return view('pages.index', compact('art_categories', 'arts', 'art_recommendations', 'articles'));
     }
 
     public function art($art)
@@ -50,9 +52,9 @@ class HomeController extends Controller
 
     public function transaction()
     {
-        $orders      = Order::query()->where('user_id', Auth::id())->orderBy('updated_at', 'desc')->get();
-        $nego        = Negotiation::query()->with('batch.product')->where('user_id', Auth::id())->orderBy('status')->get();
-        $productIds  = $nego->pluck('batch.product.id');
+        $orders = Order::query()->where('user_id', Auth::id())->orderBy('updated_at', 'desc')->get();
+        $nego = Negotiation::query()->with('batch.product')->where('user_id', Auth::id())->orderBy('status')->get();
+        $productIds = $nego->pluck('batch.product.id');
         $transaction = OrderItem::query()->whereHas('order', function ($query) {
             $query->where('status', 'success');
         })->whereIn('product_id', $productIds)->get();
@@ -74,7 +76,7 @@ class HomeController extends Controller
                 $join->on('shipping_orders.order_id', 'order_items.order_id');
             })
             ->where('order_items.order_id', $order)
-            ->select('karyas.name as product', 'quantity', 'karyas.price', 'courier', 'resi','cost')
+            ->select('karyas.name as product', 'quantity', 'karyas.price', 'courier', 'resi', 'cost')
             ->get();
 
         return view('pages.transaction-detail', compact('orderItems'));
