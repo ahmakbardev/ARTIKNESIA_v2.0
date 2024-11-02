@@ -1,9 +1,9 @@
 <div>
     <div class="flex flex-row gap-x-10">
-        <img src="{{ $art->images[0] }}" alt="{{ $art->name }}" class="rounded-2xl w-2/6"/>
+        <img src="{{ Str::startsWith($art->images[0], 'http') ? $art->images[0] : env('MEDIA_URL').'/'.$art->images[0] }}" alt="{{ $art->name }}" class="rounded-2xl w-2/6"/>
         <div class="flex flex-col gap-y-4">
             <h1 class="text-lg font-semibold">{{ $art->name }}</h1>
-            <p class="text-3xl font-extrabold">${{ $art->price }}</p>
+            <p class="text-3xl font-extrabold">{{ \App\Helpers\Universal::idr($art->price) }}</p>
         </div>
         <div class="w-2/6 border border-gray-300 rounded-2xl p-4 flex flex-col gap-3 h-fit">
             <h2 class="font-semibold">Atur jumlah dan catatan</h2>

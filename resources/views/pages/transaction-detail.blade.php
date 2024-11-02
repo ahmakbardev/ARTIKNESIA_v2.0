@@ -7,10 +7,10 @@
                 <div class="border border-gray-300 rounded-lg px-4 py-7">
                     <h3 class="text-lg font-semibold">Invoice: {{$item->product}}</h3>
                     <p>Jumlah: {{ $item->quantity }}</p>
-                    <p>Harga Karya: Rp {{ number_format($item->price, 2,',','.') }}</p>
-                    <p>Total Bayar: Rp {{ number_format($item->price * $item->quantity, 2,',','.') }}</p>
+                    <p>Harga Karya: {{ \App\Helpers\Universal::idr($item->price) }}</p>
+                    <p>Total Bayar: {{ \App\Helpers\Universal::idr($item->price * $item->quantity, 2,',','.') }}</p>
                     <p>
-                        Kurir: {{ $item->courier . ' ' . number_format($item->cost, 2,',','.') }}</p>
+                        Kurir: {{ $item->courier . ' ' . \App\Helpers\Universal::idr($item->cost, 2,',','.') }}</p>
                     <p>
                         Resi: {{ ($item->resi) ? $item->resi : 'Belum dikirim' }}</p>
                 </div>

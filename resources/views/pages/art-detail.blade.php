@@ -11,7 +11,7 @@
                     <tr>
                         <td class="border border-gray-300 px-4 py-2">{{ $item->customer->name }}</td>
                         <td class="border border-gray-300 px-4 py-2">
-                            Rp {{ number_format($item->price, 2, ',','.') }}</td>
+                            {{ \App\Helpers\Universal::idr($item->price) }}</td>
                     </tr>
                 @endforeach
                 </tbody>
