@@ -17,7 +17,7 @@
                             Pembayaran gagal
                         @endif
                     </p>
-                    <p>Total Belanja: Rp {{ number_format($item->total_price, 2,',','.') }}</p>
+                    <p>Total Belanja: {{ \App\Helpers\Universal::idr($item->total_price, 2,',','.') }}</p>
                     @if($item->status == 'pending')
                         <a href="{{ $item->snap_url }}" class="text-primary">Bayar Sekarang</a>
                     @endif

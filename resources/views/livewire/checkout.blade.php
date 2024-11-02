@@ -68,13 +68,13 @@
                         <div class="mt-3 flex flex-col gap-y-3 w-full">
                             @foreach($checkoutItem as $index => $item)
                                 <div class="grid grid-cols-8 gap-x-3">
-                                    <img src="{{ $item['image'] }}" class="rounded-lg object-cover h-full col-span-2"
+                                    <img src="{{ Str::startsWith($item['image'], 'http') ? $item['image'] : env('MEDIA_URL').'/'.$item['image'] }}" class="rounded-lg object-cover h-full col-span-2"
                                          alt=""/>
                                     <div class="col-span-6 text-start flex flex-col justify-between pe-4 gap-y-3">
                                         <div class="flex flex-row justify-between items-end">
                                             <h6 class="text-xl font-normal line-clamp-1">{{ $item['name'] }}</h6>
                                             <p class="text-xl font-normal w-fit">{{ $item['quantity'] }}
-                                                x${{ $item['price'] }}</p>
+                                                x {{ \App\Helpers\Universal::idr($item['price']) }}</p>
                                         </div>
                                         <select class="border border-gray-300 rounded-lg py-2 px-3 appearance-none"
                                                 @if(!$selectedCity) disabled @endif
@@ -116,7 +116,7 @@
             <div class="border border-gray-300 rounded-lg px-4 py-6 flex flex-col gap-y-3">
                 <h2 class="font-bold text-lg">Ringkasan Biaya</h2>
                 <ul>
-                    <li class="flex items-center justify-between"><span>Total Harga</span><span>${{ $price }}</span>
+                    <li class="flex items-center justify-between"><span>Total Harga</span><span>{{ \App\Helpers\Universal::idr($price) }}</span>
                     </li>
                     <li class="flex items-center justify-between">
                         <span>Total Ongkos Kirim</span><span>${{ $courierCost }}</span></li>
@@ -124,7 +124,7 @@
                 <hr/>
                 <ul>
                     <li class="flex items-center justify-between">
-                        <span>Total Belanja</span><span>${{ $price + $courierCost }}</span></li>
+                        <span>Total Belanja</span><span>{{ \App\Helpers\Universal::idr($price + $courierCost) }}</span></li>
                 </ul>
                 <button
                     type="button"
