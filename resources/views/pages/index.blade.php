@@ -31,12 +31,12 @@
                         <div class="relative w-full h-3/5 z-[0]">
                             <div
                                 class="absolute text-white bottom-2 left-2 flex gap-2 items-end translate-y-16 transition-all ease-in-out group-hover/profile:translate-y-0">
-                                <img class="w-10 object-contain" src="{{ $item->images[0] }}"
+                                <img class="w-10 object-contain" src="https://artiknesia.com/seniman/storage/{{ $item->images[0] }}"
                                      alt="">
                                 <p class="leading-none text-sm font-semibold">{{ $item->seniman->username }}</p>
                             </div>
                             <img class="w-full h-full object-cover object-center"
-                                 src="{{ $item->images[0] }}" alt="">
+                                 src="https://artiknesia.com/seniman/storage/{{ $item->images[0] }}" alt="">
                         </div>
                         <div class="flex flex-col p-2 z-[1] bg-white">
                             <h1 class="text-sm md:text-lg font-semibold line-clamp-1">{{ $item->name }}</h1>
