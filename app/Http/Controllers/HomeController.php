@@ -79,4 +79,9 @@ class HomeController extends Controller
 
         return view('pages.transaction-detail', compact('orderItems'));
     }
+
+    public function about(): View
+    {
+        return view('pages.about');
+    }
 }

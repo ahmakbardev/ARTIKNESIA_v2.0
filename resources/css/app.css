@@ -111,3 +111,45 @@
     }
 }
 
+.scroller {
+    mask-image: linear-gradient(to right, transparent 3%, white 20%, white 80%, transparent 97%);
+}
+
+.scroller-inner {
+    width: fit-content;
+    animation: scroll 40s linear infinite;
+}
+
+@keyframes scroll {
+    to {
+        transform: translateX(calc(-50% - 1.5rem));
+    }
+}
+
+.item {
+    @apply bg-white;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-blend-mode: multiply;
+}
+
+.item-1 {
+    background-image: url("../../public/images/about/baca-malang.png");
+}
+
+.item-2 {
+    background-image: url("../../public/images/about/malang-retro.png");
+}
+
+.item-3 {
+    background-image: url("../../public/images/about/nnc.png");
+}
+
+.item-4 {
+    background-image: url("../../public/images/about/TIMES-Jakarta.png");
+}
+
+.item-5 {
+    background-image: url("../../public/images/about/umm.png");
+}

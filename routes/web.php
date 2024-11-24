@@ -12,6 +12,8 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('home');
+    Route::get('/about', 'about')->name('about');
+
     Route::get('/cart-detail', 'cartDetail')->name('cart-detail');
 
     Route::prefix('/checkout')->group(function () {
