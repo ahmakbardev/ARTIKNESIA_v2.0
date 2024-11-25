@@ -3,8 +3,6 @@
         <ul class="flex gap-6 text-xs text-navInfoGray">
             <li>Tentang Artiknesia</li>
             <li>Seniman</li>
-            <li>Blog</li>
-            <li>Promo</li>
         </ul>
     </nav>
     <nav class="px-5 py-2 flex gap-10 justify-between items-center sm:items-start bg-white">

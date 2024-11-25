@@ -2,20 +2,8 @@
 
 @section('content')
     @include('components.carousel.carousel')
-    <div class="kategori px-2 md:px-5 lg:px-0 hidden md:flex flex-col">
-        <h1 class="text-base lg:text-2xl font-semibold">Kategori Produk</h1>
-        <div class="flex gap-5 my-5">
-            @foreach($art_categories as $item)
-                <div class="w-64 h-36 border shadow-sm rounded-md flex justify-around items-center p-4">
-                    <img src="{{ asset(''.$item->gambar) }}" alt=""
-                         class="hidden md:flex object-contain h-full rounded-md">
-                    <h1 class="text-xl font-bold">{{ $item->nama }}</h1>
-                </div>
-            @endforeach
-        </div>
-    </div>
-    <div class="sale-produk px-2 md:px-5 lg:px-0 flex flex-col">
-        <h1 class="text-base lg:text-2xl font-semibold">Art yang lagi hype abis nih!</h1>
+    <div class="sale-produk py-3 px-2 md:px-5 lg:px-0 flex flex-col">
+        <h1 class="text-base lg:text-2xl font-semibold">New Release!</h1>
         <div class="flex my-5 justify-end relative">
             <div
                 class="w-56 h-72 bg-primary absolute left-0 z-0 rounded-2xl hidden lg:flex items-center justify-center pr-3">
@@ -69,7 +57,7 @@
                 maupun
                 kenang-kenangan. Project Akan
                 di lakukan oleh para seniman Professional ARTIKNESIA.</p>
-            <button class="py-3 px-10 text-center btn-color-fill font-semibold rounded-md">Buat Sekarang</button>
+            <a href="https://wa.me/6282146415024" target="_blank" class="py-3 px-10 text-center btn-color-fill font-semibold rounded-md">Buat Sekarang</a>
         </div>
     </div>
     <div class="pameran px-2 md:px-5 lg:px-0">
@@ -135,9 +123,9 @@
             <div class="w-4/6 flex flex-col items-center text-center gap-4">
                 <h1 class="text-4xl lg:text-6xl font-semibold">Ingin Kolaborasi
                     dengan ARTIKNESIA?</h1>
-                <button class="py-3 w-full text-center btn-color-fill-white font-semibold rounded-md text-black">Hubungi
+                <a href="https://wa.me/6282146415024" target="_blank" class="py-3 w-full text-center btn-color-fill-white font-semibold rounded-md text-black">Hubungi
                     Sekarang
-                </button>
+                </a>
             </div>
 
         </div>
