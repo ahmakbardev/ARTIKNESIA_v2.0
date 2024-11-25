@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="bg-black w-full h-full absolute top-0 opacity-50 z-[2]"></div>
-        <video autoplay muted loop id="myVideo" class="absolute top-0 z-1 h-[80vh] lg:h-[100vh] object-cover">
+        <video autoplay muted loop id="myVideo" class="absolute top-0 z-1 h-[80vh] lg:h-[120vh] object-cover">
             <source src="{{ asset('images/about/FIxed.mp4') }}" type="video/mp4">
             Your browser does not support HTML5 video.
         </video>
