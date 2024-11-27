@@ -12,7 +12,7 @@
             @foreach($results as $item)
                 <div class="grid grid-cols-8 gap-3 items-center mb-3">
                     <div class="col-span-1">
-                        <img src="{{ Str::startsWith($item->images[0], 'http') ? $item->images[0] : env('MEDIA_URL').'/'.$item->images[0] }}"
+                        <img src="https://artiknesia.com/seniman/storage/{{ $item->images[0]}}"
                              alt="{{ $item->title }}"
                              class="w-full object-cover rounded-xl"/>
                     </div>
