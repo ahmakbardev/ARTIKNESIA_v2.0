@@ -68,12 +68,12 @@
                             <a href="{{ route('art', $item->id) }}"
                                class="absolute text-white bottom-2 left-2 hidden md:flex gap-2 items-end translate-y-16 transition-all ease-in-out group-hover/profile:translate-y-0 backdrop-blur-sm rounded-lg">
                                 <img class="size-10 object-cover rounded-full"
-                                     src="{{ Str::startsWith($item->images[0], 'http') ? $item->images[0] : env('MEDIA_URL').'/'.$item->images[0] }}"
+                                     src="{{ Str::startsWith($item->images[0], 'http') ? $item->images[0] : 'https://artiknesia.com/seniman/storage/'.$item->images[0] }}"
                                      alt="">
                                 <p class="leading-none text-sm font-semibold drop-shadow-lg">{{ $item->seniman->username }}</p>
                             </a>
                             <img class="w-full object-cover object-center"
-                                 src="{{ Str::startsWith($item->images[0], 'http') ? $item->images[0] : env('MEDIA_URL').'/'.$item->images[0] }}"
+                                 src="{{ Str::startsWith($item->images[0], 'http') ? $item->images[0] : 'https://artiknesia.com/seniman/storage/'.$item->images[0] }}"
                                  alt="">
                         </div>
                         <div class="flex flex-col justify-between bg-white z-[1] group/beli">
