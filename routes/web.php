@@ -25,9 +25,14 @@ Route::controller(HomeController::class)->group(function () {
         Route::get('/{order}', 'transactionDetail')->name('transaction-detail')->middleware('auth');
     });
 
+    Route::get('/art', 'artList')->name('art-list');
     Route::get('/art/{art}', 'art')->name('art');
+
+    Route::get('/coming-soon', 'comingSoon')->name('coming-soon');
 
     Route::resource('article', ArticleController::class)->only('index', 'show');
 });
 
 
+Route::get('oauth/google', [\App\Http\Controllers\OAuthController::class, 'redirectToProvider'])->name('oauth.google');
+Route::get('oauth/google/callback', [\App\Http\Controllers\OAuthController::class, 'handleProviderCallback'])->name('oauth.google.callback');

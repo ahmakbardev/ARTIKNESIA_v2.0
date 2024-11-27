@@ -2,8 +2,11 @@
 
 @section('content')
     @include('components.carousel.carousel')
-    <div class="sale-produk py-3 px-2 md:px-5 lg:px-0 flex flex-col">
+    <div class="sale-produk pt-8 pb-3 px-2 md:px-5 lg:px-0 flex flex-col">
+        <div class="flex justify-between">
         <h1 class="text-base lg:text-2xl font-semibold">New Release!</h1>
+            <a href="{{ route('art-list') }}" class="underline">Lihat semua karya</a>
+        </div>
         <div class="flex my-5 justify-end relative">
             <div
                 class="w-56 h-72 bg-primary absolute left-0 z-0 rounded-2xl hidden lg:flex items-center justify-center pr-3">
@@ -39,11 +42,6 @@
             </div>
         </div>
     </div>
-    <div class="produk-artiknesia px-2 md:px-5 lg:px-0 flex flex-col">
-        <h1 class="text-base lg:text-2xl font-semibold">ARTIKNESIA Art</h1>
-        @livewire('art-item-home')
-        <button class="py-2 text-center btn-color-fill font-semibold rounded-md">Lihat semua karya</button>
-    </div>
     <div class="custom-art  px-2 md:px-5 lg:px-0 py-20 max-lg:flex max-lg:flex-col lg:grid lg:grid-cols-2 gap-4">
         <div class="flex max-md:justify-center 2xl:justify-center gap-3 max-sm:h-64">
             <img class="max-sm:h-full object-contain" src="{{ asset('images/custom-karya/banner-1.png') }}" alt="">
@@ -72,16 +70,16 @@
                     bersama
                     kami!</p>
                 <div class="grid grid-cols-2 gap-3 w-full">
-                    <button
+                    <a href="{{route('coming-soon')}}"
                         class="py-2 text-center btn-color-fill-white font-semibold text-sm md:text-base rounded-md text-black">
                         Pameran
                         Virtual
-                    </button>
-                    <button
+                    </a>
+                    <a href="{{route('coming-soon')}}"
                         class="py-2 text-center btn-color-fill-white font-semibold text-sm md:text-base rounded-md text-black">
                         Pameran
                         Onsite
-                    </button>
+                    </a>
 
                 </div>
             </div>

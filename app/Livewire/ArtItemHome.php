@@ -25,12 +25,12 @@ class ArtItemHome extends Component
                 ->where('status', 'accept')
                 ->orderBy('created_at', 'desc')
                 ->select('id', 'name', 'price', 'user_id', 'images', 'status', 'category_id', 'stock')
-                ->limit(10)->get();
+                ->get();
         } else {
             $this->arts = Karya::query()->where('status', 'accept')
                 ->orderBy('created_at', 'desc')
                 ->select('id', 'name', 'price', 'user_id', 'images', 'status', 'category_id', 'stock')
-                ->limit(10)->get();
+                ->get();
         }
     }
 

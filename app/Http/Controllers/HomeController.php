@@ -84,4 +84,14 @@ class HomeController extends Controller
     {
         return view('pages.about');
     }
+
+    public function comingSoon(): View
+    {
+        return view('pages.coming-soon');
+    }
+
+    public function artList(): View
+    {
+        return view('pages.art-list');
+    }
 }
