@@ -15,7 +15,7 @@ class SearchProduct extends Component
     public function updatedQuery()
     {
         $this->results = Karya::query()->where('name', 'like', '%' . $this->query . '%')
-            ->where('status', 'accept')
+            ->where('status', 'accepted')
             ->take(5)
             ->get();
     }
