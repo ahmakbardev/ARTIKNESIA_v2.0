@@ -23,7 +23,7 @@ class HomeController extends Controller
         $art_categories = JenisKarya::query()->limit(4)->get();
         $art_recommendations = Karya::query()->where('status', 'accepted')->with(['seniman'])->limit(4)->orderBy('created_at', 'desc')->get();
         $arts = Karya::query()->with('seniman')->limit(10)->get();
-        $articles = Article::query()->with('author:id,name')->orderBy('created_at', 'desc')->limit(10)->get();
+        $articles = Article::query()->with('author:id,name')->orderBy('created_at', 'desc')->limit(8)->get();
         return view('pages.index', compact('art_categories', 'arts', 'art_recommendations', 'articles'));
     }
 
