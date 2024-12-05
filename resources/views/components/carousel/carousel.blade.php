@@ -2,15 +2,15 @@
     <div class="swiper-container overflow-hidden lg:rounded-md">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <img class="w-full object-cover object-center" src="{{ asset('images/banner/default.png') }}"
+                <img class="w-full object-cover object-center" src="{{ asset('images/banner/banner1.webp') }}"
                     alt="">
             </div>
             <div class="swiper-slide">
-                <img class="w-full object-cover object-center" src="{{ asset('images/banner/default.png') }}"
+                <img class="w-full object-cover object-center" src="{{ asset('images/banner/banner2.webp') }}"
                     alt="">
             </div>
             <div class="swiper-slide">
-                <img class="w-full object-cover object-center" src="{{ asset('images/banner/default.png') }}"
+                <img class="w-full object-cover object-center" src="{{ asset('images/banner/banner3.webp') }}"
                     alt="">
             </div>
             <!-- Tambahkan lebih banyak gambar sesuai kebutuhan -->
@@ -89,5 +89,5 @@
             bullet.style.width = isActive ? '8px' : '8px'; // Ukuran default dot
             bullet.style.transition = 'width 0.5s ease-in-out'; // Transisi smooth
         });
-    }); 
+    });
 </script>
