@@ -43,5 +43,6 @@ jobs:
             php artisan key:generate
             php artisan route:clear
             php artisan config:cache
+            php artisan storage:link
             php artisan optimize
             ln -s /home/u982131153/domains/artiknesia.com/NEW_ARTIKNESIA/public/* /home/u982131153/domains/artiknesia.com/public_html
