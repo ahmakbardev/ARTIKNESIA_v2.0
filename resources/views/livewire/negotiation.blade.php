@@ -5,7 +5,7 @@
                 <h2 class="text-lg font-semibold">Negosiasi Batch {{$item->batch->batch}}</h2>
                 <h3 class="text-lg font-semibold">{{$item->batch->product->name}}</h3>
                 <p>Status: {{ $item->status }}</p>
-                <p>Harga Nego: Rp {{ number_format($item->price, 2,',','.') }}</p>
+                <p>Harga Nego: {{ \App\Helpers\Universal::idr($item->price) }} }}</p>
                 @if($item->status == 'accept' && !$item->payment_status)
                     <button type="button" wire:click="checkout({{$item}})" class="text-primary">Bayar
                         Sekarang
