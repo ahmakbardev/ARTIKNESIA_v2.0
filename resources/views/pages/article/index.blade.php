@@ -10,7 +10,8 @@
                 <a href="{{ route('article.show', $item->slug) }}"
                    class="bg-white border shadow-md h-fit rounded-xl flex flex-col overflow-hidden font-poppins">
                     <img class="w-full h-52 object-cover object-center"
-                         src="{{ 'https://artiknesia.com/admin/'. $item->image }}" alt="{{ $item->image_caption }}">
+                         src="{{  \Illuminate\Support\Facades\Storage::disk('public')->url($item->image) }}"
+                         alt="{{ $item->image_caption }}">
                     <div class="flex flex-col p-2 justify-between h-32">
                         <h1 class="text-sm lg:text-lg line-clamp-2 font-semibold leading-6">{{ $item->short_title }}</h1>
                         <div class="flex gap-2 md:gap-4 items-center">
