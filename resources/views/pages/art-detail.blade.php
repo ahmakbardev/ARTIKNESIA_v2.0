@@ -1,9 +1,8 @@
 @extends('layouts.layout')
 @section('content')
     <livewire:detail-art :art="$art" :batch="$batch"></livewire:detail-art>
-
     <div class="mt-10">
-        @if($batch)
+        @if($batch && count($batch->negotiations) > 0)
             <h2 class="text-2xl font-bold ">Nego Periode {{ $batch->batch }}</h2>
             <table class="table-auto border-collapse border border-gray-300 w-full">
                 <tbody>

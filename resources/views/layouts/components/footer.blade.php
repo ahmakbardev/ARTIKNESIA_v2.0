@@ -15,27 +15,27 @@
                 <h1 class="text-xl font-semibold mb-3">Sitemap</h1>
                 <ul class="flex flex-col gap-2">
                     <li>
-                        <a href="#" class="text-sm underline">
+                        <a href="https://seniman.artiknesia.com" class="text-sm underline">
                             Seniman
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="text-sm underline">
+                        <a href="{{ route('art-list') }}" class="text-sm underline">
                             Produk
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="text-sm underline">
+                        <a href="https://wa.me/6282146415024" class="text-sm underline">
                             Custom Karya
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="text-sm underline">
+                        <a href="{{ route('coming-soon') }}" class="text-sm underline">
                             Pameran
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="text-sm underline">
+                        <a href="{{ route('article.index') }}" class="text-sm underline">
                             Artikel
                         </a>
                     </li>

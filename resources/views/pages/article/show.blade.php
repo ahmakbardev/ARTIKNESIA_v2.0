@@ -3,8 +3,8 @@
 @section('content')
     <div class="flex flex-col gap-y-3">
         <h1 class="text-4xl font-bold">{{ $article->title }}</h1>
-        <img class="max-sm:h-full object-cover w-full h-96 object-center rounded-2xl"
-             src="{{ asset('images/custom-karya/banner-1.png') }}"
+        <img class="max-sm:h-full object-cover w-full h-96 object-center rounded-none lg:rounded-2xl"
+             src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($article->image) }}"
              alt="">
         <div class="flex flex-row gap-x-3">
             @foreach($article->getTags() as $item)

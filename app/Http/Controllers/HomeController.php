@@ -21,11 +21,9 @@ class HomeController extends Controller
     public function index(): View
     {
         $art_categories = JenisKarya::query()->limit(4)->get();
-        $art_recommendations = Karya::query()->whereHas('batches', function ($query) {
-            $query->where('status', 'open');
-        })->with(['seniman'])->limit(4)->get();
+        $art_recommendations = Karya::query()->where('status', 'accepted')->with(['seniman'])->limit(4)->orderBy('created_at', 'desc')->get();
         $arts = Karya::query()->with('seniman')->limit(10)->get();
-        $articles = Article::query()->with('author:id,name')->orderBy('created_at', 'desc')->limit(10)->get();
+        $articles = Article::query()->with('author:id,name')->orderBy('created_at', 'desc')->limit(8)->get();
         return view('pages.index', compact('art_categories', 'arts', 'art_recommendations', 'articles'));
     }
 
@@ -80,5 +78,20 @@ class HomeController extends Controller
             ->get();
 
         return view('pages.transaction-detail', compact('orderItems'));
+    }
+
+    public function about(): View
+    {
+        return view('pages.about');
+    }
+
+    public function comingSoon(): View
+    {
+        return view('pages.coming-soon');
+    }
+
+    public function artList(): View
+    {
+        return view('pages.art-list');
     }
 }
