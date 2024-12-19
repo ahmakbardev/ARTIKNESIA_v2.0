@@ -14,7 +14,7 @@ class ArticleController extends Controller
      */
     public function index(): View
     {
-        $articles = Article::query()->with('author:id,name')->orderBy('created_at', 'desc')->paginate(10);
+        $articles = Article::query()->with('author:id,name')->orderBy('created_at', 'desc')->get();
 
         return view('pages.article.index', compact('articles'));
     }

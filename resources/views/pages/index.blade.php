@@ -101,11 +101,11 @@
 
             @foreach ($articles as $item)
                 <a href="{{ route('article.show', $item->slug) }}"
-                   class="bg-white border shadow-md h-fit md:h-5/6 rounded-xl flex flex-col overflow-hidden font-poppins">
+                   class="bg-white border shadow-md h-fit rounded-xl flex flex-col overflow-hidden font-poppins">
                     <img class="w-full h-52 object-cover object-center"
                          src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->image)  }}"
                          alt="{{ $item->image_caption }}">
-                    <div class="flex flex-col p-2 justify-between h-2/5md:">
+                    <div class="flex flex-col p-2 justify-between h-32">
                         <h1 class="text-sm lg:text-lg line-clamp-2 font-semibold leading-6">{{ $item->short_title }}</h1>
                         <div class="flex gap-2 md:gap-4 items-center">
                             <img class="w-8 md:w-12 rounded-full object-contain"
