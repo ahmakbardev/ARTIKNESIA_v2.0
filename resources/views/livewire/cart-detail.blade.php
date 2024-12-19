@@ -5,7 +5,8 @@
         @if($art_count > 0)
             @foreach($art_items as $index => $item)
                 <div class="grid grid-cols-4 gap-x-3 border border-gray-300 rounded-lg">
-                    <img src="{{ Str::startsWith($item['images'], 'http') ? $item['images'] : env('MEDIA_URL').'/'.$item['images'] }}" class="rounded-l-lg object-cover col-auto" alt=""/>
+                    <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item['image']) }}"
+                         class="rounded-l-lg object-cover col-auto h-full" alt=""/>
                     <div class="col-span-3 text-start flex flex-col justify-between p-5">
                         <div class="flex justify-between">
                             <h6 class="text-2xl font-semibold line-clamp-1">{{ $item['name'] }}</h6>

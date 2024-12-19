@@ -11,12 +11,17 @@ class Karya extends Model
 {
     use HasFactory;
 
-    protected $table   = 'karyas';
+    protected $table = 'karyas';
     protected $guarded = ['id'];
 
     protected $casts = [
         'images' => 'array',
     ];
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
 
     public function seniman(): BelongsTo
     {
@@ -26,5 +31,10 @@ class Karya extends Model
     public function batches(): HasMany
     {
         return $this->hasMany(NegotiationBatch::class, 'product_id', 'id');
+    }
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(SubKategori::class, 'category_id', 'id');
     }
 }
