@@ -33,6 +33,9 @@
             @else
                 <p class="text-center text-sm w-full">Kosong</p>
             @endif
+            <button wire:click="checkout" class="bg-primary text-white rounded-lg py-2 font-semibold">Checkout
+                Sekarang
+            </button>
         </div>
     </div>
 </div>
