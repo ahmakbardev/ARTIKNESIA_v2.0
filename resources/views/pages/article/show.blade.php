@@ -6,7 +6,7 @@
         <img class="max-sm:h-full object-cover w-full h-96 object-center rounded-none lg:rounded-2xl"
              src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($article->image) }}"
              alt="">
-        <div class="flex flex-row gap-x-3">
+        <div class="flex flex-row flex-wrap gap-x-3">
             @foreach($article->getTags() as $item)
                 <span class="text-white text-sm font-semibold bg-primary rounded-md px-5 py-3">{{ $item }}</span>
             @endforeach
