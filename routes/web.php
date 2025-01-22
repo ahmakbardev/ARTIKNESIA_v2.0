@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ExhibitionController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,8 +31,12 @@ Route::controller(HomeController::class)->group(function () {
 
     Route::get('/coming-soon', 'comingSoon')->name('coming-soon');
 
-    Route::resource('article', ArticleController::class)->only('index', 'show');
 });
+
+Route::resource('article', ArticleController::class)->only('index', 'show');
+Route::resource('pameran', ExhibitionController::class)->only('index', 'show')
+    ->names('exhibition')
+    ->parameter('pameran', 'exhibition');
 
 
 Route::get('oauth/google', [\App\Http\Controllers\OAuthController::class, 'redirectToProvider'])->name('oauth.google');
