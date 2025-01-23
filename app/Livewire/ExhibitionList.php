@@ -26,6 +26,8 @@ class ExhibitionList extends Component
             $query->where('city', $this->city);
         }
 
+        $query->orderBy('created_at', 'desc');
+
         return view('livewire.exhibition-list', [
             'exhibitions' => $query->paginate(6)
         ]);

@@ -10,7 +10,18 @@ class ExhibitionController extends Controller
 {
     public function index(): View
     {
-        return view('pages.exhibition.index');
+        $exhibition = Exhibition::query()
+            ->where('is_primary', 1)
+            ->orderBy('updated_at', 'desc')
+            ->first();
+
+        if (!$exhibition) {
+            $exhibition = Exhibition::query()
+                ->inRandomOrder()
+                ->first();
+        }
+
+        return view('pages.exhibition.index', compact('exhibition'));
     }
 
     public function show(Exhibition $exhibition): View
