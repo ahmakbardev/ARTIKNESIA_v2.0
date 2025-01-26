@@ -28,8 +28,11 @@ class ExhibitionList extends Component
 
         $query->orderBy('created_at', 'desc');
 
+        $cities = Exhibition::query()->groupBy('city')->orderBy('city', 'asc')->select('city')->get();
+
         return view('livewire.exhibition-list', [
-            'exhibitions' => $query->paginate(6)
+            'exhibitions' => $query->paginate(6),
+            'cities' => $cities
         ]);
     }
 }
