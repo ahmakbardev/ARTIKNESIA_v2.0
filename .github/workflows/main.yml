@@ -28,7 +28,7 @@ jobs:
             source ~/.bash_profile
             git add .
             git stash
-            git pull
+            git pull origin main
             which node
             node -v
             npm -v
