@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class Cart extends Component
 {
-    public    $arts;
+    public $arts;
     protected $listeners = ['addToCart', 'removeFromCart'];
 
     public function mount(): void
@@ -43,13 +43,13 @@ class Cart extends Component
                 $this->dispatch('swal', message: 'Stock barang sudah habis', success: false);
             } else {
                 $cart[$id] = [
-                    "name"        => $art->name,
-                    "quantity"    => 1,
-                    "price"       => $art->price,
+                    "name" => $art->name,
+                    "quantity" => 1,
+                    "price" => $art->price,
                     "total_price" => $art->price,
-                    "image"       => $art->images[0],
-                    "artist_id"   => $art->user_id,
-                    "courier"     => null,
+                    "image" => $art->images[0],
+                    "artist_id" => $art->user_id,
+                    "courier" => null,
                 ];
                 $this->dispatch('swal', message: 'Berhasil ditambahkan ke keranjang', success: true);
             }
@@ -70,6 +70,14 @@ class Cart extends Component
         }
         $this->arts = session()->get('cart', []);
         $this->dispatch('update-cart');
+    }
+
+    public function checkout()
+    {
+        $cart = session()->get('cart', []);
+        session()->put('checkoutItem', $cart);
+
+        return redirect()->route('checkout');
     }
 
     public function render(): \Illuminate\View\View

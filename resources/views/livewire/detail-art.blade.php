@@ -3,7 +3,7 @@
         <!-- Image Section -->
         <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($art->images[0]) }}"
              alt="{{ $art->name }}"
-             class="rounded-none md:rounded-2xl col-span-12 md:col-span-4 h-72 object-cover object-center block md:sticky md:top-10"/>
+             class="rounded-none md:rounded-2xl col-span-12 md:col-span-4 w-full h-72 object-cover object-center block md:sticky md:top-10"/>
 
         <!-- Details Section -->
         <div class="col-span-12 md:col-span-5 px-3 md:px-0 flex flex-col gap-y-4">
@@ -36,8 +36,8 @@
         <div
             class="col-span-12 md:col-span-3 border border-gray-300 rounded-none md:rounded-2xl p-4 flex flex-col gap-3 md:sticky md:top-10">
             <h2 class="font-semibold">Atur jumlah dan catatan</h2>
-            <div class="flex flex-row items-center gap-5">
-                <input type="number" class="border border-gray-400 rounded-lg h-8 px-3 text-center" min="1"
+            <div class="flex flex-row items-center gap-5 justify-between">
+                <input type="number" class="flex-1 border border-gray-400 rounded-lg h-8 px-3 text-center" min="1"
                        max="{{ $art->stock }}" value="1" wire:model="quantity"/>
                 <span>Stok {{ $art->stock }}</span>
             </div>

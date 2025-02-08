@@ -1,5 +1,5 @@
 <div>
-    <div class="relative grid grid-cols-7 my-5 gap-x-4">
+    <div class="relative grid grid-cols-1 md:grid-cols-7 my-5 gap-4">
         <div wire:loading.delay.long wire:target="checkout"
              class="absolute bg-white bg-opacity-60 z-10 h-full w-full block">
             <div class="h-full w-full flex items-center justify-center">
@@ -16,7 +16,7 @@
                 </div>
             </div>
         </div>
-        <div class=" flex flex-col gap-y-5 col-span-5">
+        <div class="flex flex-col gap-y-5 col-span-1 md:col-span-5 w-full">
             @if(count($checkoutItem) > 0)
                 <div class="border border-gray-300 rounded-lg px-4 py-6">
                     <h1 class="text-lg font-bold">Alamat Pengiriman</h1>
@@ -67,18 +67,21 @@
                         <h2 class="text-lg font-bold">Daftar Pesanan</h2>
                         <div class="mt-3 flex flex-col gap-y-3 w-full">
                             @foreach($checkoutItem as $index => $item)
-                                <div class="grid grid-cols-8 gap-x-3">
-                                    <img src="{{ Str::startsWith($item['image'], 'http') ? $item['image'] : env('MEDIA_URL').'/'.$item['image'] }}" class="rounded-lg object-cover h-full col-span-2"
+                                <div class="grid grid-cols-1 md:grid-cols-8 gap-3">
+                                    <img src="{{ \Illuminate\Support\Facades\Storage::url($item['image']) }}"
+                                         class="rounded-lg object-cover h-24 w-full col-span-1 md:col-span-2"
                                          alt=""/>
-                                    <div class="col-span-6 text-start flex flex-col justify-between pe-4 gap-y-3">
+                                    <div
+                                        class="col-span-1 md:col-span-6 text-start flex flex-col justify-between md:pe-4 gap-y-3">
                                         <div class="flex flex-row justify-between items-end">
                                             <h6 class="text-xl font-normal line-clamp-1">{{ $item['name'] }}</h6>
                                             <p class="text-xl font-normal w-fit">{{ $item['quantity'] }}
                                                 x {{ \App\Helpers\Universal::idr($item['price']) }}</p>
                                         </div>
-                                        <select class="border border-gray-300 rounded-lg py-2 px-3 appearance-none"
-                                                @if(!$selectedCity) disabled @endif
-                                                wire:change="updateKurir('{{ $index }}', $event.target.value)">
+                                        <select
+                                            class="border border-gray-300 rounded-lg py-2 px-3 appearance-none w-full"
+                                            @if(!$selectedCity) disabled @endif
+                                            wire:change="updateKurir('{{ $index }}', $event.target.value)">
                                             <option disabled hidden @selected($item['courier'] == null)>Pilih Kurir
                                             </option>
                                             <option value="jne" @selected($item['courier'] == 'jne')>JNE</option>
@@ -116,7 +119,8 @@
             <div class="border border-gray-300 rounded-lg px-4 py-6 flex flex-col gap-y-3">
                 <h2 class="font-bold text-lg">Ringkasan Biaya</h2>
                 <ul>
-                    <li class="flex items-center justify-between"><span>Total Harga</span><span>{{ \App\Helpers\Universal::idr($price) }}</span>
+                    <li class="flex items-center justify-between">
+                        <span>Total Harga</span><span>{{ \App\Helpers\Universal::idr($price) }}</span>
                     </li>
                     <li class="flex items-center justify-between">
                         <span>Total Ongkos Kirim</span><span>${{ $courierCost }}</span></li>
@@ -124,7 +128,8 @@
                 <hr/>
                 <ul>
                     <li class="flex items-center justify-between">
-                        <span>Total Belanja</span><span>{{ \App\Helpers\Universal::idr($price + $courierCost) }}</span></li>
+                        <span>Total Belanja</span><span>{{ \App\Helpers\Universal::idr($price + $courierCost) }}</span>
+                    </li>
                 </ul>
                 <button
                     type="button"
