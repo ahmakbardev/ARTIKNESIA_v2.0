@@ -16,8 +16,8 @@
             </button>
         </div>
         <div class="px-5 py-3 grid grid-cols-2 gap-3 bg-white">
-            <button class="btn-color-outline py-2 rounded-md text-sm">Masuk</button>
-            <button class="btn-color-fill py-2 rounded-md text-sm">Daftar</button>
+            <a href="{{ route('login') }}" class="btn-color-outline py-2 rounded-md text-sm">Masuk</a>
+            <a href="" class="btn-color-fill py-2 rounded-md text-sm">Daftar</a>
         </div>
         <div class="mt-3 bg-white flex flex-col gap-3 p-5">
             <a href="#" class="flex gap-3 items-center">
@@ -28,16 +28,16 @@
             </a>
         </div>
         <div class="mt-3 bg-white flex flex-col gap-3 p-5">
-            <a href="#" class="flex gap-3 items-center">
+            <a href="{{route('art-list')}}" class="flex gap-3 items-center">
                 Produk
             </a>
-            <a href="#" class="flex gap-3 items-center">
+            <a href="https://wa.me/6282146415024" class="flex gap-3 items-center">
                 Custom Karya
             </a>
-            <a href="#" class="flex gap-3 items-center">
+            <a href="{{route('exhibition.index')}}" class="flex gap-3 items-center">
                 Pameran
             </a>
-            <a href="#" class="flex gap-3 items-center">
+            <a href="{{route('article.index')}}" class="flex gap-3 items-center">
                 Artikel
             </a>
         </div>
