@@ -78,7 +78,7 @@
                         Pameran
                         Virtual
                     </a>
-                    <a href="{{route('coming-soon')}}"
+                    <a href="{{route('exhibition.index')}}"
                        class="py-2 text-center btn-color-fill-white font-semibold text-sm md:text-base rounded-md text-black">
                         Pameran
                         Onsite
