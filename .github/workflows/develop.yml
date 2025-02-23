@@ -21,27 +21,49 @@ jobs:
           key: ${{ secrets.SERVER_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            cd /home/u982131153/domains/artiknesia.com/NEW_ARTIKNESIA
+            # Path ke directory aplikasi di server
+            APP_DIR=/home/u982131153/domains/artiknesia.com/staging/ARTIKNESIA_v2.0
+
+            # Cek apakah direktori sudah ada, jika belum lakukan clone
+            if [ ! -d "$APP_DIR" ]; then
+              git clone https://github.com/ahmakbardev/ARTIKNESIA_v2.0.git $APP_DIR
+            fi
+
+            cd $APP_DIR
+
+            # Setup environment
             chmod +x ~/bin/composer
             echo "export PATH=$HOME/bin:$PATH" >> ~/.bash_profile
             echo "export PATH=$HOME/bin/node/bin:$PATH" >> ~/.bash_profile
             source ~/.bash_profile
+
+            # Git operations
             git add .
             git stash
-            git pull
+            git pull origin develop
+
+            # Node.js setup
             which node
             node -v
             npm -v
-            npm i
             npm install --legacy-peer-deps
             npm run prod
+
+            # Composer setup
             source ~/.bash_profile
             which composer
             composer --version
-            composer install
-            composer update
+            composer install --no-dev --optimize-autoloader
+            composer update --no-dev
+
+            # Laravel commands
             php artisan key:generate
+            php artisan migrate --force
             php artisan route:clear
             php artisan config:cache
             php artisan optimize
-            ln -s /home/u982131153/domains/artiknesia.com/NEW_ARTIKNESIA/public/* /home/u982131153/domains/artiknesia.com/public_html/staging
+
+            # Symlink ke public_html jika belum ada
+            if [ ! -L "/home/u982131153/domains/artiknesia.com/public_html/staging" ]; then
+              ln -s $APP_DIR/public/* /home/u982131153/domains/artiknesia.com/public_html/staging
+            fi
