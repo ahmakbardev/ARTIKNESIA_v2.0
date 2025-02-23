@@ -47,4 +47,4 @@
         </div>
     </div>
 </div>
-<div class="py-1 px-8 bg-gray-200 text-gray-600 text-sm">Made by ahmakbar</div>
+<div class="py-1 px-8 bg-gray-200 text-gray-600 text-sm">Made by <span class="text-primary-darker">ARTIKNESIA</span></div>
