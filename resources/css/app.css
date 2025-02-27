@@ -153,3 +153,9 @@
 .item-5 {
     background-image: url("../../public/images/about/umm.png");
 }
+
+.exhibition-banner {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
