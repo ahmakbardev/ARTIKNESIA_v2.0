@@ -2,6 +2,7 @@
 <html lang="id">
 
 <head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -23,9 +24,9 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     <!-- Append version number to CSS file name -->
-    <link rel="stylesheet" href="{{ asset('css/app.css?v=1.04') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css?v=1.06') }}">
     <!-- Add cache-control headers for CSS and JavaScript files -->
-    <link rel="preload" href="{{ asset('css/app.css?v=1.04') }}" as="style" crossorigin="anonymous"/>
+    <link rel="preload" href="{{ asset('css/app.css?v=1.06') }}" as="style" crossorigin="anonymous"/>
     @livewireStyles
 </head>
 

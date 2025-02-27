@@ -13,7 +13,7 @@
                 <ul class="flex gap-5">
                     <li class="text-gray-400 text-xs"><a href="{{route('art-list')}}">Product</a></li>
                     <li class="text-gray-400 text-xs"><a href="https://wa.me/6282146415024">Custom Karya</a></li>
-                    <li class="text-gray-400 text-xs"><a href="{{route('coming-soon')}}">Pameran</a></li>
+                    <li class="text-gray-400 text-xs"><a href="{{route('exhibition.index')}}">Pameran</a></li>
                     <li class="text-gray-400 text-xs"><a href="{{route('article.index')}}">Artikel</a></li>
                 </ul>
             </div>
