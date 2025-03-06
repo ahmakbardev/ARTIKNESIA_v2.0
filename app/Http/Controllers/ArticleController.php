@@ -17,6 +17,7 @@ class ArticleController extends Controller
     {
         // $articles = Article::query()->with('author:id,name')->orderBy('created_at', 'desc')->get();
 
+        // return view('pages.article.index', compact('articles'));
         return view('pages.article.index');
     }
 
