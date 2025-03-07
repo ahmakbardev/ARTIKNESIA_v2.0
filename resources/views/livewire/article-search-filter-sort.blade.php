@@ -15,7 +15,7 @@
                     <option value="2024">2024</option>
                     <option value="2025">2025</option>
                 </select>
-                
+
                 <select wire:model.live="filterMonth">
                     <option value="">Pilih Bulan</option>
                     <option value="1">Januari</option>
@@ -26,60 +26,20 @@
                 </select>
                 {{-- End Filter By --}}
 
-
                 {{-- Sort By Form --}}
-                <button wire:click="sortBy('created_at')" class="mr-3 mb-2 px-4 py-2 bg-white hover:bg-gray-50 text-gray-800 font-medium rounded-lg border border-gray-200 shadow-sm flex items-center">
+                <button wire:click="sortBy('terbaru')" class="mr-3 mb-2 px-4 py-2 bg-white hover:bg-gray-50 text-gray-800 font-medium rounded-lg border border-gray-200 shadow-sm flex items-center">
                     Terbaru
-                    @if ($sortField === 'created_at')
-                        <span class="ml-1">
-                            @if ($sortDirection === 'asc')
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
-                                </svg>
-                            @else
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            @endif
-                        </span>
-                    @endif
                 </button>
-                
-                <button wire:click="sortBy('view_count')" class="mr-3 mb-2 px-4 py-2 bg-white hover:bg-gray-50 text-gray-800 font-medium rounded-lg border border-gray-200 shadow-sm flex items-center">
+
+                <button wire:click="sortBy('terlama')" class="mr-3 mb-2 px-4 py-2 bg-white hover:bg-gray-50 text-gray-800 font-medium rounded-lg border border-gray-200 shadow-sm flex items-center">
+                    Terlama
+                </button>
+
+                <button wire:click="sortBy('populer')" class="mb-2 px-4 py-2 bg-white hover:bg-gray-50 text-gray-800 font-medium rounded-lg border border-gray-200 shadow-sm flex items-center">
                     Populer
-                    @if ($sortField === 'view_count')
-                        <span class="ml-1">
-                            @if ($sortDirection === 'asc')
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
-                                </svg>
-                            @else
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            @endif
-                        </span>
-                    @endif
-                </button>
-                
-                <button wire:click="sortBy('title')" class="mb-2 px-4 py-2 bg-white hover:bg-gray-50 text-gray-800 font-medium rounded-lg border border-gray-200 shadow-sm flex items-center">
-                    Judul
-                    @if ($sortField === 'title')
-                        <span class="ml-1">
-                            @if ($sortDirection === 'asc')
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
-                                </svg>
-                            @else
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                                </svg>
-                            @endif
-                        </span>
-                    @endif
                 </button>
                 {{-- End Sort Form --}}
-            </div>       
+            </div>
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
                 @foreach ($articles as $item)
                     <a href="{{ route('article.show', $item->slug) }}"

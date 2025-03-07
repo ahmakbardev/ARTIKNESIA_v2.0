@@ -34,13 +34,26 @@ class ArticleSearchFilterSort extends Component
 
     public function sortBy($field)
     {
-        if ($this->sortField === $field) {
-            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
-        } else {
+        // if ($this->sortField === $field) {
+        //     $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        // } else {
+        //     $this->sortDirection = 'desc';
+        // }
+
+        // $this->sortField = $field;
+
+        if($field === 'terbaru') {
+            $this->sortField = 'created_at';
             $this->sortDirection = 'desc';
         }
-
-        $this->sortField = $field;
+        elseif($field === 'terlama') {
+            $this->sortField = 'created_at';
+            $this->sortDirection = 'asc';
+        }
+        elseif($field === 'populer') {
+            $this->sortField = 'view_count';
+            $this->sortDirection = 'desc';
+        }
 
         Log::info("Sorting by: $this->sortField, Direction: $this->sortDirection");
     }
@@ -52,14 +65,12 @@ class ArticleSearchFilterSort extends Component
             ->when($this->search, function ($query) {
                 $query->where('title', 'like', "%{$this->search}%");
             });
-            
+
         //Apply the FilterBy
         $articles = $this->filterBy($articles);
 
         // Sorting data and Get Data
-        $articles = $articles->orderBy($this->sortField, $this->sortDirection)
-            ->take(10)
-            ->get();
+        $articles = $articles->orderBy($this->sortField, $this->sortDirection)->get();
 
         return view('livewire.article-search-filter-sort', compact('articles'));
     }
