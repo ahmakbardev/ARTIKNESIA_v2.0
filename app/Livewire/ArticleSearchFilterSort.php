@@ -16,6 +16,7 @@ class ArticleSearchFilterSort extends Component
     public $sortDirection = 'desc';
     public $filterYear = '';
     public $filterMonth = '';
+    public $filterDate = '';
     // create for filter By Date
 
     public function filterBy($query)
@@ -27,6 +28,10 @@ class ArticleSearchFilterSort extends Component
 
         if ($this->filterMonth) {
             $query->whereMonth('created_at', $this->filterMonth);
+        }
+
+        if ($this->filterDate) {
+            $query->whereDate('created_at', $this->filterDate);
         }
 
         return $query;

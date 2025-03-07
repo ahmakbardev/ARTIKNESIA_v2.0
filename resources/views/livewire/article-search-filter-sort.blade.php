@@ -24,6 +24,8 @@
                     <option value="4">April</option>
                     <!-- dst sampai 12 -->
                 </select>
+
+                <input type="date" wire:model.live="filterDate">
                 {{-- End Filter By --}}
 
                 {{-- Sort By Form --}}
