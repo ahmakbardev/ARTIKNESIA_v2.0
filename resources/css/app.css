@@ -20,6 +20,24 @@
     }
 }
 
+.datepicker-cell:hover {
+    background-color: #DAA515;
+    color: white;
+}
+
+.datepicker-cell.selected, .datepicker-cell.focused, .today-btn {
+    background-color: #DFBE65;
+    color: white;
+}
+
+.datepicker-main .grid-cols-7 {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.datepicker-main .w-64 {
+    width: 16rem;
+}
+
 .swiper-pagination-bullet {
     position: relative;
     width: fit-content; /* Atur sesuai kebutuhan */

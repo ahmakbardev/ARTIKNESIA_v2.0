@@ -1,12 +1,34 @@
+@php
+    $searchBy = ['By Tags', 'By Title'];
+@endphp
+
 <div class="relative">
-    <label for="search" class="absolute top-1/2 -translate-y-1/2 left-4">
-        <img src="{{ asset('images/icons/search.svg') }}" alt="">
-    </label>
-    <input type="text" name="search"
-           class="border px-10 rounded-md py-2 w-full bg-gray-50 focus:outline-primary/50 text-sm"
-           placeholder="Cari di Artiknesia"
-           wire:model.live="query"
-    />
+    <div class="flex">
+        <label for="search" class="absolute top-1/2 -translate-y-1/2 left-4">
+            <img src="{{ asset('images/icons/search.svg') }}" alt="">
+        </label>
+        <input type="text" name="search"
+               class="flex-1 rounded-s-md border bg-gray-50 px-10 py-2 text-sm focus:outline-primary/50"
+               placeholder="Cari di Artiknesia"
+               wire:model.live="query" />
+        <div class="relative">
+            <button class="rounded-e-md border bg-gray-50 pl-4 py-2 pr-10 text-sm text-neutral-400" wire:click="toggleSearchBy">
+                Search By
+                <div class="absolute inset-y-0 end-0 flex items-center pe-2">
+                    <img src="{{ asset('images/icons/caret-small-down.svg') }}" class="size-5" alt="">
+                </div>
+            </button>
+            <div class="{{ $isOpen ? '' : 'hidden' }} absolute left-0 right-0 top-[calc(100%)] rounded border bg-gray-50 text-sm transition-all duration-300">
+                <ul class="flex flex-col gap-0.5 p-0.5 text-start">
+                    @foreach ($searchBy as $item)
+                        <li class="cursor-pointer rounded px-4 py-2 text-neutral-400 hover:bg-primary hover:text-white">
+                            {{ $item }}
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
     @if($query && $results->isNotEmpty())
         <div class="absolute left-0 mt-2 bg-white w-full drop-shadow-lg p-3 rounded-xl z-10">
             @foreach($results as $item)

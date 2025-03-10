@@ -12,6 +12,14 @@ class SearchProduct extends Component
     public string $query = '';
     public array|Collection $results = [];
 
+     // Search By
+    public bool $isOpen = false;
+
+    public function toggleSearchBy()
+    {
+        $this->isOpen = !$this->isOpen;
+    }
+
     public function updatedQuery()
     {
         $this->results = Karya::query()->where('name', 'like', '%' . $this->query . '%')
