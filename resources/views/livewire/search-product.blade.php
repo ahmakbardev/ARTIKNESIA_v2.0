@@ -83,7 +83,6 @@
 
         if (dropdown && !dropdown.contains(event.target) && !input.contains(event.target)) {
             Livewire.dispatch('hideDropdown')
-
         }
     })
 </script>
