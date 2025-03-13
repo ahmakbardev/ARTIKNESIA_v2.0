@@ -11,4 +11,17 @@ class Universal
         }
         return '';
     }
+
+    public static function formatViewCount($number)
+    {
+        if ($number < 1000) {
+            return $number;
+        } elseif ($number < 1000000) {
+            return round($number / 1000, 1) . 'k';
+        } elseif ($number < 1000000000) {
+            return round($number / 1000000, 1) . 'm';
+        } else {
+            return round($number / 1000000000, 1) . 'b';
+        }
+    }
 }

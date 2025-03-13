@@ -100,23 +100,30 @@
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 my-5">
             @foreach ($articles as $item)
                 <a href="{{ route('article.show', $item->slug) }}"
-                   class="flex flex-col overflow-hidden rounded-xl border bg-white font-poppins shadow-md">
+                    class="flex flex-col overflow-hidden rounded-xl border bg-white font-poppins shadow-md">
                     <img class="h-52 w-full object-cover object-center"
-                         src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->image) }}"
-                         alt="{{ $item->image_caption }}">
+                        {{-- src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->image) }}" --}}
+                        src="https://images.unsplash.com/flagged/photo-1572392640988-ba48d1a74457?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        alt="{{ $item->image_caption }}">
                     <div class="flex flex-1 flex-col justify-between gap-3 px-3 py-2 lg:p-4">
                         <h1 class="line-clamp-2 text-sm font-semibold leading-6 lg:text-lg">{{ $item->short_title }}</h1>
-                        <div class="flex flex-col sm:flex-row gap-3 text-[0.65rem] md:items-center sm:justify-between md:gap-6">
+                        <div class="flex sm:flex-row gap-3 text-[0.65rem] items-center justify-between md:gap-6">
                             <div class="flex items-center gap-2 md:gap-2">
                                 <img class="w-4 rounded-full object-contain md:w-5"
-                                     src="{{ asset('images/profile/default.png') }}" alt="">
-                                <p class="truncate md:max-w-28">
-                                    Oleh <span class="font-semibold">{{ $item->author->name }}</span>
-                                </p>
+                                    src="{{ asset('images/profile/default.png') }}" alt="">
+                                <div class="flex flex-col">
+                                    <p class="truncate max-w-20 sm:max-w-none">
+                                        Oleh <span class="font-semibold">{{ $item->author->name }}</span>
+                                    </p>
+                                    <p>
+                                        {{ \Illuminate\Support\Carbon::parse($item->created_at)->format('d/m/Y') }}
+                                    </p>
+                                </div>
                             </div>
-                            <p>
-                                {{ \Illuminate\Support\Carbon::parse($item->created_at)->format('d/m/Y') }}
-                            </p>
+                            <div class="flex gap-0.5 items-center text-neutral-500">
+                                <img src="{{ asset('images/icons/view-counts.svg') }}" class="size-4" alt="">
+                                <p class="font-semibold self-end relative top-[0.035rem]">{{ \App\Helpers\Universal::formatViewCount($item->view_count) }}</p>
+                            </div>
                         </div>
                     </div>
                 </a>

@@ -23,7 +23,7 @@
                 </div>
             </button>
             <div
-                class="{{ $isOpen ? '' : 'hidden' }} absolute left-0 right-0 top-[calc(100%)] rounded border bg-gray-50 text-sm transition-all duration-300">
+                class="{{ $isOpen ? '' : 'hidden' }} absolute left-0 right-0 top-[calc(100%)] rounded border bg-gray-50 text-sm transition-all duration-300 z-20">
                 <ul class="flex flex-col gap-0.5 p-0.5 text-start">
                     @foreach ($searchBy as $item)
                         <li class="cursor-pointer rounded px-4 py-2 text-neutral-400 hover:bg-primary hover:text-white"

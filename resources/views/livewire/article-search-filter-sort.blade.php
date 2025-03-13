@@ -1,5 +1,4 @@
 @php
-    $tags = ['Art', 'Paint', 'Therapy', 'Film', 'Invest', 'Educational', 'Inspirational', 'Promotional'];
     $sortingOptions = ['Terbaru', 'Terlama', 'Populer'];
 @endphp
 <div>
@@ -14,8 +13,8 @@
             <div class="mb-8 text-[0.75rem]">
                 <h6 class="mb-1.5 font-medium">Kategori</h6>
                 <div class="flex flex-wrap gap-1.5">
-                    @foreach ($tags as $item)
-                        <button class="rounded-xl border border-primary-darker px-2 py-1 font-poppins text-primary-darker">{{ $item }}</button>
+                    @foreach ($articleTags as $item)
+                        <button class="rounded-xl border border-primary-darker px-2 py-1 font-poppins text-primary-darker hover:border-primary hover:bg-primary-darker hover:text-white">{{ $item }}</button>
                     @endforeach
                 </div>
             </div>
@@ -32,13 +31,13 @@
             {{-- Datepicker --}}
             <div class="relative">
                 <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3.5">
-                    <img src="{{ asset('images/icons/calendar.svg') }}" class="mb-1 mr-3 size-6" alt="">
+                    <img src="{{ asset('images/icons/calendar.svg') }}" class="size-4" alt="">
                 </div>
-                <input type="text" id="datepicker-autohide" datepicker datepicker-autohide datepicker-buttons datepicker-format="yyyy/mm/dd" primary="white" datepicker-autoselect-today
-                       class="block w-full rounded-xl border border-primary-darker bg-gray-50 p-2.5 ps-10 text-sm text-primary-darker placeholder-primary placeholder:font-semibold focus:outline-primary-darker"
+                <input type="text" id="datepicker-autohide" datepicker datepicker-autohide datepicker-buttons datepicker-format="yyyy/mm/dd" datepicker-autoselect-today
+                       class="block w-full rounded-[0.625rem] border border-primary-darker bg-gray-50 py-[0.375rem] pl-8 text-sm text-primary-darker placeholder-primary placeholder:font-semibold focus:outline-primary-darker"
                        placeholder="Tanggal Terbit" wire:ignore readonly>
                 <div class="pointer-events-none absolute inset-y-0 end-0 flex items-center ps-3.5">
-                    <img src="{{ asset('images/icons/arrow-right.svg') }}" class="mr-2 size-5" alt="">
+                    <img src="{{ asset('images/icons/arrow-right.svg') }}" class="mr-2 size-4" alt="">
                 </div>
             </div>
         </div>
@@ -49,30 +48,37 @@
             <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
                 @foreach ($articles as $item)
                     <a href="{{ route('article.show', $item->slug) }}"
-                       class="flex flex-col overflow-hidden rounded-xl border bg-white font-poppins shadow-md">
+                        class="flex flex-col overflow-hidden rounded-xl border bg-white font-poppins shadow-md">
                         <img class="h-52 w-full object-cover object-center"
-                             src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->image) }}"
-                             alt="{{ $item->image_caption }}">
-                        <div class="flex flex-1 flex-col justify-between gap-5 p-5 lg:gap-3 lg:p-4">
-                            <h1 class="line-clamp-2 text-lg font-semibold leading-6">{{ $item->short_title }}</h1>
-                            <div class="flex items-center justify-between gap-6 text-sm lg:gap-3 lg:text-[0.65rem]">
-                                <div class="flex items-center gap-2 md:gap-2">
-                                    <img class="w-4 rounded-full object-contain md:w-5"
-                                         src="{{ asset('images/profile/default.png') }}" alt="">
-                                    <p class="max-w-none truncate sm:max-w-32">
-                                        Oleh <span class="font-semibold">{{ $item->author->name }}</span>
-                                    </p>
+                            {{-- src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->image) }}" --}}
+                            src="https://images.unsplash.com/flagged/photo-1572392640988-ba48d1a74457?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="{{ $item->image_caption }}">
+                        <div class="flex flex-1 flex-col justify-between gap-3 px-3 py-2 lg:p-4">
+                            <h5 class="line-clamp-2 text-sm font-semibold leading-6 lg:text-lg">{{ $item->short_title }}</h5>
+                            <div class="flex flex-row gap-3 text-[0.65rem] items-center justify-between md:gap-6">
+                                <div class="flex items-center gap-2">
+                                    <img class="w-5 rounded-full object-contain"
+                                        src="{{ asset('images/profile/default.png') }}" alt="">
+                                    <div class="flex flex-col">
+                                        <p class="truncate">
+                                            Oleh <span class="font-semibold">{{ $item->author->name }}</span>
+                                        </p>
+                                        <p>
+                                            {{ \Illuminate\Support\Carbon::parse($item->created_at)->format('d/m/Y') }}
+                                        </p>
+                                    </div>
                                 </div>
-                                <p>
-                                    {{ \Illuminate\Support\Carbon::parse($item->created_at)->format('d/m/Y') }}
-                                </p>
+                                <div class="flex gap-0.5 items-center text-neutral-500">
+                                    <img src="{{ asset('images/icons/view-counts.svg') }}" class="size-4" alt="">
+                                    <p class="font-semibold self-end relative top-[0.035rem]">{{ \App\Helpers\Universal::formatViewCount($item->view_count) }}</p>
+                                </div>
                             </div>
                         </div>
                     </a>
                 @endforeach
             </div>
             <div class="mt-10">
-                {{ $articles->links('pagination::tailwind') }}
+                {{ $articles->links('vendor.pagination.tailwind') }}
             </div>
         </div>
 

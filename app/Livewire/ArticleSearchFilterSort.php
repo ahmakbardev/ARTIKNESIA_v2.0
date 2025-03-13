@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Article;
+use App\Models\ArticleTag;
 use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -88,6 +89,8 @@ class ArticleSearchFilterSort extends Component
         // Sorting data and Get Data
         $articles = $articles->orderBy($this->sortField, $this->sortDirection)->paginate(9);
 
-        return view('livewire.article-search-filter-sort', compact('articles'));
+        $articleTags = ArticleTag::pluck('name');
+
+        return view('livewire.article-search-filter-sort', compact('articles', 'articleTags'));
     }
 }

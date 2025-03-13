@@ -38,6 +38,10 @@
     width: 16rem;
 }
 
+.datepicker-picker, .datepicker .bg-white {
+    background-color: white !important;
+}
+
 .swiper-pagination-bullet {
     position: relative;
     width: fit-content; /* Atur sesuai kebutuhan */
@@ -91,10 +95,18 @@
     transform-origin: right center; /* Set titik transformasi ke kanan */
 }
 
+.article-swiper-pagination .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+    width: 30px; 
+}
+
 .swiper-pagination-bullet-active {
     width: 100px !important;
     background: transparent !important;
     border-radius: 5px;
+}
+
+.article-swiper-pagination .swiper-pagination-bullet-active {
+    width: 40px !important;
 }
 
 /* Transisi untuk dot yang aktif */
