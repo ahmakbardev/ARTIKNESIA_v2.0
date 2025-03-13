@@ -14,10 +14,11 @@ use Livewire\Component;
 class SearchProduct extends Component
 {
     public string $query = '';
+
     public array|Collection $results = [];
 
     public $selectedItem;
-    // Search By
+    
     public bool $isOpen = false;
 
     // Event for Dropdown
@@ -73,11 +74,9 @@ class SearchProduct extends Component
                         }
                     })
                     ->take(5)
-                    ->orderBy('title', 'desc')
+                    ->orderBy('title', 'asc')
                     ->get();
             }
-
-
 
         } else {
             if ($this->selectedItem === 'By Karya' || !$this->selectedItem) {
@@ -96,9 +95,6 @@ class SearchProduct extends Component
 
             }
         }
-
-
-
     }
 
     public function render(): View
