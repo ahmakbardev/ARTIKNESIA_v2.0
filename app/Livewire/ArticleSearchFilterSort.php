@@ -26,7 +26,7 @@ class ArticleSearchFilterSort extends Component
     public $filterYear = '';
     public $filterMonth = '';
     public $filterDate = '';
-    public $activeSort = '';
+    public $activeSort = 'terbaru';
     // create for filter By Date
 
     #[On('updateFilterDate')]
