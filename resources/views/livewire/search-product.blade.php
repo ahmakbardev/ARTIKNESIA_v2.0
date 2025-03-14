@@ -9,9 +9,10 @@
         </label>
         <input type="text" name="search"
             class="flex-1 rounded-s-md border bg-gray-50 px-10 py-2 text-sm focus:outline-primary/50"
-            placeholder="Cari di Artiknesia" wire:model.live="query" />
+            placeholder="Cari di Artiknesia" wire:model.live.debounce.500ms="query" />
         <div class="relative">
-            <button class="rounded-e-md border bg-gray-50 pl-4 py-2 pr-10 text-sm text-neutral-400"
+            <button x-ref="searchByButton"
+                class="rounded-e-md border bg-gray-50 pl-4 py-2 pr-10 text-sm text-neutral-400"
                 wire:click="toggleSearchBy">
                 @if (!$selectedItem)
                     Search By
@@ -56,7 +57,7 @@
         @else
             <div class="absolute left-0 mt-2 bg-white w-full drop-shadow-lg p-3 rounded-xl z-10">
                 @foreach ($results as $item)
-                    <div wire:ignore x-ref="dropdown"  class="grid grid-cols-8 gap-3 items-center mb-3">
+                    <div wire:ignore x-ref="dropdown" class="grid grid-cols-8 gap-3 items-center mb-3">
                         <div class="col-span-1">
                             <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->image) }}"
                                 alt="{{ $item->title }}" class="w-full object-cover rounded-xl" />
@@ -80,10 +81,16 @@
     document.addEventListener('click', function(event) {
         let dropdown = document.querySelector('[x-ref = "dropdown"]');
         let input = document.querySelector('[wire\\:model\\.live="query"]');
+        let searchByDropdown = document.querySelector('[x-ref="searchByDropdown"]');
+        let searchByButton = document.querySelector('[x-ref="searchByButton"]');
 
         if (dropdown && !dropdown.contains(event.target) && !input.contains(event.target)) {
             Livewire.dispatch('hideDropdown')
+        }
 
+        if ((searchByDropdown && !searchByDropdown.contains(event.target) && !searchByButton.contains(event
+                .target) || input.contains(event.target))) {
+            Livewire.dispatch('hideSearchBy');
         }
     })
 </script>

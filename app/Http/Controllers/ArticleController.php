@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\ArticleCategory;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -34,8 +35,13 @@ class ArticleController extends Controller
             Cache::put($cacheKey, true, now()->addHours(24));
         }
 
+        // get data categorys in article
+        $categories = ArticleCategory::whereIn('id', $article->categories)
+            ->select('name')
+            ->get();
+
         $article->load('author:id,name');
 
-        return view('pages.article.show', compact('article'));
+        return view('pages.article.show', compact('article', 'categories'));
     }
 }

@@ -13,8 +13,9 @@
             <div class="mb-8 text-[0.75rem]">
                 <h6 class="mb-1.5 font-medium">Kategori</h6>
                 <div class="flex flex-wrap gap-1.5">
-                    @foreach ($articleTags as $item)
-                        <button class="rounded-xl border border-primary-darker px-2 py-1 font-poppins text-primary-darker hover:border-primary hover:bg-primary-darker hover:text-white">{{ $item }}</button>
+                    @foreach ($categories as $item)
+                        <button type="button" wire:click="filterCategory('{{ $item->id }}', '{{ $item->name }}')"
+                            class="{{ $statusFilterCategory && $categoryId == $item->id ? 'bg-primary text-white border-primary' : 'border-primary-darker' }} rounded-xl border px-2 py-1 font-poppins font-medium text-primary-darker hover:border-primary hover:bg-primary-darker hover:text-white">{{ $item->name }}</button>
                     @endforeach
                 </div>
             </div>
@@ -25,7 +26,7 @@
             <div class="mb-4 flex justify-between text-[0.875rem]">
                 @foreach ($sortingOptions as $item)
                     <button wire:click="sortBy('{{ strtolower($item) }}')"
-                            class="{{ $activeSort === strtolower($item) ? 'bg-primary text-white border-primary' : 'border-primary-darker' }} rounded-xl border px-2 py-1 font-poppins font-medium text-primary-darker hover:border-primary hover:bg-primary-darker hover:text-white">{{ $item }}</button>
+                        class="{{ $activeSort === strtolower($item) ? 'bg-primary text-white border-primary' : 'border-primary-darker' }} rounded-xl border px-2 py-1 font-poppins font-medium text-primary-darker hover:border-primary hover:bg-primary-darker hover:text-white">{{ $item }}</button>
                 @endforeach
             </div>
             {{-- Datepicker --}}
@@ -44,7 +45,11 @@
 
         {{-- Article List --}}
         <div class="flex-1 px-2 lg:px-0">
-            <h3 class="mb-3 text-lg font-bold lg:mb-9">Semua Artikel</h3>
+            @if ($categoryId)
+                <h3 class="mb-3 text-lg font-bold lg:mb-9">Category: {{ $categoryName }}</h3>
+            @else
+                <h3 class="mb-3 text-lg font-bold lg:mb-9">Semua Artikel</h3>
+            @endif
             <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
                 @foreach ($articles as $item)
                     <a href="{{ route('article.show', $item->slug) }}"
