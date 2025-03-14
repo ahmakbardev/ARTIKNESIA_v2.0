@@ -38,7 +38,8 @@
                     @endforeach
                 </ul>
             </div>
-            @include('components.carousel.article-carousel')
+            {{-- @include('components.carousel.article-carousel') --}}
+            <livewire:article-recommend :article="$article" />
         </div>
         {{-- writed by --}}
         <div class="absolute right-[calc(100%+1rem)] hidden w-[235px] px-2 text-sm xl:block">
