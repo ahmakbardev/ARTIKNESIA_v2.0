@@ -62,7 +62,7 @@
 
             </div>
             <div class="flex flex-row flex-wrap gap-x-1.5 gap-y-1">
-                @foreach ($article->categories as $item)
+                @foreach ($article->getCategories() as $item)
                     <span class="rounded-[0.625rem] bg-primary px-2 py-1 text-sm font-semibold text-white">{{ $item }}</span>
                 @endforeach
             </div>
