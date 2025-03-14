@@ -19,8 +19,8 @@
     @endphp
     <div class="relative mx-auto flex max-w-[768px] flex-col gap-y-3 pt-10">
         {{-- share now --}}
-        <div class="absolute left-[calc(100%+1rem)] hidden w-[235px] text-sm xl:block">
-            <h4 class="mb-2 font-poppins font-semibold">Share Now</h4>
+        <div class="absolute left-[calc(100%+2.7rem)] hidden w-[235px] text-sm xl:block">
+            <h4 class="mb-3 font-poppins font-semibold">Share Now</h4>
             <div class="mb-16">
                 <ul class="flex gap-4">
                     @foreach ($shareIconImages as $item)
@@ -42,7 +42,7 @@
             <livewire:article-recommend :article="$article" />
         </div>
         {{-- writed by --}}
-        <div class="absolute right-[calc(100%+1rem)] hidden w-[235px] px-2 text-sm xl:block">
+        <div class="absolute right-[calc(100%+2rem)] hidden w-[235px] px-2 text-sm xl:block">
             <h4 class="mb-2 font-poppins font-semibold">Ditulis Oleh</h4>
             <div class="mb-6 flex items-center gap-2 border-b-2 border-[#D0D5DD] px-2 pb-6">
                 <img class="w-11 rounded-full object-contain"
@@ -74,7 +74,8 @@
             <a href="/" class="hover:underline">Home</a> > <a href="{{ route('article.index') }}" class="hover:underline">Artikel</a> > {{ $article->title }}
         </div>
         <h1 class="px-3 pt-2 text-lg font-bold md:px-0 md:pt-0 lg:text-5xl lg:leading-[1.3]">{{ $article->title }}</h1>
-        <div class="my-3 flex flex-row-reverse items-center gap-0.5 border-b border-t border-neutral-500 px-2 py-3">
+        <p class="font-poppins px-3 mt-6 text-sm md:px-0 text-neutral-700">Published at {{ \Illuminate\Support\Carbon::parse($article->created_at)->format('M d, Y H.i') }} | Last Updated at {{ \Illuminate\Support\Carbon::parse($article->updated_at)->format('M d, Y H.i') }} by {{$article->author->name}}</p>
+        <div class="mb-3 mt-2 flex flex-row-reverse items-center gap-0.5 border-b border-t border-neutral-500 px-4 py-3">
             <div class="self-end">
                 {{ \App\Helpers\Universal::formatViewCount($article->view_count) }}
             </div>

@@ -45,6 +45,7 @@ class ArticleSearchFilterSort extends Component
             $this->statusFilterCategory = true;
         }
 
+        $this->resetPage();
     }
 
     public function filterBy($query)
