@@ -46,7 +46,9 @@
         {{-- Article List --}}
         <div class="flex-1 px-2 lg:px-0">
             @if ($categoryId)
-                <h3 class="mb-3 text-lg font-bold lg:mb-9">Category: {{ $categoryName }}</h3>
+                <h3 class="mb-3 text-lg lg:mb-9 border-b-2 border-primary pb-0.5">
+                    Kategori : <strong>{{ $categoryName }}</strong>
+                </h3>
             @else
                 <h3 class="mb-3 text-lg font-bold lg:mb-9">Semua Artikel</h3>
             @endif

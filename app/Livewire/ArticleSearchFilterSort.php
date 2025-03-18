@@ -26,7 +26,7 @@ class ArticleSearchFilterSort extends Component
     public $filterYear = '';
     public $filterMonth = '';
     public $filterDate = '';
-    public $activeSort = '';
+    public $activeSort = 'terbaru';
     // create for filter By Date
 
     #[On('updateFilterDate')]
@@ -45,6 +45,7 @@ class ArticleSearchFilterSort extends Component
             $this->statusFilterCategory = true;
         }
 
+        $this->resetPage();
     }
 
     public function filterBy($query)
