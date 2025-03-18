@@ -1,4 +1,4 @@
-<header class="shadow-sm border-b sticky top-0 z-50">
+<header class="shadow-sm border-b sticky top-0 z-[100]">
     <nav class="nav-info py-2 bg-owngray justify-end px-5 hidden md:flex">
         <ul class="flex gap-6 text-xs text-navInfoGray">
             <li><a href="{{ route('about') }}">Tentang Artiknesia</a></li>
