@@ -29,7 +29,7 @@
             @endforeach
         </div>
         <!-- Indikator Carousel -->
-        <div class="article-swiper-pagination absolute left-[61%] top-[calc(100%+2rem)] w-3/4 -translate-x-1/2">
+        <div class="article-swiper-pagination absolute left-[60%] top-[calc(100%+2rem)] w-3/4 -translate-x-1/2">
             <div class="swiper-pagination w-fit"></div>
         </div>
         {{-- next/prev --}}
@@ -96,9 +96,10 @@
                 progressBar.style.transition = 'width 5s ease-in-out';
             } else {
                 progressBar.style.backgroundColor = "transparent";
+                progressBar.style.width = '0%';
             }
             // Mengurangi ukuran dot secara menyeluruh ketika progress mencapai 100%
-            // bullet.style.width = isActive ? '8px' : '8px';
+            bullet.style.width = isActive ? '40px' : '40px';
             bullet.style.transition = 'width 0.5s ease-in-out'; // Transisi smooth
         });
     });

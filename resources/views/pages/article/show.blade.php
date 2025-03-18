@@ -17,9 +17,9 @@
             ],
         ];
     @endphp
-    <div class="relative mx-auto flex max-w-[768px] flex-col gap-y-3 pt-10">
+    <div class="relative mx-auto flex max-w-[690px] flex-col gap-y-3 pt-10 2xl:max-w-[1024px]">
         {{-- share now --}}
-        <div class="absolute left-[calc(100%+2.7rem)] hidden w-[235px] text-sm xl:block">
+        <div class="absolute left-[calc(100%+2.7rem)] hidden w-[275px] text-sm xl:block">
             <h4 class="mb-3 font-poppins font-semibold">Share Now</h4>
             <div class="mb-16">
                 <ul class="flex gap-4">
