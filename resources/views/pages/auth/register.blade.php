@@ -3,27 +3,39 @@
     <div class="w-1/2 mx-auto">
         <h1 class="text-3xl font-semibold text-primary mb-3">Register</h1>
         <div class="rounded-lg border border-gray-100 p-10 shadow-lgF">
-            <form action="{{ route('register') }}" method="post" class="flex flex-col gap-y-5" autocomplete="off">
+            <form action="{{ route('createUser') }}" method="post" class="flex flex-col gap-y-5" autocomplete="off">
                 @csrf
                 <div class="flex flex-col">
                     <label class="text-lg font-semibold" for="name">Nama Lengkap</label>
                     <input type="text" class="border border-gray-300 rounded-lg py-1.5 px-4" id="name"
-                        name="name" />
+                        name="name" value="{{ old('name') }}" />
+                    @error('name')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="flex flex-col">
                     <label class="text-lg font-semibold" for="username">Username</label>
                     <input type="text" class="border border-gray-300 rounded-lg py-1.5 px-4" id="username"
-                        name="username" />
+                        name="username" value="{{ old('username') }}" />
+                    @error('username')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="flex flex-col">
                     <label class="text-lg font-semibold" for="emailF">Email</label>
                     <input type="text" class="border border-gray-300 rounded-lg py-1.5 px-4" id="email"
-                        name="email" />
+                        name="email" value="{{ old('email') }}" />
+                    @error('email')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="flex flex-col">
                     <label class="text-lg font-semibold" for="password">Password</label>
                     <input type="password" class="border border-gray-300 rounded-lg py-1.5 px-4" id="password"
-                        name="password" />
+                        name="password" value="{{ old('password') }}" />
+                    @error('password')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
                 </div>
                 <div class="flex flex-col gap-3">
                     <button type="submit" class="bg-primary text-white py-2 rounded-lg">Submit</button>

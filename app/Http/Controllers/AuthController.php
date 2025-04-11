@@ -43,8 +43,6 @@ class AuthController extends Controller
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'min:8']
         ]);
-
-
         // Find User Id Role
         $roleId = Role::where('nama', 'User')->first();
         $credentials['role_id'] = $roleId->id;
@@ -55,7 +53,5 @@ class AuthController extends Controller
         Auth::login($user);
 
         return redirect()->intended('/');
-
-        // Test
     }
 }
