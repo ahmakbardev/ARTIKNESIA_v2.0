@@ -3,11 +3,12 @@
 namespace App\Livewire;
 
 use App\Models\Karya;
-use App\Models\Negotiation;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
 use Livewire\Component;
+use Illuminate\View\View;
+use App\Models\Negotiation;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Cache;
 
 class DetailArt extends Component
 {
@@ -18,6 +19,20 @@ class DetailArt extends Component
         $art->load(['category.jenisKarya', 'seniman']);
         $this->art = $art;
         $this->batch = $batch;
+
+        // Increment view count with cache. so, user can't spam
+        $this->incrementViewCount($art);
+    }
+
+    private function incrementViewCount(Karya $art): void
+    {
+        $userId = auth()->id() ?? 'guest'; // Handle user guest
+        $cacheKey = "viewed_art_{$art->id}_by_user_{$userId}";
+
+        if (!Cache::has($cacheKey)) {
+            $art->increment('view_count'); // Increment view count di DB
+            Cache::put($cacheKey, true, now()->addHours(24)); // Cache selama 24 jam
+        }
     }
 
     public function addToCart(int $id): void
