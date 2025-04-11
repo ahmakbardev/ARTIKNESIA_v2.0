@@ -57,8 +57,8 @@
                     <a href="{{ route('article.show', $item->slug) }}"
                         class="flex flex-col overflow-hidden rounded-xl border bg-white font-poppins shadow-md">
                         <img class="h-52 w-full object-cover object-center"
-                            {{-- src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->image) }}" --}}
-                            src="https://images.unsplash.com/flagged/photo-1572392640988-ba48d1a74457?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->image) }}"
+                            {{-- src="https://images.unsplash.com/flagged/photo-1572392640988-ba48d1a74457?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" --}}
                             alt="{{ $item->image_caption }}">
                         <div class="flex flex-1 flex-col justify-between gap-3 px-3 py-2 lg:p-4">
                             <h5 class="line-clamp-2 text-sm font-semibold leading-6 lg:text-lg">{{ $item->short_title }}</h5>
