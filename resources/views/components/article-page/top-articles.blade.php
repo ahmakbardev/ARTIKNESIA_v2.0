@@ -5,8 +5,7 @@
         <a href="{{ route('article.show', $articles[0]->slug) }}"
            class="relative col-span-2 block overflow-hidden rounded-xl border font-poppins shadow-md h-96 lg:h-[31.25rem]">
             <img class="h-full w-full object-cover object-center"
-                 {{-- src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($articles[0]->image) }}" --}}
-                 src="https://media.istockphoto.com/id/2149812631/photo/world-of-love-and-dreams-man-and-woman-reading-books-adorned-with-vibrant-speech-bubbles.webp?a=1&b=1&s=612x612&w=0&k=20&c=-eLlmEiX6p5NFr_PPnCo2iP79BPRmIZBeGMCehBE7F8="
+                 src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($articles[0]->image) }}"
                  alt="{{ $articles[0]->image_caption }}">
             <div class="absolute bottom-0 left-0 right-0 bg-neutral-200/90 px-5 py-3 lg:px-7">
                 <h5 class="md:text-md mb-2 font-semibold">{{ $articles[0]->short_title }}</h5>
@@ -36,8 +35,7 @@
             <a href="{{ route('article.show', $item->slug) }}"
                class="relative block h-72 overflow-hidden rounded-xl border font-poppins shadow-md lg:h-60">
                 <img class="h-full w-full object-cover object-center"
-                     {{-- src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->image) }}" --}}
-                     src="https://images.unsplash.com/photo-1545989253-02cc26577f88?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                     src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->image) }}"
                      alt="{{ $item->image_caption }}">
                 <div class="absolute bottom-0 left-0 right-0 bg-neutral-200/85 px-3 py-2">
                     <h5 class="mb-2 text-xs font-semibold">{{ $item->short_title }}</h5>
@@ -70,8 +68,7 @@
             <a href="{{ route('article.show', $item->slug) }}"
                class="relative block h-72 overflow-hidden rounded-xl border font-poppins shadow-md lg:h-60">
                 <img class="h-full w-full object-cover object-center lg:h-60"
-                     {{-- src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->image) }}" --}}
-                     src="https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
+                     src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->image) }}"
                      alt="{{ $item->image_caption }}">
                 <div class="absolute bottom-0 left-0 right-0 bg-neutral-200/85 px-3 py-2">
                     <h5 class="mb-2 text-xs font-semibold">{{ $item->short_title }}</h5>
