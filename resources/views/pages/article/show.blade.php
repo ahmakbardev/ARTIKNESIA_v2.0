@@ -52,8 +52,7 @@
             <div class="max-w-64 truncate font-poppins text-xs text-black/70">
                 <a href="/" class="hover:underline">Home</a> > <a href="{{ route('article.index') }}" class="hover:underline">Artikel</a> > {{ $article->title }}
             </div>
-            {{-- <h1 class="pt-2 text-lg font-bold md:px-0 md:pt-2 lg:text-5xl lg:leading-[1.3]">{{ $article->title }}</h1> --}}
-            <h1 class="pt-2 text-lg font-bold md:px-0 md:pt-2 lg:text-5xl lg:leading-[1.3]">Bukan Cuma Tren! Kolaborasi Itu Jurus Jitu Biar Seniman Cuan</h1>
+            <h1 class="pt-2 text-lg font-bold md:px-0 md:pt-2 lg:text-5xl lg:leading-[1.3]">{{ $article->title }}</h1>
             <div class="my-6 flex items-center justify-between gap-0.5 border-y border-neutral-200 pr-3 py-4 font-poppins">
                 <p class="text-sm text-neutral-9hp00 md:px-0">Published at {{ \Illuminate\Support\Carbon::parse($article->created_at)->format('M d, Y H.i') }} by
                     {{ $article->author->name }}
@@ -95,7 +94,7 @@
                     @endforeach
                 </ul>
             </div>
-            @include('components.carousel.posters-carousel')
+            {{-- @include('components.carousel.posters-carousel') --}}
         </div>
     </div>
     <livewire:article-recommend :article="$article" />
