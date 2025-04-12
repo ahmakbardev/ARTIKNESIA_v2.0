@@ -2,7 +2,7 @@
 
 @section('content')
     @include('components.carousel.carousel')
-    <div class="sale-produk pt-8 pb-3 px-2 md:px-5 lg:px-0 flex flex-col">
+    <div class="sale-produk pt-8 pb-3 px-2 md:px-5 lg:px-0 flex flex-col 2xl:pt-24">
         <div class="flex justify-between">
             <h1 class="text-base lg:text-2xl font-semibold">New Release!</h1>
             <a href="{{ route('art-list') }}" class="underline">Lihat semua karya</a>
@@ -98,21 +98,30 @@
             <a href="{{ route('article.index') }}" class="underline">Lihat semua artikel</a>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 my-5">
-
             @foreach ($articles as $item)
                 <a href="{{ route('article.show', $item->slug) }}"
-                   class="bg-white border shadow-md h-fit rounded-xl flex flex-col overflow-hidden font-poppins">
-                    <img class="w-full h-52 object-cover object-center"
-                         src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->image)  }}"
-                         alt="{{ $item->image_caption }}">
-                    <div class="flex flex-col p-2 justify-between h-32">
-                        <h1 class="text-sm lg:text-lg line-clamp-2 font-semibold leading-6">{{ $item->short_title }}</h1>
-                        <div class="flex gap-2 md:gap-4 items-center">
-                            <img class="w-8 md:w-12 rounded-full object-contain"
-                                 src="{{ asset('images/profile/default.png') }}" alt="">
-                            <div class="flex flex-col max-md:mt-3">
-                                <p class="text-xs md:text-sm font-semibold truncate">{{ $item->author->name }}</p>
-                                <p class="text-xs">{{ \Illuminate\Support\Carbon::parse($item->created_at)->format('d M Y') }}</p>
+                    class="flex flex-col overflow-hidden rounded-xl border bg-white font-poppins shadow-md">
+                    <img class="h-52 w-full object-cover object-center"
+                        src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->image) }}"
+                        alt="{{ $item->image_caption }}">
+                    <div class="flex flex-1 flex-col justify-between gap-3 px-3 py-2 lg:p-4">
+                        <h1 class="line-clamp-2 text-sm font-semibold leading-6 lg:text-lg">{{ $item->short_title }}</h1>
+                        <div class="flex sm:flex-row gap-3 text-[0.65rem] items-center justify-between md:gap-6">
+                            <div class="flex items-center gap-2 md:gap-2">
+                                <img class="w-4 rounded-full object-contain md:w-5"
+                                    src="{{ asset('images/profile/default.png') }}" alt="">
+                                <div class="flex flex-col">
+                                    <p class="truncate max-w-20 sm:max-w-none">
+                                        Oleh <span class="font-semibold">{{ $item->author->name }}</span>
+                                    </p>
+                                    <p>
+                                        {{ \Illuminate\Support\Carbon::parse($item->created_at)->format('d/m/Y') }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex gap-0.5 items-center text-neutral-500">
+                                <img src="{{ asset('images/icons/view-counts.svg') }}" class="size-4" alt="">
+                                <p class="font-semibold self-end relative top-[0.035rem]">{{ \App\Helpers\Universal::formatViewCount($item->view_count) }}</p>
                             </div>
                         </div>
                     </div>

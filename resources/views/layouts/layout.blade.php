@@ -35,12 +35,13 @@
 
 @include('layouts.components.navbar')
 
-<main class="lg:pt-5 lg:px-5 xl:px-36 2xl:px-96">
+<main class="lg:pt-5 lg:px-5 xl:px-36 2xl:px-60">
     @yield('content')
 </main>
 
 {{-- @include('layouts.components.toast') --}}
 @include('layouts.components.footer')
+<script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @livewireScripts
 <script>

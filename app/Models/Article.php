@@ -34,6 +34,6 @@ class Article extends Model
 
     public function getCategories(): array|Collection
     {
-        return ArticleTag::query()->whereIn('id', $this->tags ?? [])->pluck('name') ?? [];
+        return ArticleCategory::query()->whereIn('id', $this->categories ?? [])->pluck('name') ?? [];
     }
 }
