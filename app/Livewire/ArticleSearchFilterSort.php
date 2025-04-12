@@ -17,7 +17,6 @@ class ArticleSearchFilterSort extends Component
     use WithPagination;
 
     public $search = '';
-
     public $categoryId = '';
     public $categoryName = '';
     public $statusFilterCategory = false;
