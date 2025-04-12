@@ -30,11 +30,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-0.5">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis sit blanditiis neque, non magnam dolorem amet quae dolores ut quasi voluptates? Voluptas necessitatibus sapiente perspiciatis asperiores et, ad totam incidunt.
-                </p>
-            </div>
+           
             {{-- <div class="mb-3 flex flex-row flex-wrap gap-x-1.5 gap-y-1">
                 @foreach ($article->getTags() as $item)
                     <span class="rounded-[0.625rem] bg-primary px-2 py-1 text-xs font-semibold text-white">#{{ $item }}</span>
