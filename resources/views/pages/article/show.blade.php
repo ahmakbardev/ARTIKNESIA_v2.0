@@ -19,14 +19,17 @@
     @endphp
     <div class="relative mx-auto flex gap-y-3 pt-10">
         {{-- writed by --}}
-        <div class="hidden w-1/6 text-xs xl:flex flex-col gap-4 sticky top-36 self-start">
+        <div class="hidden w-1/6 text-xs flex-col gap-4 sticky top-36 self-start xl:flex">
             <h4 class="font-poppins font-semibold">Ditulis Oleh</h4>
-            <div class="flex items-center gap-2 px-2">
+            <div class="font-poppins flex items-center gap-2 px-2">
                 <img class="w-9 rounded-full object-contain"
                      src="{{ asset('images/profile/default.png') }}" alt="">
-                <div>
+                <div class="truncate">
                     <div class="truncate font-semibold">
                         {{ $article->author->name }}
+                    </div>
+                    <div class="truncate capitalize">
+                        {{$article->author->role->nama}}
                     </div>
                 </div>
             </div>
@@ -44,7 +47,7 @@
         </div>
 
         {{-- Main Article --}}
-        <div class="flex-1 px-2 lg:ml-8 lg:mr-12 lg:px-0">
+        <div class="flex-1 px-2 lg:mx-7 lg:px-0">
             <div class="max-w-64 truncate font-poppins text-xs text-black/70">
                 <a href="/" class="hover:underline">Home</a> > <a href="{{ route('article.index') }}" class="hover:underline">Artikel</a> > {{ $article->title }}
             </div>
@@ -68,6 +71,8 @@
             <div class="px-3 text-justify md:px-0">
                 {!! $article->description !!}
             </div>
+
+            <livewire:article-recommend :article="$article" />
         </div>
 
         {{-- share now --}}
@@ -93,7 +98,6 @@
             {{-- @include('components.carousel.posters-carousel') --}}
         </div>
     </div>
-    <livewire:article-recommend :article="$article" />
 @endsection
 
 @section('custom-seo')
