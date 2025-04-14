@@ -2,18 +2,22 @@
 
 @section('content')
     @include('components.carousel.carousel')
-    <div class="sale-produk pt-8 pb-3 px-2 md:px-5 lg:px-0 flex flex-col 2xl:pt-24">
+    <div class="sale-produk pt-8 pb-3 px-2 md:px-5 lg:px-0 flex flex-col 2xl:pt-28">
         <div class="flex justify-between">
-            <h1 class="text-base lg:text-2xl font-semibold">New Release!</h1>
+            <h1 class="text-base lg:text-2xl font-semibold">Find what you like!</h1>
             <a href="{{ route('art-list') }}" class="underline">Lihat semua karya</a>
         </div>
         <div class="flex my-5 justify-end relative">
-            <div
-                class="w-56 h-72 bg-primary absolute left-0 z-0 rounded-2xl hidden lg:flex items-center justify-center pr-3">
-                <h1 class="text-base lg:text-2xl font-semibold text-end">Lihat <br>
-                    Produk <br>
-                    yang lagi <br>
-                    Hype yuk!</h1>
+            <div class="w-[26rem] h-72 bg-gradient-to-r from-[#E3BD56] absolute left-0 z-30 rounded-2xl hidden lg:flex items-center pr-3 overflow-hidden">
+                <div class="absolute top-0 bottom-0 h-full z-[-1]">
+                    <img class="h-full" src="{{ asset('images/ornamen-bunga.png') }}" alt="">
+                </div>
+                <h1 class="text-base pl-8 text-white font-semibold lg:text-2xl">
+                    <span class="homepage-art-recommendation">Lihat Produk<br>yang Lagi</span>
+                    <div class="mt-3">
+                        <span class="bg-red-400 rounded-lg px-1.5 py-0.5 hype-art-recommendation">Hype</span>
+                    </div>
+                </h1>
             </div>
             <div class="w-full lg:w-5/6 h-full lg:h-72 z-10 grid grid-cols-2 md:grid-cols-4 items-center gap-5">
                 @foreach($art_recommendations as $item)
@@ -28,7 +32,8 @@
                                 <p class="leading-none text-sm font-semibold">{{ $item->seniman->name }}</p>
                             </div>
                             <img class="w-full h-40 object-cover object-center"
-                                 src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->images[0]) }}"
+                                 {{-- src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->images[0]) }}" --}}
+                                 src="https://www.vangoghmuseum.nl/assets/f9a7a187-484e-4821-b84a-79c836109029?w=1280&h=720&x=0&y=746&cropWidth=3294&cropHeight=2361&c=ef355d94b53d981d6ba2c9ac5116dccfe3f0ca2175f44705098aff189a84ee23"
                                  alt="">
                         </div>
                         <div class="flex flex-col p-2 z-[1] bg-white">
