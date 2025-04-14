@@ -10,7 +10,8 @@
             <div class="flex flex-col gap-y-1">
                 <h1 class="text-lg md:text-2xl font-bold">{{ $art->name }}</h1>
                 <span
-                    class="text-sm md:text-lg font-light  text-gray-500">{{ $art->category->nama . ' • ' .$art->category->jenisKarya->nama}}</span>
+                    class="text-sm md:text-lg font-light  text-gray-500">{{ $art->category->nama . ' • ' .$art->category->jenisKarya->nama . ' • ' . 'Dilihat ' . $art->view_count . ' kali'}}
+                </span>
                 <p class="text-2xl md:text-4xl font-extrabold">{{ \App\Helpers\Universal::idr($art->price) }}</p>
             </div>
             <p class="text-sm md:text-base font-light  text-gray-700 leading-tight text-justify">{{ $art->philosophy }}</p>
