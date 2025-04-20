@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.layout-v2')
 @section('title', 'ARTIKNESIA - ' . $article->short_title)
 @section('content')
     @php

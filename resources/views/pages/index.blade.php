@@ -1,29 +1,29 @@
-@extends('layouts.layout')
+@extends('layouts.layout-v2')
 
 @section('content')
     @include('components.carousel.carousel')
-    <div class="sale-produk pt-8 pb-3 px-2 md:px-5 lg:px-0 flex flex-col 2xl:pt-28">
-        <div class="flex justify-between">
-            <h1 class="text-base lg:text-2xl font-semibold">Find what you like!</h1>
-            <a href="{{ route('art-list') }}" class="underline">Lihat semua karya</a>
+    <div class="relative sale-produk mt-8 pt-8 pb-3 px-2 flex flex-col xs:mt-[5.75rem] sm:mt-[8.5rem] md:mt-16 md:px-5 lg:px-0 xl:mt-28 2xl:pt-10 2xl:mt-32">
+        <div class="pointer-events-none absolute top-0 left-0 right-0 z-10 lg:hidden">
+            <img class="w-full" src="{{ asset('images/art-recommendation/bg-mobile.svg') }}" alt="">
         </div>
-        <div class="flex my-5 justify-end relative">
-            <div class="w-[26rem] h-72 bg-gradient-to-r from-[#E3BD56] absolute left-0 z-30 rounded-2xl hidden lg:flex items-center pr-3 overflow-hidden">
-                <div class="absolute top-0 bottom-0 h-full z-[-1]">
-                    <img class="h-full" src="{{ asset('images/ornamen-bunga.png') }}" alt="">
-                </div>
-                <h1 class="text-base pl-8 text-white font-semibold lg:text-2xl">
-                    <span class="homepage-art-recommendation">Lihat Produk<br>yang Lagi</span>
-                    <div class="mt-3">
-                        <span class="bg-red-400 rounded-lg px-1.5 py-0.5 hype-art-recommendation">Hype</span>
-                    </div>
-                </h1>
-            </div>
-            <div class="w-full lg:w-5/6 h-full lg:h-72 z-10 grid grid-cols-2 md:grid-cols-4 items-center gap-5">
+        
+        <div class="pointer-events-none hidden absolute w-full bg-cover bg-top z-10 top-0 rounded-lg lg:block">
+            <img class="w-full" src="{{ asset('images/art-recommendation/bg-desktop.svg') }}" alt="">
+        </div>
+
+        <div class="z-[15] flex justify-center pt-16 md:mt-12 lg:mt-3 lg:pt-0 lg:mr-24 lg:justify-end 2xl:mr-32 2xl:mt-10">
+            <h1 class="text-xl text-[#344054] font-bold md:text-2xl 2xl:text-3xl">Lihat Produk yang Lagi <span class="ml-1 bg-red-400 rounded-lg px-1.5 py-0.5 hype-art-recommendation text-white">Hype</span></h1>
+            
+        </div>
+        <div class="flex mt-8 mb-1 justify-center relative lg:mb-6 lg:px-0">
+            <div class="pb-10 w-full h-full overflow-x-auto flex gap-5 lg:grid lg:grid-cols-4 lg:w-5/6 lg:pb-0 lg:overflow-x-visible">
                 @foreach($art_recommendations as $item)
                     <a href="{{ route('art', $item->slug) }}"
-                       class="bg-white border shadow-md h-full lg:h-5/6 rounded-xl flex flex-col overflow-hidden font-poppins group/profile">
+                       class="w-64 shrink-0 bg-white border shadow-[4px_4px_4px_rgba(0,0,0,0.1)] h-full rounded-xl flex flex-col overflow-hidden font-poppins group/profile lg:w-auto">
                         <div class="relative w-full h-3/5 z-[0]">
+                            <div class="absolute right-3 top-3 text-white bg-[#F79009] flex items-center px-2 py-1 text-xs rounded-lg">
+                                Populer <img src="{{ asset('images/icons/favorite.svg') }}" class="size-4 ml-0.5" alt="">
+                            </div>
                             <div
                                 class="absolute text-white bottom-2 left-2 flex gap-2 items-end translate-y-16 transition-all ease-in-out group-hover/profile:translate-y-0">
                                 <img class="size-10 object-cover rounded-full"
@@ -37,16 +37,19 @@
                                  alt="">
                         </div>
                         <div class="flex flex-col p-2 z-[1] bg-white">
-                            <h1 class="text-sm md:text-lg font-semibold line-clamp-2">{{ $item->name }}</h1>
-                            <h1 class="text-base md:text-xl font-bold leading-none">{{ \App\Helpers\Universal::idr($item->price) }}</h1>
-                            <div class="flex gap-1 items-center">
-                                <p class="text-xs md:text-sm text-slate-500 line-through">Rp. 1.000.000</p>
-                                <p class="py-1 text-xs md:text-xs bg-primary text-white px-2 rounded-full">55%</p>
+                            <h1 class="text-sm font-bold line-clamp-2 mb-3">{{ $item->name }}</h1>
+                            <h1 class="text-lg font-bold leading-none mb-1">{{ \App\Helpers\Universal::idr($item->price) }}</h1>
+                            <div class="flex gap-3 items-center">
+                                <p class="text-xs md:text-sm text-slate-500 line-through">Rp 1.000.000</p>
+                                <p class="py-1 text-xs md:text-xs bg-primary text-white px-2 rounded-xl">55%</p>
                             </div>
                         </div>
                     </a>
                 @endforeach
             </div>
+        </div>
+        <div class="px-3 text-right">
+            <a href="{{ route('art-list') }}" class="underline">Lihat semua karya</a>
         </div>
     </div>
     <div class="custom-art  px-2 md:px-5 lg:px-0 py-20 max-lg:flex max-lg:flex-col lg:grid lg:grid-cols-2 gap-4">
@@ -67,8 +70,7 @@
         </div>
     </div>
     <div class="pameran px-2 md:px-5 lg:px-0">
-        <div
-            class="relative w-full flex items-center h-80 bg-gradient-to-r from-[#DFBE65] to-[#866200] rounded-md mb-5">
+        <div class="relative w-full flex items-center h-80 bg-gradient-to-r from-[#DFBE65] to-[#866200] rounded-md mb-5">
             <div class="flex flex-col p-5 w-full md:w-1/2 justify-center items-start">
                 <h1 class="font-bold text-3xl md:text-5xl">Pameran Seni</h1>
                 <p class="my-4 text-white text-sm">Pameran Seni ARTIKNESIA, menghadirkan pengalaman yang tak terlupakan

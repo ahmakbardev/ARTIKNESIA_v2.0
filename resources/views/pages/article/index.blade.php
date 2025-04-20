@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.layout-v2')
 
 @section('content')
     <div class="artikel my-10 flex flex-col px-2 md:px-5 lg:px-0 max-w-[1444px] mx-auto">
