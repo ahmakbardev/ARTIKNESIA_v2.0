@@ -11,9 +11,8 @@
             <img class="w-full" src="{{ asset('images/art-recommendation/bg-desktop.svg') }}" alt="">
         </div>
 
-        <div class="z-[15] flex justify-center pt-16 md:mt-12 lg:mt-3 lg:pt-0 lg:mr-24 lg:justify-end 2xl:mr-32 2xl:mt-10">
-            <h1 class="text-xl text-[#344054] font-bold md:text-2xl 2xl:text-3xl">Lihat Produk yang Lagi <span class="ml-1 bg-red-400 rounded-lg px-1.5 py-0.5 hype-art-recommendation text-white">Hype</span></h1>
-            
+        <div class="z-[15] flex justify-center mt-16 md:mt-28 lg:justify-end lg:mt-3 lg:mr-24 xl:mt-8 xl:mr-28 2xl:mr-32">
+            <h1 class="text-xl text-[#344054] font-bold md:text-2xl xl:text-3xl">Lihat Produk yang Lagi <span class="ml-1 bg-red-400 rounded-lg px-1.5 py-0.5 hype-art-recommendation text-white">Hype</span></h1>
         </div>
         <div class="flex mt-8 mb-1 justify-center relative lg:mb-6 lg:px-0">
             <div class="pb-10 w-full h-full overflow-x-auto flex gap-5 lg:grid lg:grid-cols-4 lg:w-5/6 lg:pb-0 lg:overflow-x-visible">
