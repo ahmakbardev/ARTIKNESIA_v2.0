@@ -15,7 +15,7 @@
             <h1 class="text-xl text-[#344054] font-bold md:text-2xl xl:text-3xl">Lihat Produk yang Lagi <span class="ml-1 bg-red-400 rounded-lg px-1.5 py-0.5 hype-art-recommendation text-white">Hype</span></h1>
         </div>
         <div class="flex mt-8 mb-1 justify-center relative lg:mb-6 lg:px-0">
-            <div class="pb-10 w-full h-full overflow-x-auto flex gap-5 lg:grid lg:grid-cols-4 lg:w-5/6 lg:pb-0 lg:overflow-x-visible">
+            <div class="px-4 pb-10 w-full h-full overflow-x-auto flex gap-5 lg:grid lg:grid-cols-4 lg:w-5/6 lg:pb-0 lg:overflow-x-visible lg:px-0">
                 @foreach($art_recommendations as $item)
                     <a href="{{ route('art', $item->slug) }}"
                        class="w-64 shrink-0 bg-white border shadow-[4px_4px_4px_rgba(0,0,0,0.1)] h-full rounded-xl flex flex-col overflow-hidden font-poppins group/profile lg:w-auto">
