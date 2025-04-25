@@ -26,7 +26,9 @@
             @foreach($exhibitions as $item)
                 <div
                         class="rounded-lg border border-gray-300 flex flex-col gap-3 h-[400px] justify-between">
-                    <img src="{{ \Illuminate\Support\Facades\Storage::url($item->banner) }}"
+                    <img src="http://127.0.0.1:8000/storage/{{ $item->banner }}"
+                    {{-- http://127.0.0.1:8000/storage/{{ $exhibition->banner }} --}}
+                    {{-- \Illuminate\Support\Facades\Storage::url($item->banner) --}}
                          alt="Pameran"
                          class="w-full h-[200px] object-cover rounded-t-lg bg-black"/>
                     <div class="p-3 flex flex-col justify-between gap-5 h-[200px]">

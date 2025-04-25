@@ -18,6 +18,11 @@ class Exhibition extends Model
         return 'slug';
     }
 
+    public function images()
+    {
+        return $this->hasMany(ExhibitionImage::class);
+    }
+
     public function getFormattedDateRangeAttribute()
     {
         $startDate = Carbon::parse($this->start_date)->translatedFormat('d F Y');

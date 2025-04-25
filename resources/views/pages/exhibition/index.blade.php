@@ -2,7 +2,9 @@
 
 @section('content')
     <div class="min-h-[300px] md:min-h-[450px] w-full relative exhibition-banner flex items-center"
-         style="background-image: url('{{ \Illuminate\Support\Facades\Storage::url($exhibition->banner) }}')">
+         style="background-image: url('http://127.0.0.1:8000/storage/{{ $exhibition->banner }}')">
+         {{-- http://127.0.0.1:8000/storage/{{ $exhibition->banner }} --}}
+         {{-- \Illuminate\Support\Facades\Storage::url($exhibition->banner) --}} 
         <div class="container py-10 mx-auto h-fit hidden md:block">
             <div
                 class="bg-white w-1/2 lg:w-5/12 2xl:w-1/4 h-full rounded-lg py-6 px-8 flex flex-col gap-10">

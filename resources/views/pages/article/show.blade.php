@@ -131,7 +131,6 @@
 
     function shareToSocialMedia(socialMedia) {
         const currentURL = encodeURIComponent(window.location.href);
-
         let shareURL;
         switch (socialMedia) {
             case 'facebook':
