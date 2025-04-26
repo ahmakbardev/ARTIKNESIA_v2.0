@@ -26,7 +26,7 @@ class ArticleSearchFilterSort extends Component
     public $filterMonth = '';
     public $filterDate = '';
     public $activeSort = 'terbaru';
-    public int $categoryLimit = 2;
+    public int $categoryLimit = 10;
     // create for filter By Date
 
     #[On('updateFilterDate')]
@@ -37,7 +37,7 @@ class ArticleSearchFilterSort extends Component
 
     public function seeMoreCategory()
     {
-        $this->categoryLimit += 2;
+        $this->categoryLimit += 10;
     }
 
     public function filterCategory($categoryId, $categoryName)
