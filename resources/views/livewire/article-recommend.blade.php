@@ -6,9 +6,7 @@
                class="flex flex-col overflow-hidden rounded-xl border bg-white font-poppins shadow-md xl:aspect-[3/4] xl:flex-1">
                 <div class="xl:h-4/6">
                     <img class="h-60 w-full object-cover object-center xl:h-full"
-                         {{-- src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->image) }}" --}}
-                         src="https://images.unsplash.com/photo-1605721911519-3dfeb3be25e7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFydHxlbnwwfHwwfHx8MA%3D%3D"
-                         src="https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YXJ0fGVufDB8fDB8fHww"
+                         src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->image) }}"
                          alt="{{ $item->image_caption }}">
                 </div>
                 <div class="flex flex-1 flex-col justify-between gap-3 px-3 py-2 lg:p-4 xl:h-2/6 xl:px-3 xl:py-2">
