@@ -31,8 +31,7 @@
                                 <p class="leading-none text-sm font-semibold">{{ $item->seniman->name }}</p>
                             </div>
                             <img class="w-full h-40 object-cover object-center"
-                                 {{-- src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->images[0]) }}" --}}
-                                 src="https://www.vangoghmuseum.nl/assets/f9a7a187-484e-4821-b84a-79c836109029?w=1280&h=720&x=0&y=746&cropWidth=3294&cropHeight=2361&c=ef355d94b53d981d6ba2c9ac5116dccfe3f0ca2175f44705098aff189a84ee23"
+                                 src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->images[0]) }}"
                                  alt="">
                         </div>
                         <div class="flex flex-col p-2 z-[1] bg-white">
