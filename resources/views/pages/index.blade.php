@@ -45,10 +45,22 @@
                         </div>
                     </a>
                 @endforeach
+                <div class="hidden absolute right-6 top-0 bottom-0 items-center lg:flex xl:right-8 2xl:right-10">
+                    <a href="{{ route('art-list') }}">
+                        <div class="rounded-full bg-white shadow-[4px_4px_4px_rgba(0,0,0,0.1)] p-3 cursor-pointer">
+                            <img src="{{ asset('images/icons/arrow-right-art-recommend.svg') }}" class="size-5" alt="">
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="px-3 text-right">
-            <a href="{{ route('art-list') }}" class="underline">Lihat semua karya</a>
+        <div class="mt-2 px-3 text-right flex items-center justify-end gap-2 lg:hidden">
+            <div class="">Lihat semua karya</div> 
+            <a href="{{ route('art-list') }}">
+                <div class="rounded-full bg-white shadow-[4px_4px_4px_rgba(0,0,0,0.1)] p-3 cursor-pointer">
+                    <img src="{{ asset('images/icons/arrow-right-art-recommend.svg') }}" class="size-5" alt="">
+                </div>
+            </a>
         </div>
     </div>
     <div class="custom-art  px-2 md:px-5 lg:px-0 py-20 max-lg:flex max-lg:flex-col lg:grid lg:grid-cols-2 gap-4">
