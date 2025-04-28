@@ -17,8 +17,17 @@ class ExhibitionController extends Controller
 
         if (!$exhibition) {
             $exhibition = Exhibition::query()
-                ->inRandomOrder()
-                ->first();
+                // ->whereDate('updated_at', '>=', now())
+                ->orderBy('updated_at', 'desc')
+                ->take(2)
+                ->get();
+            // dd($exhibitions);
+
+            if (!$exhibition) {
+                $exhibition = Exhibition::query()
+                    ->inRandomOrder()
+                    ->first();
+            }
         }
 
         return view('pages.exhibition.index', compact('exhibition'));

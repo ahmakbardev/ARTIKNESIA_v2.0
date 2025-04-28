@@ -17,9 +17,61 @@
             ],
         ];
     @endphp
-    <div class="relative mx-auto flex max-w-[690px] flex-col gap-y-3 pt-10 2xl:max-w-[1024px]">
+    <div class="relative mx-auto flex gap-y-3 pt-10">
+        {{-- writed by --}}
+        <div class="hidden w-1/6 text-xs xl:flex flex-col gap-4 sticky top-36 self-start">
+            <h4 class="font-poppins font-semibold">Ditulis Oleh</h4>
+            <div class="flex items-center gap-2 px-2">
+                <img class="w-9 rounded-full object-contain"
+                     src="{{ asset('images/profile/default.png') }}" alt="">
+                <div>
+                    <div class="truncate font-semibold">
+                        {{ $article->author->name }}
+                    </div>
+                </div>
+            </div>
+           
+            {{-- <div class="mb-3 flex flex-row flex-wrap gap-x-1.5 gap-y-1">
+                @foreach ($article->getTags() as $item)
+                    <span class="rounded-[0.625rem] bg-primary px-2 py-1 text-xs font-semibold text-white">#{{ $item }}</span>
+                @endforeach
+            </div>
+            <div class="flex flex-row flex-wrap gap-x-1.5 gap-y-1">
+                @foreach ($article->getCategories() as $item)
+                    <span class="rounded-[0.625rem] bg-primary px-2 py-1 text-xs font-semibold text-white">{{ $item }}</span>
+                @endforeach
+            </div> --}}
+        </div>
+
+        {{-- Main Article --}}
+        <div class="flex-1 px-2 lg:ml-8 lg:mr-12 lg:px-0">
+            <div class="max-w-64 truncate font-poppins text-xs text-black/70">
+                <a href="/" class="hover:underline">Home</a> > <a href="{{ route('article.index') }}" class="hover:underline">Artikel</a> > {{ $article->title }}
+            </div>
+            <h1 class="pt-2 text-lg font-bold md:px-0 md:pt-2 lg:text-5xl lg:leading-[1.3]">{{ $article->title }}</h1>
+            <div class="my-6 flex items-center justify-between gap-0.5 border-y border-neutral-200 pr-3 py-4 font-poppins">
+                <p class="text-sm text-neutral-9hp00 md:px-0">Published at {{ \Illuminate\Support\Carbon::parse($article->created_at)->format('M d, Y H.i') }} by
+                    {{ $article->author->name }}
+                </p>
+                <div class="flex items-center flex-row-reverse gap-1 text-neutral-700">
+                    <div class="self-end text-sm">
+                        {{ \App\Helpers\Universal::formatViewCount($article->view_count) }}
+                    </div>
+                    <div>
+                        <img src="{{ asset('images/icons/eye-icon.svg') }}" class="size-5" alt="">
+                    </div>
+                </div>
+            </div>
+            <img class="mb-7 mt-2 h-96 w-full rounded-sm object-cover object-center max-sm:max-h-64 lg:rounded-2xl"
+                 src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($article->image) }}"
+                 alt="">
+            <div class="px-3 text-justify md:px-0">
+                {!! $article->description !!}
+            </div>
+        </div>
+
         {{-- share now --}}
-        <div class="absolute left-[calc(100%+2.7rem)] hidden w-[275px] text-sm xl:block">
+        <div class="hidden w-1/4 text-xs xl:block sticky top-36 self-start">
             <h4 class="mb-3 font-poppins font-semibold">Share Now</h4>
             <div class="mb-16">
                 <ul class="flex gap-4">
@@ -38,68 +90,10 @@
                     @endforeach
                 </ul>
             </div>
-            {{-- @include('components.carousel.article-carousel') --}}
-            <livewire:article-recommend :article="$article" />
-        </div>
-        {{-- writed by --}}
-        <div class="absolute right-[calc(100%+2rem)] hidden w-[235px] px-2 text-sm xl:block">
-            <h4 class="mb-2 font-poppins font-semibold">Ditulis Oleh</h4>
-            <div class="mb-6 flex items-center gap-2 border-b-2 border-[#D0D5DD] px-2 pb-6">
-                <img class="w-11 rounded-full object-contain"
-                     src="{{ asset('images/profile/default.png') }}" alt="">
-                <div class="flex flex-col">
-                    <div class="truncate font-semibold">
-                        {{ $article->author->name }}
-                    </div>
-                    <div class="font-medium">
-                        Designer
-                    </div>
-                </div>
-            </div>
-            <div class="mb-3 flex flex-row flex-wrap gap-x-1.5 gap-y-1">
-                @foreach ($article->getTags() as $item)
-                    <span class="rounded-[0.625rem] bg-primary px-2 py-1 text-sm font-semibold text-white">#{{ $item }}</span>
-                @endforeach
-
-            </div>
-            <div class="flex flex-row flex-wrap gap-x-1.5 gap-y-1">
-                @foreach ($article->getCategories() as $item)
-                    <span class="rounded-[0.625rem] bg-primary px-2 py-1 text-sm font-semibold text-white">{{ $item }}</span>
-                @endforeach
-            </div>
-        </div>
-
-        {{-- Main Article --}}
-        <div class="max-w-64 truncate font-poppins text-sm text-black/70">
-            <a href="/" class="hover:underline">Home</a> > <a href="{{ route('article.index') }}" class="hover:underline">Artikel</a> > {{ $article->title }}
-        </div>
-        <h1 class="px-3 pt-2 text-lg font-bold md:px-0 md:pt-0 lg:text-5xl lg:leading-[1.3]">{{ $article->title }}</h1>
-        <p class="font-poppins px-3 mt-6 text-sm md:px-0 text-neutral-700">Published at {{ \Illuminate\Support\Carbon::parse($article->created_at)->format('M d, Y H.i') }} | Last Updated at {{ \Illuminate\Support\Carbon::parse($article->updated_at)->format('M d, Y H.i') }} by {{$article->author->name}}</p>
-        <div class="mb-3 mt-2 flex flex-row-reverse items-center gap-0.5 border-b border-t border-neutral-500 px-4 py-3">
-            <div class="self-end">
-                {{ \App\Helpers\Universal::formatViewCount($article->view_count) }}
-            </div>
-            <div>
-                <img src="{{ asset('images/icons/bar-chart-icon.svg') }}" class="size-8" alt="">
-            </div>
-        </div>
-        <img class="mb-3 mt-2 h-96 w-full rounded-sm object-cover object-center max-sm:h-full lg:rounded-2xl"
-             {{-- src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($article->image) }}" --}}
-             src="https://images.unsplash.com/flagged/photo-1572392640988-ba48d1a74457?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-             alt="">
-        {{-- <div class="flex flex-row flex-wrap gap-3 px-3 md:px-0">
-            @foreach ($article->getTags() as $item)
-                <span class="text-white text-sm font-semibold bg-primary rounded-md px-5 py-3">{{ $item }}</span>
-            @endforeach
-            @foreach ($article->getCategories() as $item)
-                <span class="text-white text-sm font-semibold bg-primary rounded-md px-5 py-3">{{ $item }}</span>
-            @endforeach
-        </div>
-        <h6 class="px-3 md:px-0">Di tulis oleh: {{ $article->author->name }}</h6> --}}
-        <div class="px-3 md:px-0">
-            {!! $article->description !!}
+            {{-- @include('components.carousel.posters-carousel') --}}
         </div>
     </div>
+    <livewire:article-recommend :article="$article" />
 @endsection
 
 @section('custom-seo')
