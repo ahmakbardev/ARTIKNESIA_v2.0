@@ -39,26 +39,6 @@
         </button>
     </div>
 
-    <!-- Filter Status -->
-    <div class="flex gap-3 mb-3">
-        <button wire:click="setStatus('')"
-            class="text-sm px-3 py-1 rounded border {{ $status === '' ? 'bg-primary text-white' : 'bg-gray-200 text-gray-600' }}">
-            Semua Status
-        </button>
-        <button wire:click="setStatus('upcoming')"
-            class="text-sm px-3 py-1 rounded border {{ $status === 'upcoming' ? 'bg-primary text-white' : 'bg-gray-200 text-gray-600' }}">
-            Upcoming
-        </button>
-        <button wire:click="setStatus('ongoing')"
-            class="text-sm px-3 py-1 rounded border {{ $status === 'ongoing' ? 'bg-primary text-white' : 'bg-gray-200 text-gray-600' }}">
-            Ongoing
-        </button>
-        <button wire:click="setStatus('completed')"
-            class="text-sm px-3 py-1 rounded border {{ $status === 'completed' ? 'bg-primary text-white' : 'bg-gray-200 text-gray-600' }}">
-            Completed
-        </button>
-    </div>
-
     <div class="flex flex-col gap-3 items-center justify-center min-h-[500px] ">
         <div wire:loading.delay.shortest class="flex justify-center items-center">
             <div class="flex space-x-2 animate-pulse w-fit h-fit">
@@ -90,6 +70,7 @@
                         </div>
                         <div class="w-full h-fit rounded-lg grid grid-cols-2 justify-between items-center">
                             <p class="text-sm font-semibold">{{ $item->formatted_price }}</p>
+                            <p class="text-sm font-semibold">{{ $item->status }}</p>
                             <a href="{{ $item->link }}"
                                 class="bg-primary text-center text-sm text-white font-normal px-0 py-1 rounded-lg">
                                 Beli Sekarang
