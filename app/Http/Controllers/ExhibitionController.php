@@ -17,16 +17,16 @@ class ExhibitionController extends Controller
 
         if (!$exhibitions) {
             $exhibitions = Exhibition::query()
-                // ->whereDate('updated_at', '>=', now())
+                ->where('status', 'active')
                 ->orderBy('updated_at', 'desc')
                 ->take(2)
                 ->get();
-            // dd($exhibitions);
 
             if (!$exhibitions) {
                 $exhibitions = Exhibition::query()
                     ->inRandomOrder()
-                    ->first();
+                    ->take(2)
+                    ->get();
             }
         }
 

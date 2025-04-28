@@ -10,11 +10,9 @@ use Illuminate\Support\Carbon;
 class ExhibitionList extends Component
 {
     use WithPagination;
-
     public $city = '';
     public $category = '';
     public $sortDate = 'asc';
-    public $status = '';   // upcoming, ongoing, complete
 
     public function setCity($city)
     {
@@ -35,12 +33,6 @@ class ExhibitionList extends Component
         $this->resetPage();
     }
 
-    public function setStatus($status)
-    {
-        $this->status = $status;
-        $this->resetPage();
-    }
-
     public function render()
     {
         $query = Exhibition::query()->where('status', '!=', 'draft');;
@@ -51,10 +43,6 @@ class ExhibitionList extends Component
 
         if ($this->category) {
             $query->where('category', $this->category);
-        }
-
-        if ($this->status) {
-            $query->where('status', $this->status);
         }
 
         $query->orderBy('start_date', $this->sortDate);
