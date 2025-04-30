@@ -5,37 +5,45 @@
     <div class="artikel flex flex-col gap-7 lg:flex-row lg:px-0">
 
         {{-- Filter/Sort --}}
-        <div class="mx-auto w-[17.5rem] self-start rounded-lg border border-neutral-400 bg-neutral-50 p-4 lg:mx-0">
+        <div class="mx-auto w-[15.5rem] self-start rounded-lg border border-neutral-400 bg-neutral-50 p-4 lg:mx-0">
             <div class="mb-4 flex items-center">
-                <img src="{{ asset('images/icons/filter.svg') }}" class="mr-2 size-6" alt="">
-                <h4 class="w-full border-b-2 border-primary text-xl font-semibold">Filter</h4>
+                <img src="{{ asset('images/icons/filter.svg') }}" class="mr-2 size-5" alt="">
+                <h4 class="w-full border-b-2 border-primary font-semibold">Filter</h4>
             </div>
             <div class="mb-8 text-[0.75rem]">
                 <h6 class="mb-1.5 font-medium">Kategori</h6>
-                <div class="flex flex-wrap gap-1.5">
+                <div class="mb-2 flex flex-wrap gap-1.5">
                     @foreach ($categories as $item)
                         <button type="button" wire:click="filterCategory('{{ $item->id }}', '{{ $item->name }}')"
                             class="{{ $statusFilterCategory && $categoryId == $item->id ? 'bg-primary text-white border-primary' : 'border-primary-darker' }} rounded-xl border px-2 py-1 font-poppins font-medium text-primary-darker hover:border-primary hover:bg-primary-darker hover:text-white">{{ $item->name }}</button>
                     @endforeach
                 </div>
+                @if ($categoryLimit < $categoryCount)
+                    <div class="flex justify-end">
+                        <span wire:click="seeMoreCategory()" class="text-black/70 cursor-pointer underline">
+                            Lihat Lebih
+                        </span>
+                    </div>
+                @endif
             </div>
             <div class="mb-4 flex items-center">
-                <img src="{{ asset('images/icons/sorting.svg') }}" class="mr-2 size-6" alt="">
-                <h4 class="w-full border-b-2 border-primary text-xl font-semibold">Urutkan</h4>
+                <img src="{{ asset('images/icons/sorting.svg') }}" class="mr-2 size-5" alt="">
+                <h4 class="w-full border-b-2 border-primary font-semibold">Urutkan</h4>
             </div>
-            <div class="mb-4 flex justify-between text-[0.875rem]">
+            <div class="mb-4 flex justify-between text-xs">
                 @foreach ($sortingOptions as $item)
                     <button wire:click="sortBy('{{ strtolower($item) }}')"
                         class="{{ $activeSort === strtolower($item) ? 'bg-primary text-white border-primary' : 'border-primary-darker' }} rounded-xl border px-2 py-1 font-poppins font-medium text-primary-darker hover:border-primary hover:bg-primary-darker hover:text-white">{{ $item }}</button>
                 @endforeach
             </div>
+            
             {{-- Datepicker --}}
             <div class="relative">
                 <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3.5">
                     <img src="{{ asset('images/icons/calendar.svg') }}" class="size-4" alt="">
                 </div>
                 <input type="text" id="datepicker-autohide" datepicker datepicker-autohide datepicker-buttons datepicker-format="yyyy/mm/dd" datepicker-autoselect-today
-                       class="block w-full rounded-[0.625rem] border border-primary-darker bg-gray-50 py-[0.375rem] pl-8 text-sm text-primary-darker placeholder-primary placeholder:font-semibold focus:outline-primary-darker"
+                       class="block w-full rounded-[0.625rem] border border-primary-darker bg-gray-50 py-[0.375rem] pl-8 text-xs text-primary-darker placeholder-primary placeholder:font-semibold focus:outline-primary-darker"
                        placeholder="Tanggal Terbit" wire:ignore readonly>
                 <div class="pointer-events-none absolute inset-y-0 end-0 flex items-center ps-3.5">
                     <img src="{{ asset('images/icons/arrow-right.svg') }}" class="mr-2 size-4" alt="">
@@ -52,7 +60,7 @@
             @else
                 <h3 class="mb-3 text-lg font-bold lg:mb-9">Semua Artikel</h3>
             @endif
-            <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
+            <div class="grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3">
                 @foreach ($articles as $item)
                     <a href="{{ route('article.show', $item->slug) }}"
                         class="flex flex-col overflow-hidden rounded-xl border bg-white font-poppins shadow-md">
