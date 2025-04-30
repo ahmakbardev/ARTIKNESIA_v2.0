@@ -38,11 +38,21 @@
                     </div>
                 </div>
 
+                {{-- Vidio Embed --}}
+                <div class="mt-2">
+                    <h4 class="mb-3 font-poppins font-semibold text-xl ">Vidio Pameran</h4>
+                    <iframe width="560" height="315" src="{{ $exhibition->link_vidio }}" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+
                 {{-- Deskripsi Pameran  --}}
                 <div class="flex flex-col gap-5">
                     <h1 class="text-xl font-semibold">Deskripsi</h1>
                     <p class="text-sm">{{ $exhibition->description }}</p>
                 </div>
+
 
                 {{-- For Sharing Sosmed --}}
                 <div class="mt-2">
@@ -89,9 +99,9 @@
                         <h1 class="text-xl font-bold">Harga Tiket</h1>
                         <div class="w-full h-fit rounded-lg grid grid-cols-2 justify-between items-center">
                             <p class="text-lg font-semibold">{{ $exhibition->formatted_price }}</p>
-                            <a href="{{ $exhibition->link }}"
-                                class="bg-primary text-center text-base text-white font-normal px-0 py-1 rounded-lg transition-colors">
-                                Beli Sekarang
+                            <a href="{{ $exhibition->status != 'completed' ? $exhibition->link : 'javascript:void(0)' }}"
+                                class="bg-primary text-center text-base text-white font-normal px-0 py-1 rounded-lg transition-colors ">
+                                {{ $exhibition->status != 'completed' ? 'Beli Sekarang' : 'Tutup' }}
                             </a>
                         </div>
                     </div>

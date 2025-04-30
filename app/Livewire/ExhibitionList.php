@@ -10,11 +10,9 @@ use Illuminate\Support\Carbon;
 class ExhibitionList extends Component
 {
     use WithPagination;
-
     public $city = '';
     public $category = '';
     public $sortDate = 'asc';
-    public $status = '';   // upcoming, ongoing, complete
 
     public function setCity($city)
     {
@@ -35,15 +33,9 @@ class ExhibitionList extends Component
         $this->resetPage();
     }
 
-    public function setStatus($status)
-    {
-        $this->status = $status;
-        $this->resetPage();
-    }
-
     public function render()
     {
-        $query = Exhibition::query()->where('status', '!=', 'draft');;
+        $query = Exhibition::query()->where('status', '!=', 'draft');
 
         if ($this->city) {
             $query->where('city', $this->city);
@@ -53,15 +45,11 @@ class ExhibitionList extends Component
             $query->where('category', $this->category);
         }
 
-        if ($this->status) {
-            $query->where('status', $this->status);
-        }
-
         $query->orderBy('start_date', $this->sortDate);
 
         $cities = Exhibition::query()->groupBy('city')->orderBy('city', 'asc')->select('city')->get();
         $categories = Exhibition::query()->groupBy('category')->orderBy('category', 'asc')->select('category')->get();
-
+  
         return view('livewire.exhibition-list', [
             'exhibitions' => $query->paginate(6),
             'cities' => $cities,

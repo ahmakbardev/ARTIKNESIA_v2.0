@@ -39,26 +39,6 @@
         </button>
     </div>
 
-    <!-- Filter Status -->
-    <div class="flex gap-3 mb-3">
-        <button wire:click="setStatus('')"
-            class="text-sm px-3 py-1 rounded border {{ $status === '' ? 'bg-primary text-white' : 'bg-gray-200 text-gray-600' }}">
-            Semua Status
-        </button>
-        <button wire:click="setStatus('upcoming')"
-            class="text-sm px-3 py-1 rounded border {{ $status === 'upcoming' ? 'bg-primary text-white' : 'bg-gray-200 text-gray-600' }}">
-            Upcoming
-        </button>
-        <button wire:click="setStatus('ongoing')"
-            class="text-sm px-3 py-1 rounded border {{ $status === 'ongoing' ? 'bg-primary text-white' : 'bg-gray-200 text-gray-600' }}">
-            Ongoing
-        </button>
-        <button wire:click="setStatus('completed')"
-            class="text-sm px-3 py-1 rounded border {{ $status === 'completed' ? 'bg-primary text-white' : 'bg-gray-200 text-gray-600' }}">
-            Completed
-        </button>
-    </div>
-
     <div class="flex flex-col gap-3 items-center justify-center min-h-[500px] ">
         <div wire:loading.delay.shortest class="flex justify-center items-center">
             <div class="flex space-x-2 animate-pulse w-fit h-fit">
@@ -68,16 +48,12 @@
             </div>
         </div>
 
-        <div wire:loading.delay.remove
-             class="grid  grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
-            @foreach($exhibitions as $item)
-                <div
-                        class="rounded-lg border border-gray-300 flex flex-col gap-3 h-[400px] justify-between">
-                    <img src="http://127.0.0.1:8000/storage/{{ $item->banner }}"
-                    {{-- http://127.0.0.1:8000/storage/{{ $exhibition->banner }} --}}
-                    {{-- \Illuminate\Support\Facades\Storage::url($item->banner) --}}
-                         alt="Pameran"
-                         class="w-full h-[200px] object-cover rounded-t-lg bg-black"/>
+        <div wire:loading.delay.remove class="grid  grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
+            @foreach ($exhibitions as $item)
+                <div class="rounded-lg border border-gray-300 flex flex-col gap-3 h-[400px] justify-between">
+                    <img src="http://127.0.0.1:8000/storage/{{ $item->banner }}" {{-- http://127.0.0.1:8000/storage/{{ $exhibition->banner }} --}}
+                        {{-- \Illuminate\Support\Facades\Storage::url($item->banner) --}} alt="Pameran"
+                        class="w-full h-[200px] object-cover rounded-t-lg bg-black" />
                     <div class="p-3 flex flex-col justify-between gap-5 h-[200px]">
                         <div class="group">
                             <a href="{{ route('exhibition.show', $item->slug) }}"
@@ -95,9 +71,10 @@
                         </div>
                         <div class="w-full h-fit rounded-lg grid grid-cols-2 justify-between items-center">
                             <p class="text-sm font-semibold">{{ $item->formatted_price }}</p>
-                            <a href="{{ $item->link }}"
-                                class="bg-primary text-center text-sm text-white font-normal px-0 py-1 rounded-lg">
-                                Beli Sekarang
+                            <p class="text-sm font-semibold">{{ $item->status }}</p>
+                            <a href="{{ $item->status != 'completed' ? $item->link : 'javascript:void(0)' }}"
+                                class="bg-primary text-center text-base text-white font-normal px-0 py-1 rounded-lg transition-colors ">
+                                {{ $item->status != 'completed' ? 'Beli Sekarang' : 'Tutup' }}
                             </a>
                         </div>
                     </div>
