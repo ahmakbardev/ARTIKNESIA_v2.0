@@ -11,7 +11,6 @@
                     <div class="relative h-full w-full">
                         <img class="absolute inset-0 -z-10 h-[542px] w-full object-cover object-center"
                              src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($exhibition->image) }}"
-                             {{-- src="https://assets.museummacan.org/2018/11/16/5beee515d7f8411784324803.jpeg" --}}
                              alt="">
                         <div class="absolute inset-0 h-[542px] bg-neutral-600 bg-opacity-10"></div>
                         <div class="absolute inset-0 z-30 flex h-[542px] w-full items-center justify-center">
