@@ -14,7 +14,8 @@ class ExhibitionController extends Controller
         $exhibitions = Exhibition::query()
             ->where('is_primary', 1)
             ->orderBy('updated_at', 'desc')
-            ->first();
+            ->take(1)
+            ->get();
 
         if (!$exhibitions) {
             $exhibitions = Exhibition::query()

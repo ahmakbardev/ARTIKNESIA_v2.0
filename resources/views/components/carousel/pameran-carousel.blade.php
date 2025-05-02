@@ -10,8 +10,8 @@
                 <div class="swiper-slide h-full w-full">
                     <div class="relative h-full w-full">
                         <img class="absolute inset-0 -z-10 h-[542px] w-full object-cover object-center"
-                             {{-- src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->image) }}" --}}
-                             src="https://assets.museummacan.org/2018/11/16/5beee515d7f8411784324803.jpeg"
+                             src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($exhibition->image) }}"
+                             {{-- src="https://assets.museummacan.org/2018/11/16/5beee515d7f8411784324803.jpeg" --}}
                              alt="">
                         <div class="absolute inset-0 h-[542px] bg-neutral-600 bg-opacity-10"></div>
                         <div class="absolute inset-0 z-30 flex h-[542px] w-full items-center justify-center">
@@ -19,9 +19,9 @@
                                 <div class="flex flex-col items-center gap-1">
                                     <h2 class="font-poppins text-3xl font-bold">{{ $exhibition->name }}</h2>
                                     <p class="font-poppins text-lg font-semibold">{{ $exhibition->formatted_date_range }}</p>
-                                    <p class="font-poppins text-lg font-semibold">{{ $exhibition->city }}</p>
+                                    <p class="font-poppins text-lg font-semibold capitalize">{{ $exhibition->city }}</p>
                                 </div>
-                                <a href="{{ route('exhibition.show', $exhibition->slug) }}" class="mt-4 rounded-md bg-white px-14 py-2 font-poppins font-semibold text-lg text-black">
+                                <a href="{{ route('exhibition.show', $exhibition->slug) }}" class="mt-4 rounded-md bg-white px-14 py-2 font-poppins text-lg font-semibold text-black">
                                     Beli Tiket
                                 </a>
                             </div>
@@ -29,47 +29,28 @@
                     </div>
                 </div>
             @endforeach
-            <div class="swiper-slide h-full w-full">
-                <div class="relative h-full w-full">
-                    <img class="absolute inset-0 -z-10 h-[542px] w-full object-cover object-center"
-                         {{-- src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->image) }}" --}}
-                         src="{{ asset('images/gambar-test.png') }}"
-                         alt="">
-                    <div class="absolute inset-0 h-[542px] bg-neutral-600 bg-opacity-35"></div>
-                    <div class="absolute inset-0 z-30 flex h-[542px] w-full items-center justify-center">
-                        <div class="flex flex-col items-center gap-3 text-white drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)]">
-                            <div class="flex flex-col items-center gap-1">
-                                <h2 class="font-poppins text-3xl font-bold">Pameran Nusantara</h2>
-                                <p class="font-poppins text-lg font-semibold">26 - 29 Agustus 2025</p>
-                                <p class="font-poppins text-lg font-semibold">Malang Creative center</p>
-                            </div>
-                            <button class="mt-4 rounded-md bg-white px-14 py-2 font-poppins font-semibold text-lg text-black">
-                                Beli Tiket
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
         {{-- next/prev --}}
-        <div class="z-10 transition-all ease-in-out md:block">
-            <div class="prev absolute bottom-5 left-16 z-10 flex h-10 w-10 transform cursor-pointer items-center justify-center rounded-full bg-white text-black shadow-[4px_4px_4px_rgba(0,0,0,0.25)] transition-all delay-75 ease-in-out lg:left-24">
-                <svg class="size-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                     xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
-                    </path>
-                </svg>
+        @if (count($exhibitions) > 1)
+            <div class="z-10 transition-all ease-in-out md:block">
+                <div class="prev absolute bottom-5 left-16 z-10 flex h-10 w-10 transform cursor-pointer items-center justify-center rounded-full bg-white text-black shadow-[4px_4px_4px_rgba(0,0,0,0.25)] transition-all delay-75 ease-in-out lg:left-24">
+                    <svg class="size-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                        </path>
+                    </svg>
+                </div>
+                <div
+                     class="next absolute bottom-5 right-16 z-10 flex h-10 w-10 transform cursor-pointer items-center justify-center rounded-full bg-white text-black shadow-[4px_4px_4px_rgba(0,0,0,0.25)] transition-all delay-75 ease-in-out lg:right-24">
+                    <svg class="size-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                        </path>
+                    </svg>
+                </div>
             </div>
-            <div
-                 class="next absolute bottom-5 right-16 z-10 flex h-10 w-10 transform cursor-pointer items-center justify-center rounded-full bg-white text-black shadow-[4px_4px_4px_rgba(0,0,0,0.25)] transition-all delay-75 ease-in-out lg:right-24">
-                <svg class="size-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                     xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                    </path>
-                </svg>
-            </div>
-        </div>
+        @endif
     </div>
 </div>
 
