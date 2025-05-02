@@ -3,8 +3,8 @@
 @section('content')
     <div class="mb-24">
         {{-- HERO --}}
-        <div class="relative mx-auto mb-20 flex h-[542px] max-w-[1440px] justify-end">
-            <div class="absolute bottom-0 left-10 top-0 z-10 flex items-center">
+        <div class="relative mx-auto mb-20 flex max-w-[1440px] flex-col-reverse justify-end gap-7 lg:gap-0 lg:h-[542px] lg:flex-row">
+            <div class="static bottom-0 left-10 top-0 z-10 items-center lg:absolute lg:flex">
                 <div class="relative flex flex-col items-center justify-center px-7 py-5 text-white shadow-[6px_6px_4px_rgba(0,0,0,0.25)]">
                     <img src="{{ asset('images/pameran/background-cta.png') }}" class="pointer-events-none absolute left-0 top-0 -z-10 h-full w-full object-cover" />
                     <h2 class="text-center font-poppins text-2xl font-semibold drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)]">Mau Menjadi Mitra <br> Artiknesia?</h2>
@@ -16,13 +16,13 @@
                     </a>
                 </div>
             </div>
-            <div class="h-full w-[75%] max-w-[1280px] shadow-[0_6px_4px_rgba(0,0,0,0.25)]">
+            <div class="h-full w-full max-w-[1280px] shadow-[0_6px_4px_rgba(0,0,0,0.25)] lg:w-[75%]">
                 @include('components.carousel.pameran-carousel')
             </div>
         </div>
         {{-- LIST PAMERAN --}}
-        <div class="mx-auto max-w-[1160px] px-10 2xl:px-2">
-                <livewire:exhibition-list />
+        <div class="mx-auto max-w-[1160px] px-5 md:px-10 2xl:px-2">
+            <livewire:exhibition-list />
         </div>
     </div>
 @endsection

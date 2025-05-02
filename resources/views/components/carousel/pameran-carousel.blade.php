@@ -50,11 +50,11 @@
                     </div>
                 </div>
             </div>
-           
         </div>
+
         {{-- next/prev --}}
         <div class="z-10 transition-all ease-in-out md:block">
-            <div class="prev absolute bottom-5 left-24 z-10 flex h-10 w-10 transform cursor-pointer items-center justify-center rounded-full bg-white text-black shadow-[4px_4px_4px_rgba(0,0,0,0.25)] transition-all delay-75 ease-in-out">
+            <div class="prev absolute bottom-5 left-16 z-10 flex h-10 w-10 transform cursor-pointer items-center justify-center rounded-full bg-white text-black shadow-[4px_4px_4px_rgba(0,0,0,0.25)] transition-all delay-75 ease-in-out lg:left-24">
                 <svg class="size-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                      xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
@@ -62,7 +62,7 @@
                 </svg>
             </div>
             <div
-                 class="next absolute bottom-5 right-24 z-10 flex h-10 w-10 transform cursor-pointer items-center justify-center rounded-full bg-white text-black shadow-[4px_4px_4px_rgba(0,0,0,0.25)] transition-all delay-75 ease-in-out">
+                 class="next absolute bottom-5 right-16 z-10 flex h-10 w-10 transform cursor-pointer items-center justify-center rounded-full bg-white text-black shadow-[4px_4px_4px_rgba(0,0,0,0.25)] transition-all delay-75 ease-in-out lg:right-24">
                 <svg class="size-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                      xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
