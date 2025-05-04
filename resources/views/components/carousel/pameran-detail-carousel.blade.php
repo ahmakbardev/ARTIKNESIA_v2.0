@@ -14,7 +14,6 @@
                     <div class="relative">
                         <img class="w-full h-[400px] object-cover object-center"
                              src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->image_path) }}"
-                             {{-- src="https://img.jakpost.net/c/2022/07/21/2022_07_21_128135_1658388747._large.jpg" --}}
                              alt="{{ $item->image_path }}">
                     </div>
                 </div>
@@ -29,7 +28,7 @@
 
 <!-- Modal Zoom -->
 <div id="zoomModal" class="fixed inset-0 z-[110] hidden flex bg-black/80 items-center justify-center">
-    <img id="zoomedImage" src="" class="transform scale-75 max-w-full max-h-full rounded-lg" alt="Zoomed Image">
+    <img id="zoomedImage" src="" class="transform scale-75 max-w-full max-h-full rounded-lg" alt="img">
     <button onclick="closeZoom()" class="absolute right-5 top-5 text-white bg-red-500 rounded-full flex items-center justify-center w-8 h-8"><i class="fa-solid fa-xmark"></i></button>
 </div>
 

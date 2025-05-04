@@ -26,8 +26,7 @@
             <div class="w-full lg:w-4/6">
                 {{-- GAMBAR --}}
                 <div class="h-[400px] w-full rounded-2xl">
-                    {{-- <img class="h-full w-full object-cover" src="https://img.jakpost.net/c/2022/07/21/2022_07_21_128135_1658388747._large.jpg" alt=""> --}}
-                         @include('components.carousel.pameran-detail-carousel')
+                    @include('components.carousel.pameran-detail-carousel')
                 </div>
 
                 {{-- DESKRIPSI --}}
