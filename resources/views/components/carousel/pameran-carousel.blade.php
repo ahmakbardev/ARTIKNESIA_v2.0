@@ -16,7 +16,7 @@
                         <div class="absolute inset-0 z-30 flex h-[542px] w-full items-center justify-center">
                             <div class="flex flex-col items-center gap-3 text-white drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)]">
                                 <div class="flex flex-col items-center gap-1">
-                                    <h2 class="font-poppins text-3xl font-bold">{{ $exhibition->name }}</h2>
+                                    <h2 class="font-poppins text-3xl font-bold text-center">{{ $exhibition->name }}</h2>
                                     <p class="font-poppins text-lg font-semibold">{{ $exhibition->formatted_date_range }}</p>
                                     <p class="font-poppins text-lg font-semibold capitalize">{{ $exhibition->city }}</p>
                                 </div>

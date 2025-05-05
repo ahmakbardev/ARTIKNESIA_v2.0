@@ -3,24 +3,24 @@
 @endphp
 
 <div class="flex w-full flex-col gap-4">
-    <div id="{{ $isSlider ? 'cityScroll' : '' }}" class="{{ $isSlider ? 'overflow-x-scroll hide-scrollbar' : '' }} text-black w-full border-b border-b-black font-medium">
-        <div class="{{ $isSlider ? 'w-max' : '' }} flex">
+    <div id="{{ $isSlider ? 'cityScroll' : '' }}" class="{{ $isSlider ? 'overflow-x-scroll hide-scrollbar' : '' }} w-full border-b border-b-black font-medium text-black">
+        <div class="{{ $isSlider ? 'w-max' : 'grid grid-cols-2' }} md:flex">
             <!-- Filter Kota -->
             <button wire:click="setCity('')"
-                    class="{{ !$city ? 'border-b-4 border-b-black font-bold' : '' }} {{ $isSlider ? 'min-w-[250px]' : 'flex-1' }} px-5 py-3">
+                    class="{{ !$city ? 'border-b-4 border-b-black font-bold' : '' }} {{ $isSlider ? 'min-w-[200px] md:min-w-[250px]' : 'flex-1' }} px-5 py-3">
                 Semua Pameran
             </button>
             @foreach ($cities as $item)
                 <button wire:click="setCity('{{ $item->city }}')"
-                        class="{{ $city === $item->city ? 'border-b-4 border-b-black font-bold' : '' }} {{ $isSlider ? 'min-w-[250px]' : 'flex-1' }} px-5 py-3">
+                        class="{{ $city === $item->city ? 'border-b-4 border-b-black font-bold' : '' }} {{ $isSlider ? 'min-w-[200px] md:min-w-[250px]' : 'flex-1' }} px-5 py-3">
                     <span class="capitalize">{{ $item->city }}</span>
                 </button>
             @endforeach
         </div>
     </div>
-    <div class="my-4 flex justify-between gap-4 flex-col md:gap-2 md:flex-row">
+    <div class="my-4 flex flex-col justify-between gap-4 md:flex-row md:gap-2">
         <!-- Filter Kategori -->
-        <div class="flex flex-wrap items-center gap-3 md:gap-4 md:w-3/4">
+        <div class="flex flex-wrap items-center gap-3 md:w-3/4 md:gap-4">
             <button wire:click="setCategory('')"
                     class="{{ !$category ? 'bg-[#E0B745] text-white' : 'bg-transparent text-primary' }} rounded-[0.625rem] border border-[#E0B745] px-2 py-1 font-poppins text-xs font-semibold">
                 Semua Kategori

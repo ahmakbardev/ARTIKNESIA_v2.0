@@ -74,7 +74,6 @@
                 progressBar.style.backgroundColor = "transparent";
                 progressBar.style.width = '0%';
             }
-            // Mengurangi ukuran dot secara menyeluruh ketika progress mencapai 100%
         });
     });
 
@@ -86,20 +85,7 @@
         modal.classList.remove('hidden');
     }
 
-    // Fungsi tutup modal zoom
     function closeZoom() {
         document.getElementById('zoomModal').classList.add('hidden');
     }
-
-    // Zoom button event listeners
-    // document.addEventListener('DOMContentLoaded', () => {
-    //     document.querySelectorAll('.zoom-btn').forEach(function(btn) {
-    //         btn.addEventListener('click', function() {
-    //             const slide = btn.closest('.swiper-slide');
-    //             const img = slide.querySelector('img');
-    //             const src = img.getAttribute('src');
-    //             openZoom(src);
-    //         });
-    //     });
-    // });
 </script>

@@ -17,12 +17,12 @@
             ],
         ];
     @endphp
-    <div class="mx-auto my-7 max-w-[1444px] px-6 py-2 overflow-x-hidden lg:px-10 xl:px-16 2xl:px-0">
+    <div class="mx-auto my-7 max-w-[1444px] px-6 py-2 overflow-x-hidden lg:px-10 xl:px-16 2xl:px-2">
         <div class="mb-7 flex items-center gap-3 text-sm font-medium">
             <a href="/" class="hover:underline">Home</a><span class="text-lg">></span> <a href="{{ route('exhibition.index') }}" class="hover:underline">Pameran</a><span class="text-lg">></span>{{ $exhibition->name }}
         </div>
 
-        <div class="flex w-full flex-col gap-6 lg:flex-row xl:gap-12">
+        <div class="flex w-full mb-36 flex-col gap-6 lg:flex-row xl:gap-12">
             <div class="w-full lg:w-4/6">
                 {{-- GAMBAR --}}
                 <div class="h-[400px] w-full rounded-2xl">
@@ -102,6 +102,7 @@
             </div>
         </div>
     </div>
+
     <script>
         function copyURL() {
             navigator.clipboard.writeText(window.location.href)
