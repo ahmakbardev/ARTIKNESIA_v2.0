@@ -7,12 +7,12 @@
         <div class="{{ $isSlider ? 'w-max' : 'grid grid-cols-2' }} md:flex">
             <!-- Filter Kota -->
             <button wire:click="setCity('')"
-                    class="{{ !$city ? 'border-b-4 border-b-black font-bold' : '' }} {{ $isSlider ? 'min-w-[200px] md:min-w-[250px]' : 'flex-1' }} px-5 py-3">
+                    class="{{ !$city ? 'border-b-4 border-b-black font-bold' : '' }} {{ $isSlider ? 'md:min-w-[250px] px-6 py-3' : 'flex-1 px-5 py-3' }}">
                 Semua Pameran
             </button>
             @foreach ($cities as $item)
                 <button wire:click="setCity('{{ $item->city }}')"
-                        class="{{ $city === $item->city ? 'border-b-4 border-b-black font-bold' : '' }} {{ $isSlider ? 'min-w-[200px] md:min-w-[250px]' : 'flex-1' }} px-5 py-3">
+                        class="{{ $city === $item->city ? 'border-b-4 border-b-black font-bold' : '' }} {{ $isSlider ? 'md:min-w-[250px] px-6 py-3' : 'flex-1 px-5 py-3' }}">
                     <span class="capitalize">{{ $item->city }}</span>
                 </button>
             @endforeach
