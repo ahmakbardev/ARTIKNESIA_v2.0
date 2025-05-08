@@ -18,6 +18,11 @@ class Exhibition extends Model
         return 'slug';
     }
 
+    public function images()
+    {
+        return $this->hasMany(ExhibitionImage::class);
+    }
+
     public function getFormattedDateRangeAttribute()
     {
         $startDate = Carbon::parse($this->start_date)->translatedFormat('d F Y');
@@ -30,5 +35,24 @@ class Exhibition extends Model
     {
 
         return ($this->price != 0) ? 'IDR ' . number_format($this->price, 0, ',', '.') : 'GRATIS';
+    }
+
+    public function getStatusAttribute(): string
+    {
+        if (empty($this->start_date) || empty($this->end_date)) {
+            return 'draft';
+        }
+
+        $today = Carbon::today();
+        $start = Carbon::parse($this->start_date);
+        $end = Carbon::parse($this->end_date);
+
+        if ($today->lt($start)) {
+            return 'upcoming';
+        } elseif ($today->between($start, $end)) {
+            return 'ongoing';
+        } else {
+            return 'completed';
+        }
     }
 }

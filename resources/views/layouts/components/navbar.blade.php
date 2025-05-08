@@ -8,13 +8,13 @@
     <nav class="px-5 py-2 flex gap-10 justify-between items-center sm:items-start bg-white">
         <a href="/"><img class="flex-none" src="{{ asset('images/logo/artiknesia.svg') }}" alt=""></a>
         <div class="hidden sm:flex flex-col flex-1">
-            <livewire:search-product/>
+            <livewire:search-product />
             <div class="mt-3">
                 <ul class="flex gap-5">
-                    <li class="text-gray-400 text-xs"><a href="{{route('art-list')}}">Product</a></li>
+                    <li class="text-gray-400 text-xs"><a href="{{ route('art-list') }}">Product</a></li>
                     <li class="text-gray-400 text-xs"><a href="https://wa.me/6282146415024">Custom Karya</a></li>
-                    <li class="text-gray-400 text-xs"><a href="{{route('exhibition.index')}}">Pameran</a></li>
-                    <li class="text-gray-400 text-xs"><a href="{{route('article.index')}}">Artikel</a></li>
+                    <li class="text-gray-400 text-xs"><a href="{{ route('exhibition.index') }}">Pameran</a></li>
+                    <li class="text-gray-400 text-xs"><a href="{{ route('article.index') }}">Artikel</a></li>
                 </ul>
             </div>
         </div>
@@ -24,7 +24,8 @@
             @auth
                 <ul class="flex items-center gap-3 ml-3 flex-none">
                     <li>
-                        <a href="{{ route('transaction') }}" class="btn-color-outline py-1 px-3 rounded-md text-sm">Transaksi</a>
+                        <a href="{{ route('transaction') }}"
+                            class="btn-color-outline py-1 px-3 rounded-md text-sm">Transaksi</a>
                     </li>
                 </ul>
             @else
@@ -33,7 +34,7 @@
                         <a href="{{ route('login') }}" class="btn-color-outline py-1 px-3 rounded-md text-sm">Masuk</a>
                     </li>
                     <li>
-                        <button class="btn-color-fill py-1 px-3 rounded-md text-sm">Daftar</button>
+                        <a href="{{ route('register') }}" class="btn-color-fill py-1 px-3 rounded-md text-sm">Daftar</a>
                     </li>
                 </ul>
             @endauth
@@ -46,8 +47,8 @@
                 <img src="{{ asset('images/icons/search.svg') }}" alt="">
             </label>
             <input type="text" name="search"
-                   class="border px-10 rounded-md py-2 w-full bg-gray-50 focus:outline-primary/50 text-sm"
-                   placeholder="Cari di Artiknesia">
+                class="border px-10 rounded-md py-2 w-full bg-gray-50 focus:outline-primary/50 text-sm"
+                placeholder="Cari di Artiknesia">
         </div>
     </nav>
 </header>

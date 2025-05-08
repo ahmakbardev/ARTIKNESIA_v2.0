@@ -64,7 +64,7 @@
                         </div>
                         <div class="col-span-7">
                             <h1 class="text-lg font-bold">{{ $item->title }}</h1>
-                            <a href="{{ route('art', $item->id) }}" class="text-sm text-primary">Lihat lebih detail</a>
+                            <a href="{{ route('article.show', $item->slug) }}" class="text-sm text-primary">Lihat lebih detail</a>
                         </div>
                     </div>
                 @endforeach
