@@ -52,7 +52,7 @@ class ExhibitionList extends Component
 
         $query->orderBy('start_date', $this->sortDate);
 
-        // $cities = Exhibition::query()->groupBy('city')->orderBy('city', 'asc')->select('city')->limit(3)->get();
+        // $cities = Exhibition::query()->groupBy('city')->orderBy('city', 'asc')->select('city')->limit(4)->get();
         $cities = Exhibition::query()->groupBy('city')->orderBy('city', 'asc')->select('city')->get();
         $categoryCount = Exhibition::query()->select('category')->groupBy('category')->orderBy('category', 'asc')->get()->count();
         $categories = Exhibition::query()->groupBy('category')->orderBy('category', 'asc')->select('category')->limit($this->categoryLimit)->get();
