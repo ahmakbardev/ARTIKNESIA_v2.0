@@ -3,8 +3,8 @@
 @endphp
 
 <div class="flex w-full flex-col gap-4">
-    <div id="{{ $isSlider ? 'cityScroll' : '' }}" class="{{ $isSlider ? 'overflow-x-scroll hide-scrollbar' : '' }} w-full border-b border-b-black font-medium text-black">
-        <div class="{{ $isSlider ? 'w-max' : 'grid grid-cols-2' }} md:flex">
+    <div id="cityScroll" class="{{ $isSlider ? '' : 'md:overflow-x-visible' }} overflow-x-scroll hide-scrollbar w-full border-b border-b-black font-medium text-black">
+        <div class="flex">
             <!-- Filter Kota -->
             <button wire:click="setCity('')"
                     class="{{ !$city ? 'border-b-4 border-b-black font-bold' : '' }} {{ $isSlider ? 'md:min-w-[250px] px-6 py-3' : 'flex-1 px-5 py-3' }}">
@@ -73,13 +73,12 @@
             </div>
         @endif
         <div wire:loading.delay.remove class="grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-4">
-
             @foreach ($exhibitions as $item)
                 <div class="flex flex-col rounded-xl shadow-[4px_4px_4px_rgba(0,0,0,0.25)]">
                     {{-- <img src="http://127.0.0.1:8000/storage/{{ $item->banner }}" http://127.0.0.1:8000/storage/{{ $exhibition->banner }}
                         \Illuminate\Support\Facades\Storage::url($item->banner) alt="Pameran"
                         class="w-full h-[200px] object-cover rounded-t-lg bg-black" /> --}}
-                    <img src="https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pameran"
+                    <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($item->banner) }}" alt="Pameran"
                          class="h-[200px] w-full rounded-t-lg bg-black object-cover" />
                     <div class="flex flex-1 flex-col justify-between px-5 py-4">
                         <div class="group">
