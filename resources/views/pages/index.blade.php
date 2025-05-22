@@ -3,7 +3,7 @@
 @section('content')
     @include('components.carousel.carousel')
 
-    <div class="sale-produk pt-8 pb-3 px-2 md:px-5 lg:px-0 flex flex-col 2xl:pt-24">
+    <div class="sale-produk relative pt-8 pb-3 px-2 md:px-5 lg:px-0 flex flex-col 2xl:pt-24">
         <div class="flex justify-between">
             <h1 class="text-base lg:text-2xl font-semibold">New Release!</h1>
             <a href="{{ route('art-list') }}" class="underline">Lihat semua karya</a>
