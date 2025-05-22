@@ -26,12 +26,18 @@ class ArticleSearchFilterSort extends Component
     public $filterMonth = '';
     public $filterDate = '';
     public $activeSort = 'terbaru';
+    public int $categoryLimit = 10;
     // create for filter By Date
 
     #[On('updateFilterDate')]
     public function updatedDate($date)
     {
         $this->filterDate = $date;
+    }
+
+    public function seeMoreCategory()
+    {
+        $this->categoryLimit += 10;
     }
 
     public function filterCategory($categoryId, $categoryName)
@@ -94,7 +100,8 @@ class ArticleSearchFilterSort extends Component
 
     public function render()
     {
-        $categories = ArticleCategory::all();
+        $categoryCount = ArticleCategory::count();
+        $categories = ArticleCategory::take($this->categoryLimit)->get();
         $articles = Article::query()
             ->with('author:id,name')
             ->when($this->search, function ($query) {
@@ -110,6 +117,6 @@ class ArticleSearchFilterSort extends Component
         // Sorting data and Get Data
         $articles = $articles->orderBy($this->sortField, $this->sortDirection)->paginate(9);
 
-        return view('livewire.article-search-filter-sort', compact('articles', 'categories'));
+        return view('livewire.article-search-filter-sort', compact('articles', 'categories', 'categoryCount'));
     }
 }

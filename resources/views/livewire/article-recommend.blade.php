@@ -14,6 +14,7 @@
                             <img class="w-5 rounded-full object-contain"
                                  src="{{ asset('images/profile/default.png') }}" alt="">
                             <div class="flex flex-col">
+
                                 <p class="truncate">
                                     Oleh <span class="font-semibold">{{ $item->author->name }}</span>
                                 </p>

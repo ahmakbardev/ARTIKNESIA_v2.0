@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.layout-v2')
 @section('title', 'ARTIKNESIA - ' . $article->short_title)
 @section('content')
     @php
@@ -68,6 +68,14 @@
             <div class="px-3 text-justify md:px-0">
                 {!! $article->description !!}
             </div>
+            <img class="mb-7 mt-2 h-96 w-full rounded-sm object-cover object-center max-sm:max-h-64 lg:rounded-2xl"
+                 src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($article->image) }}"
+                 alt="">
+            <div class="px-3 text-justify md:px-0">
+                {!! $article->description !!}
+            </div>
+
+            <livewire:article-recommend :article="$article" />
         </div>
 
         {{-- share now --}}
