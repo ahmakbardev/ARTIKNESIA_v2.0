@@ -13,6 +13,7 @@ class ExhibitionList extends Component
     public $city = '';
     public $category = '';
     public $sortDate = 'asc';
+    public int $categoryLimit = 5;
 
     public function setCity($city)
     {
@@ -26,6 +27,10 @@ class ExhibitionList extends Component
         $this->resetPage();
     }
 
+    public function seeMoreCategory()
+    {
+        $this->categoryLimit += 5;
+    }
 
     public function setSortDate($sort)
     {
@@ -47,13 +52,16 @@ class ExhibitionList extends Component
 
         $query->orderBy('start_date', $this->sortDate);
 
+        // $cities = Exhibition::query()->groupBy('city')->orderBy('city', 'asc')->select('city')->limit(4)->get();
         $cities = Exhibition::query()->groupBy('city')->orderBy('city', 'asc')->select('city')->get();
-        $categories = Exhibition::query()->groupBy('category')->orderBy('category', 'asc')->select('category')->get();
+        $categoryCount = Exhibition::query()->select('category')->groupBy('category')->orderBy('category', 'asc')->get()->count();
+        $categories = Exhibition::query()->groupBy('category')->orderBy('category', 'asc')->select('category')->limit($this->categoryLimit)->get();
   
         return view('livewire.exhibition-list', [
-            'exhibitions' => $query->paginate(6),
+            'exhibitions' => $query->paginate(8),
             'cities' => $cities,
             'categories' => $categories,
+            'categoryCount' => $categoryCount
         ]);
     }
 }

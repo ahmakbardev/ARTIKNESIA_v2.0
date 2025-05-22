@@ -35,7 +35,7 @@
 
 @include('layouts.components.navbar')
 
-<main class="max-w-[1444px] mx-auto lg:px-10 lg:mt-5">
+<main class="max-w-[1200px] mx-auto lg:px-12 2xl:px-0 lg:mt-5">
     @yield('content')
 </main>
 

@@ -14,16 +14,19 @@ class ExhibitionController extends Controller
         $exhibitions = Exhibition::query()
             ->where('is_primary', 1)
             ->orderBy('updated_at', 'desc')
-            ->first();
+            ->take(1)
+            ->get();
 
-        if (!$exhibitions) {
+
+        if ($exhibitions->isEmpty()) {
             $exhibitions = Exhibition::query()
                 ->where('status', 'active')
                 ->orderBy('updated_at', 'desc')
                 ->take(2)
                 ->get();
 
-            if (!$exhibitions) {
+
+            if ($exhibitions->isEmpty()) {
                 $exhibitions = Exhibition::query()
                     ->inRandomOrder()
                     ->take(2)

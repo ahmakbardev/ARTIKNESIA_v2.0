@@ -1,81 +1,30 @@
 @extends('layouts.layout2')
 
 @section('content')
-    @foreach ($exhibitions as $exhibition)
-        <div class="min-h-[300px] md:min-h-[450px] w-full relative exhibition-banner flex items-center"
-            style="background-image: url('{{ \Illuminate\Support\Facades\Storage::url($exhibition->banner) }}')">
-            <div class="container py-10 mx-auto h-fit hidden md:block">
-                <div class="bg-white w-1/2 lg:w-5/12 2xl:w-1/4 h-full rounded-lg py-6 px-8 flex flex-col gap-10">
-                    <h1 class="text-3xl font-bold">{{ $exhibition->name }}</h1>
-                    <div class="flex flex-col gap-2">
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-solid fa-location-dot text-2xl"></i>
-                            <p class="text-base">{{ $exhibition->address }}</p>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-regular fa-calendar-days text-2xl"></i>
-                            <p class="text-base">{{ $exhibition->formatted_date_range }}</p>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <i class="fas fa-regular fa-calendar-days text-2xl"></i>
-                            <p class="text-base">{{ $exhibition->status }}</p>
-                        </div>
-                    </div>
-                    <div class="bg-primary w-full h-fit py-4 px-3 rounded-lg grid grid-cols-2 justify-between items-center">
-                        <p class="text-lg font-semibold">{{ $exhibition->formatted_price }}</p>
-                        <a href="{{ route('exhibition.show', $exhibition->slug) }}"
-                            class="bg-white text-base text-center text-primary font-normal px-3 py-1 rounded-lg">
-                            {{ $exhibition->status != 'completed' ? 'Beli Sekarang' : 'Tutup' }}
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="p-5 mx-auto h-fit block md:hidden">
-            <div class="bg-white w-full h-full rounded-lg p-3 flex flex-col gap-10 border border-gray-300">
-                <h1 class="text-3xl font-bold">{{ $exhibition->name }}</h1>
-                <div class="flex flex-col gap-2">
-                    <div class="flex items-center gap-3">
-                        <i class="fas fa-solid fa-location-dot text-2xl"></i>
-                        <p class="text-base">{{ $exhibition->address }}</p>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <i class="fas fa-regular fa-calendar-days text-2xl"></i>
-                        <p class="text-base">{{ $exhibition->formatted_date_range }}</p>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <i class="fas fa-regular fa-calendar-days text-2xl"></i>
-                        <p class="text-base">{{ $exhibition->status }}</p>
-                    </div>
-                </div>
-                <div class="bg-primary w-full h-fit py-4 px-3 rounded-lg grid grid-cols-2 justify-between items-center">
-                    <p class="text-lg font-semibold">{{ $exhibition->formatted_price }}</p>
-                    <a href="{{ route('exhibition.show', $exhibition->slug) }}"
-                        class="bg-white text-lg text-center text-primary font-normal px-3 py-1 rounded-lg">Beli
-                        Sekarang
+    <div class="mb-24">
+        {{-- HERO --}}
+        <div class="relative mx-auto mb-20 flex max-w-[1440px] flex-col-reverse justify-end gap-7 lg:h-[542px] lg:flex-row lg:gap-0">
+            <div class="pointer-events-none static bottom-0 left-10 top-0 z-10 items-center lg:absolute lg:flex">
+                <div class="relative flex flex-col items-center justify-center px-7 py-5 text-white shadow-[6px_6px_4px_rgba(0,0,0,0.25)]">
+                    <img src="{{ asset('images/pameran/background-cta.png') }}" class="pointer-events-none absolute left-0 top-0 -z-10 h-full w-full object-cover" />
+                    <h2 class="text-center font-poppins text-2xl font-semibold drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)]">Mau Menjadi Mitra <br> Artiknesia?</h2>
+                    <img src="{{ asset('images/logo/logo-white-2.png') }}" class="w-44" alt="">
+                    <p class="text-center font-poppins text-lg font-semibold drop-shadow-[0_4px_2px_rgba(0,0,0,0.25)]">Segera hubungi dengan Klik tombol <br> di bawah ini</p>
+                    <a href="https://wa.me/6282146415024" target="_blank"
+                       class="pointer-events-auto mt-3 rounded-md bg-white p-3 font-poppins text-lg font-semibold text-black">
+                        Hubungi Sekarang!
                     </a>
                 </div>
             </div>
+            @if (count($exhibitions) > 0)
+                <div class="h-full w-full max-w-[1280px] shadow-[0_6px_4px_rgba(0,0,0,0.25)] lg:w-[75%]">
+                    @include('components.carousel.pameran-carousel')
+                </div>
+            @endif
         </div>
-    @endforeach
-
-    <div class="container mt-2 md:mt-20 grid grid-cols-12 gap-y-10 md:gap-x-10 2xl:gap-20">
-        <div class="col-span-12 lg:col-span-8 ">
+        {{-- LIST PAMERAN --}}
+        <div class="mx-auto max-w-[1160px] px-5 md:px-10 2xl:px-2">
             <livewire:exhibition-list />
-        </div>
-        <div class="col-span-12 lg:col-span-4">
-            <div
-                class="md:sticky md:top-40 bg-primary rounded-lg text-white p-5 2xl:p-10 text-center flex flex-col gap-3 items-center">
-                <h1 class="text-2xl 2xl:text-3xl font-semibold">Mau menjadi Mitra ARTIKNESIA?</h1>
-                <img src="{{ asset('images/logo/logo-white.png') }}" alt="Artiknesia.com"
-                    class="size-32 2xl:size-44 object-contain" />
-                <h1 class="text-2xl 2xl:text-3xl font-semibold">Segera hubungi ARTIKNESIA
-                    disini!</h1>
-                <a href="https://wa.me/6282146415024" target="_blank"
-                    class="bg-white text-primary w-full py-2 2xl:py-4 text-xl 2xl:text-2xl rounded-full font-semibold">
-                    Hubungi Sekarang!
-                </a>
-            </div>
         </div>
     </div>
 @endsection

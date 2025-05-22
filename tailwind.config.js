@@ -22,6 +22,11 @@ module.exports = {
                 'navInfoGray': '#737373',
                 'primary': '#DFBE65',
                 'primary-darker': '#DAA515',
+                'status': {
+                    'completed': '#667085',
+                    'ongoing': '#77B462',
+                    'upcoming': '#FDB022',
+                  },
             },
             fontFamily: {
                 montserrat: ['Montserrat', 'sans-serif'],
