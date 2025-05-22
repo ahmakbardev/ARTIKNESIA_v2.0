@@ -2,9 +2,11 @@
 
 @section('content')
     @include('components.carousel.carousel')
-    <div class="relative sale-produk mt-8 pt-8 pb-3 px-2 flex flex-col xs:mt-[5.75rem] sm:mt-[8.5rem] md:mt-16 md:px-5 lg:px-0 xl:mt-28 2xl:pt-10 2xl:mt-32">
-        <div class="pointer-events-none absolute top-0 left-0 right-0 z-10 lg:hidden">
-            <img class="w-full" src="{{ asset('images/art-recommendation/bg-mobile.svg') }}" alt="">
+
+    <div class="sale-produk pt-8 pb-3 px-2 md:px-5 lg:px-0 flex flex-col 2xl:pt-24">
+        <div class="flex justify-between">
+            <h1 class="text-base lg:text-2xl font-semibold">New Release!</h1>
+            <a href="{{ route('art-list') }}" class="underline">Lihat semua karya</a>
         </div>
         
         <div class="pointer-events-none hidden absolute w-full bg-cover bg-top z-10 top-0 rounded-lg lg:block">

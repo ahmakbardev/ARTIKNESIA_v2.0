@@ -19,17 +19,14 @@
     @endphp
     <div class="relative mx-auto flex gap-y-3 pt-10">
         {{-- writed by --}}
-        <div class="hidden w-1/6 text-xs flex-col gap-4 sticky top-36 self-start xl:flex">
+        <div class="hidden w-1/6 text-xs xl:flex flex-col gap-4 sticky top-36 self-start">
             <h4 class="font-poppins font-semibold">Ditulis Oleh</h4>
-            <div class="font-poppins flex items-center gap-2 px-2">
+            <div class="flex items-center gap-2 px-2">
                 <img class="w-9 rounded-full object-contain"
                      src="{{ asset('images/profile/default.png') }}" alt="">
-                <div class="truncate">
+                <div>
                     <div class="truncate font-semibold">
                         {{ $article->author->name }}
-                    </div>
-                    <div class="truncate capitalize">
-                        {{$article->author->role->nama}}
                     </div>
                 </div>
             </div>
@@ -47,7 +44,7 @@
         </div>
 
         {{-- Main Article --}}
-        <div class="flex-1 px-2 lg:mx-7 lg:px-0">
+        <div class="flex-1 px-2 lg:ml-8 lg:mr-12 lg:px-0">
             <div class="max-w-64 truncate font-poppins text-xs text-black/70">
                 <a href="/" class="hover:underline">Home</a> > <a href="{{ route('article.index') }}" class="hover:underline">Artikel</a> > {{ $article->title }}
             </div>
@@ -64,6 +61,12 @@
                         <img src="{{ asset('images/icons/eye-icon.svg') }}" class="size-5" alt="">
                     </div>
                 </div>
+            </div>
+            <img class="mb-7 mt-2 h-96 w-full rounded-sm object-cover object-center max-sm:max-h-64 lg:rounded-2xl"
+                 src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($article->image) }}"
+                 alt="">
+            <div class="px-3 text-justify md:px-0">
+                {!! $article->description !!}
             </div>
             <img class="mb-7 mt-2 h-96 w-full rounded-sm object-cover object-center max-sm:max-h-64 lg:rounded-2xl"
                  src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($article->image) }}"
@@ -98,6 +101,7 @@
             {{-- @include('components.carousel.posters-carousel') --}}
         </div>
     </div>
+    <livewire:article-recommend :article="$article" />
 @endsection
 
 @section('custom-seo')
@@ -129,7 +133,6 @@
 
     function shareToSocialMedia(socialMedia) {
         const currentURL = encodeURIComponent(window.location.href);
-
         let shareURL;
         switch (socialMedia) {
             case 'facebook':
