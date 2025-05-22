@@ -40,7 +40,7 @@ class ArticleController extends Controller
             ->select('name')
             ->get();
 
-        $article->load('author:id,name');
+        $article->load('author:id,role_id,name', 'author.role:id,nama');
 
         return view('pages.article.show', compact('article', 'categories'));
     }
