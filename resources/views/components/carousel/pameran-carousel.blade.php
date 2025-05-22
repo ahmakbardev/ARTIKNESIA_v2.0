@@ -11,7 +11,6 @@
                     <div class="relative h-full w-full">
                         <img class="absolute inset-0 -z-10 h-[542px] w-full object-cover object-center"
                              src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($exhibition->image) }}"
-                             {{-- src="https://i0.wp.com/artjakarta.com/wp-content/uploads/2024/07/17-November-2023_Art-Jakarta_Opening_JIEXPO-Kemayoran_jinpanji-01407.jpg?fit=6000%2C4000&ssl=1" --}}
                              alt="">
                         <div class="absolute inset-0 h-[542px] bg-neutral-700 bg-opacity-10 group-hover/btncont:bg-opacity-80 transition-all duration-300"></div>
                         <div class="absolute inset-0 z-30 flex h-[542px] w-full items-center justify-center">
