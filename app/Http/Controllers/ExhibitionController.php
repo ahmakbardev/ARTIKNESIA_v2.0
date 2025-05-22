@@ -17,12 +17,14 @@ class ExhibitionController extends Controller
             ->take(1)
             ->get();
 
+
         if ($exhibitions->isEmpty()) {
             $exhibitions = Exhibition::query()
                 ->where('status', 'active')
                 ->orderBy('updated_at', 'desc')
                 ->take(2)
                 ->get();
+
 
             if ($exhibitions->isEmpty()) {
                 $exhibitions = Exhibition::query()

@@ -1,3 +1,4 @@
+
 @php
     $isSlider = count($cities) > 3;
 @endphp
@@ -53,8 +54,6 @@
             </button>
         </div>
     </div>
-
-
     <div class="flex flex-col gap-3">
         <div wire:loading.delay.shortest class="flex items-center justify-center self-center">
             <div class="flex h-fit w-fit animate-pulse space-x-2">
@@ -94,6 +93,7 @@
                                 <img src="{{ asset('images/icons/calendar-exhibition-icon.svg') }}" class="size-4" alt="">
                                 <p class="font-poppins text-xs">{{ $item->formatted_date_range }}</p>
                             </div>
+
                             <div class="flex items-center gap-2">
                                 <img src="{{ asset('images/icons/money-icon.svg') }}" class="size-4" alt="">
                                 <p class="font-poppins text-xs">{{ $item->formatted_price }}</p>

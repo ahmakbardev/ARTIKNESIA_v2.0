@@ -36,6 +36,34 @@
                         {{ $exhibition->description }}
                     </div>
                 </div>
+
+
+                {{-- For Sharing Sosmed --}}
+                <div class="mt-2">
+                    <h4 class="mb-3 font-poppins font-semibold text-xl ">Share Now</h4>
+                    <div class="left-[calc(100%+2.7rem)] hidden w-[275px] text-sm xl:block">
+
+                        <div class="mb-1">
+                            <ul class="flex gap-4">
+                                @foreach ($shareIconImages as $item)
+                                    <li>
+                                        <button onclick="{{ $item['func_name'] }}" data-tooltip-target="tooltip-click"
+                                            data-tooltip-trigger="click">
+                                            <img src="{{ asset($item['icon_path']) }}" class="size-5" alt="">
+                                        </button>
+                                    </li>
+                                    @if ($item['icon_path'] === 'images/icons/copy.svg')
+                                        <div id="tooltip-click" role="tooltip"
+                                            class="shadow-xs tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 transition-opacity duration-300 dark:bg-gray-700">
+                                            Copied
+                                            <div class="tooltip-arrow" data-popper-arrow></div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
@@ -102,7 +130,6 @@
             </div>
         </div>
     </div>
-
     <script>
         function copyURL() {
             navigator.clipboard.writeText(window.location.href)
